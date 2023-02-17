@@ -48,6 +48,7 @@
 
     <!-- BEGIN: Vendor JS-->
     @include('share.js')
+    @yield('js')
 </body>
 <!-- END: Body-->
 
