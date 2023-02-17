@@ -12,6 +12,5 @@ class DanhMucController extends Controller
     }
     public function store(Request $request){
         $newData = $request->all();
-        
     }
 }
