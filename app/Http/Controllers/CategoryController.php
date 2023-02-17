@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DanhMuc;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class DanhMucController extends Controller
+class CategoryController extends Controller
 {
     public function index(){
-        return view('page.danh_muc.index');
+        return view('page.Category.index');
     }
+
     public function store(Request $request){
         $newData = $request->all();
     }

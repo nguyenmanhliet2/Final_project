@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DanhMucController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[DanhMucController::class, 'index']);
-Route::post('/',[DanhMucController::class, 'store']);
+Route::get('/admin/category/index',[CategoryController::class, 'index']);
+Route::post('/admin/category/index',[CategoryController::class, 'store']);
 

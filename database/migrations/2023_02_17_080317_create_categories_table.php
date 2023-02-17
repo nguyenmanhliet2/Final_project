@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('danh_mucs', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('ten_danh_muc');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->integer('id_danh_muc_cha');
             $table->boolean('is_open');
             $table->timestamps();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danh_mucs');
+        Schema::dropIfExists('categories');
     }
 };

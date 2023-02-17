@@ -27,7 +27,6 @@
                         <label>Danh Mục Cha</label>
                         <select class="form-control">
                             <option value="0">Root</option>
-                            {{-- <option value="1">Tạm Tắt</option> --}}
                         </select>
                     </div>
                 </div>
