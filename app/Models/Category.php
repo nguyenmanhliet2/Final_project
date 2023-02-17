@@ -12,9 +12,9 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-        'ten_danh_muc',
-        'slug',
-        'id_danh_muc_cha',
+        'name_category',
+        'slug_category',
+        'id_category_root',
         'is_open',
     ];
 }

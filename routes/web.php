@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/category/index',[CategoryController::class, 'index']);
 Route::post('/admin/category/index',[CategoryController::class, 'store']);
+Route::get('/admin/category/getData',[CategoryController::class, 'receiveData']);
 
