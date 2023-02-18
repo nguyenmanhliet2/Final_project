@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin/category/index',[CategoryController::class, 'index']);
-Route::post('/admin/category/index',[CategoryController::class, 'store']);
-Route::get('/admin/category/getData',[CategoryController::class, 'receiveData']);
-Route::post('/admin/category/updateData',[CategoryController::class, 'updateData']);
-Route::post('/admin/category/removeData',[CategoryController::class, 'removeData']);
+
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::group(['prefix' => 'category'], function() {
+        Route::get('/index',[CategoryController::class, 'index']);
+        Route::post('/index',[CategoryController::class, 'store']);
+        Route::get('/getData',[CategoryController::class, 'receiveData']);
+        Route::post('/updateData',[CategoryController::class, 'updateData']);
+        Route::post('/removeData',[CategoryController::class, 'removeData']);
+        Route::post('/switchStatus',[CategoryController::class, 'switchStatus']);
+    });
+    Route::group(['prefix' => 'product'], function() {
+        Route::get('/index',[ProductController::class, 'index']);
+        Route::post('/index',[ProductController::class, 'store']);
+        Route::get('/getData',[ProductController::class, 'receiveData']);
+        Route::post('/updateData',[ProductController::class, 'updateData']);
+        Route::post('/removeData',[ProductController::class, 'removeData']);
+        Route::post('/switchStatus',[ProductController::class, 'switchStatus']);
+    });
+});
