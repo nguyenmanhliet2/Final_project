@@ -48,4 +48,9 @@ class CategoryController extends Controller
            'message' => "Delete Sucessfully!"
         ]);
     }
+    public function switchStatus(Request $request){
+        $adminEdit = Category::where('id', $request->id)->first();
+        $adminEdit->is_open = !$adminEdit->is_open;
+        $adminEdit->save();
+    }
 }
