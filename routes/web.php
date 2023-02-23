@@ -30,8 +30,8 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/indexNewProduct',[ProductController::class, 'indexNewProduct']);
         Route::post('/indexNewProduct',[ProductController::class, 'productStore']);
         Route::get('/receiveProductData',[ProductController::class, 'receiveProductData']);
-        // Route::post('/updateData',[ProductController::class, 'updateData']);
-        // Route::post('/removeData',[ProductController::class, 'removeData']);
-        // Route::post('/switchStatus',[ProductController::class, 'switchStatus']);
+        Route::post('/updateProductData',[ProductController::class, 'updateProductData']);
+        Route::post('/removeProductData',[ProductController::class, 'removeProductData']);
+        Route::post('/switchProductStatus',[ProductController::class, 'switchProductStatus']);
     });
 });
