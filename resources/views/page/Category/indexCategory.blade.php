@@ -19,8 +19,8 @@
                     <div class="mb-1">
                         <label>Status of category</label>
                         <select v-model="newData.is_open" class="form-control">
-                            <option value="0">Hiển Thị</option>
-                            <option value="1">Tạm Tắt</option>
+                            <option value="0">Enable</option>
+                            <option value="1">Disable</option>
                         </select>
                     </div>
                     <div class="mb-1">
@@ -37,7 +37,7 @@
                     <div class="text-end ">
                         <button v-on:click="createCategory()" class="btn btn-primary text-right"
                             style="
-                        padding: 10px 41px;">Thêm</button>
+                        padding: 10px 41px;">Add Category</button>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                                 <th class="text-center">Category's Slug</th>
                                 <th class="text-center">Status of category</th>
                                 <th class="text-center">Category root</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-center">Options</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,8 +65,8 @@
                                 <td class="text-center align-middle">@{{ value.name_category }}</td>
                                 <td class="text-center align-middle">@{{ value.slug_category }}</td>
                                 <td class="text-center align-middle">
-                                    <button v-on:click="switchStatus(value)" v-if="value.is_open == 0" class="btn btn-primary">Hiển thị</button>
-                                    <button v-on:click="switchStatus(value)" v-else class="btn btn-danger">Tạm tắt</button>
+                                    <button v-on:click="switchStatus(value)" v-if="value.is_open == 0" class="btn btn-primary">Enable</button>
+                                    <button v-on:click="switchStatus(value)" v-else class="btn btn-danger">Disable</button>
                                 </td>
                                 <td class="text-center align-middle">
                                     <template v-if="value.name_category_root == null">
@@ -109,8 +109,8 @@
                                 <div class="mb-1">
                                     <label>Status</label>
                                     <select v-model="edit.is_open" class="form-control">
-                                        <option value="0">Hiển Thị</option>
-                                        <option value="1">Tạm Tắt</option>
+                                        <option value="0">Enable</option>
+                                        <option value="1">Disable</option>
                                     </select>
                                 </div>
                                 <div class="mb-1">
@@ -141,7 +141,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-
+                                Are you sure you will delete this?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -173,7 +173,7 @@
             methods: {
                 createCategory() {
                     axios
-                        .post("/admin/category/index", this.newData)
+                        .post("/admin/category/indexCategory", this.newData)
                         .then((res) => {
                             toastr.success(res.data.message);
                             this.loadCategory();

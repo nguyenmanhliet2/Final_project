@@ -27,11 +27,11 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/switchStatus',[CategoryController::class, 'switchStatus']);
     });
     Route::group(['prefix' => 'product'], function() {
-        Route::get('/index',[ProductController::class, 'index']);
-        Route::post('/index',[ProductController::class, 'store']);
-        Route::get('/getData',[ProductController::class, 'receiveData']);
-        Route::post('/updateData',[ProductController::class, 'updateData']);
-        Route::post('/removeData',[ProductController::class, 'removeData']);
-        Route::post('/switchStatus',[ProductController::class, 'switchStatus']);
+        Route::get('/indexNewProduct',[ProductController::class, 'indexNewProduct']);
+        Route::post('/indexNewProduct',[ProductController::class, 'productStore']);
+        Route::get('/receiveProductData',[ProductController::class, 'receiveProductData']);
+        // Route::post('/updateData',[ProductController::class, 'updateData']);
+        // Route::post('/removeData',[ProductController::class, 'removeData']);
+        // Route::post('/switchStatus',[ProductController::class, 'switchStatus']);
     });
 });
