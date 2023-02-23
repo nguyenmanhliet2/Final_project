@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index(){
 
-        return view('page.Category.index');
+        return view('page.Category.indexCategory');
     }
 
     public function store(Request $request){
