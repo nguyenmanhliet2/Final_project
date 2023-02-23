@@ -25,4 +25,24 @@ class ProductController extends Controller
         'newData' => $product_data,
     ]);
    }
+   public function switchProductStatus(request $request) {
+        $productEdit = Product::where('id', $request->id)->first();
+        $productEdit->status_product = !$productEdit->status_product;
+        $productEdit->save();
+   }
+   public function updateProductData(request $request) {
+    $newDataProDuctUpdate = $request->all();
+    $updateProductData = Product::where('id', $request->id)->first();
+    $updateProductData->update($newDataProDuctUpdate);
+    return response()->json([
+       'updateProductStatus' => true,
+    ]);
+   }
+   public function removeProductData(Request $request) {
+    $deleteProductData = Product::where('id', $request->id)->first()->delete();
+    return response()->json([
+        'deleteProductStatus' => true,
+        'deleteMessage' => 'Delete Product Successfully'
+    ]);
+   }
 }

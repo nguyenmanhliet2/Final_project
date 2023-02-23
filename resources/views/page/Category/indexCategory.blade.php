@@ -86,7 +86,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Modal remove -->
+                <!-- Modal update -->
                 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -125,12 +125,13 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" v-on:click='editChangeCategory()' class="btn btn-primary">Save
+                                <button type="button" v-on:click='editChangeCategory()' class="btn btn-primary" data-bs-dismiss="modal">Save
                                     changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                 <!-- Modal Remove -->
                 <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -145,7 +146,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" v-on:click='removeCategory()' class="btn btn-primary">Save
+                                <button type="button" v-on:click='removeCategory()' class="btn btn-primary" data-bs-dismiss="modal">Save
                                     changes</button>
                             </div>
                         </div>
