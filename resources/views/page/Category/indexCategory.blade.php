@@ -36,8 +36,7 @@
                 <div class="card-footer">
                     <div class="text-end ">
                         <button v-on:click="createCategory()" class="btn btn-primary text-right"
-                            style="
-                        padding: 10px 41px;">Add Category</button>
+                            style="padding: 10px 41px;">Add Category</button>
                     </div>
                 </div>
             </div>
@@ -98,11 +97,11 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-1">
-                                    <label>Tên Danh Mục</label>
+                                    <label>Category's name</label>
                                     <input v-model="edit.name_category" type="text" class="form-control">
                                 </div>
                                 <div class="mb-1">
-                                    <label>Slug Danh Mục</label>
+                                    <label>Category's Slug</label>
                                     <input v-model="edit.slug_category" type="text" class="form-control">
                                 </div>
 
@@ -114,7 +113,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-1">
-                                    <label>Danh Mục Cha</label>
+                                    <label>Category root</label>
                                     <select v-model="edit.id_category_root" class="form-control">
                                         <option value="0">Root</option>
                                         <template v-for="(v, k) in list_category_root">
