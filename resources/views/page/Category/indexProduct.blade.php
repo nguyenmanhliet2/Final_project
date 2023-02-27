@@ -51,8 +51,7 @@
                 <div class="card-footer">
                     <div class="text-end ">
                         <button v-on:click="createProduct()" class="btn btn-primary text-right"
-                            style="
-                            padding: 10px 41px;">Add Product</button>
+                            style="padding: 10px 41px;">Add Product</button>
                     </div>
                 </div>
             </div>

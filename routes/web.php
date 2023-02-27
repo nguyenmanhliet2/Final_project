@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,10 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/updateProductData',[ProductController::class, 'updateProductData']);
         Route::post('/removeProductData',[ProductController::class, 'removeProductData']);
         Route::post('/switchProductStatus',[ProductController::class, 'switchProductStatus']);
+    });
+    Route::group(['prefix' => 'ingredient'], function() {
+        Route::get('/indexIngredient',[IngredientController::class, 'indexIngredient']);
+        Route::post('/indexIngredient',[IngredientController::class, 'ingredientStore']);
+        Route::get('/recieveIngredient',[IngredientController::class, 'recieveIngredient']);
     });
 });
