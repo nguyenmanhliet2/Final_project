@@ -55,6 +55,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th class="text-center">Stt</th>
                                 <th class="text-center">Ingredient's code</th>
                                 <th class="text-center">Ingredient's name</th>
                                 <th class="text-center">Ingredient's slug</th>
