@@ -173,7 +173,7 @@
             methods: {
                 createCategory() {
                     axios
-                        .post("/admin/category/indexCategory", this.newData)
+                        .post("/admin/category/index", this.newData)
                         .then((res) => {
                             toastr.success(res.data.message);
                             this.loadCategory();
