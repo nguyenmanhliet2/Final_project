@@ -24,4 +24,18 @@ class IngredientController extends Controller
             'newData' => $ingredient_data,
         ]);
     }
+    public function updateIngredient(Request $request) {
+        $newUpdateIngredient = $request->all();
+        $updateIngredient = Ingredient::where('id', $request->id)->first();
+        $updateIngredient->update($newUpdateIngredient);
+        return response()->json([
+            'updateIngredientData' => true,
+        ]);
+
+    }
+    public function switchIngredientStatus(Request $request) {
+        $ingredientEdit = Ingredient::where('id', $request->id)->first();
+        $ingredientEdit->status_ingredient =! $ingredientEdit->status_ingredient;
+        $ingredientEdit->save();
+    }
 }

@@ -73,19 +73,65 @@
                                     <td> @{{ value.name_ingredient }}</td>
                                     <td> @{{ value.slug_ingredient }}</td>
                                     <td class="text-center align-middle">
-                                        <button class="btn btn-primary">Enable</button>
-                                        <button class="btn btn-danger">Disable</button>
+                                        <button v-on:click="switchIngredientStatus(value)" v-if="value.status_ingredient == 0" class="btn btn-primary">Enable</button>
+                                        <button v-on:click="switchIngredientStatus(value)" v-else class="btn btn-danger">Disable</button>
                                     </td>
                                     <td> @{{ value.quantity_ingredient }}</td>
                                     <td> @{{ value.price_ingredient }}</td>
                                     <td class="text-nowrap text-center align-middle">
-                                        <button class="btn btn-primary" >Update</button>
+                                        <button class="btn btn-primary" v-on:click="editIngredient = value"  data-bs-toggle="modal" data-bs-target="#editIngredientModal">Update</button>
                                         <button class="btn btn-primary" >Delete</button>
                                     </td>
                                 </tr>
                             </template>
                         </tbody>
                     </table>
+                </div>
+                <div class="modal fade" id="editIngredientModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-1">
+                                    <label>Ingredient's Code</label>
+                                    <input v-model="editIngredient.code_ingredient" type="text" class="form-control">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Ingredient's Name</label>
+                                    <input v-model="editIngredient.name_ingredient" type="text" class="form-control">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Ingredient's Slug</label>
+                                    <input v-model="editIngredient.slug_ingredient" type="text" class="form-control">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Status Of Ingredient</label>
+                                    <select v-model="editIngredient.status_ingredient" class="form-control">
+                                        <option value="0">Enable</option>
+                                        <option value="1">Disable</option>
+                                    </select>
+                                </div>
+                                <div class="mb-1">
+                                    <label>Product's Quantity</label>
+                                    <input v-model="editIngredient.quantity_ingredient" type="text" class="form-control">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Product's Price</label>
+                                    <input v-model="editIngredient.price_ingredient" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" v-on:click='editChangeIngredient()' class="btn btn-primary" data-bs-dismiss="modal">Save
+                                    changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,6 +142,7 @@
         new Vue({
             el: "#admin_ingredient_page" ,
             data: {
+                editIngredient: {},
                 newIngredientData: {},
                 list_ingredient: [],
             },
@@ -118,6 +165,27 @@
                             this.list_ingredient = res.data.newData;
                         });
                 },
+                switchIngredientStatus(value) {
+                    axios
+                       .post('/admin/ingredient/switchIngredientStatus', value)
+                       .then((res) => {
+                            toastr.success("Status of Ingredient has been changed");
+                            this.loadIngredient();
+                       });
+                },
+                editChangeIngredient() {
+                    axios
+                       .post('/admin/ingredient/updateIngredient', this.editIngredient)
+                       .then((res) => {
+                        if(res.data.updateIngredientData){
+                                toastr.success("Update Ingredient successfully");
+                                this.loadIngredient();
+                            } else {
+                                toastr.error("Update fail");
+                            }
+                        });
+                },
+
             },
         });
     </script>

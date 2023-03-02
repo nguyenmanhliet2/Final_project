@@ -40,5 +40,6 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/indexIngredient',[IngredientController::class, 'ingredientStore']);
         Route::get('/recieveIngredient',[IngredientController::class, 'recieveIngredient']);
         Route::post('/updateIngredient',[IngredientController::class, 'updateIngredient']);
+        Route::post('/switchIngredientStatus',[IngredientController::class, 'switchIngredientStatus']);
     });
 });
