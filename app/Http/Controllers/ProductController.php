@@ -25,12 +25,12 @@ class ProductController extends Controller
         'newData' => $product_data,
     ]);
    }
-   public function switchProductStatus(request $request) {
+   public function switchProductStatus(Request $request) {
         $productEdit = Product::where('id', $request->id)->first();
         $productEdit->status_product = !$productEdit->status_product;
         $productEdit->save();
    }
-   public function updateProductData(request $request) {
+   public function updateProductData(Request $request) {
     $newDataProDuctUpdate = $request->all();
     $updateProductData = Product::where('id', $request->id)->first();
     $updateProductData->update($newDataProDuctUpdate);
