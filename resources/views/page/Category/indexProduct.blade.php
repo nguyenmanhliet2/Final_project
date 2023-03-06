@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-1">
                         <label>Product's Category</label>
-                        <select v-model="newProductData.id_product" class="form-control">
+                        <select v-model="newProductData.id_product_catalog" class="form-control">
                             <option value="0">Root</option>
                             <template v-for="(v, k) in list_product">
                                 <option v-bind:value="v.id">@{{ v.name_product }}</option>
@@ -86,7 +86,7 @@
                                         <button v-on:click="switchProductStatus(value)" v-if="value.status_product == 0" class="btn btn-primary">Enable</button>
                                         <button v-on:click="switchProductStatus(value)" v-else class="btn btn-danger">Disable</button>
                                     </td>
-                                    <td>@{{ value.id_product }}</td>
+                                    <td>@{{ value.id_product_catalog }}</td>
                                     <td>@{{ value.description_product }}</td>
                                     <td>@{{ value.image_product }}</td>
                                     <td>@{{ value.quantity_product }}</td>

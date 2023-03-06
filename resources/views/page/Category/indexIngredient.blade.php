@@ -80,7 +80,7 @@
                                     <td> @{{ value.price_ingredient }}</td>
                                     <td class="text-nowrap text-center align-middle">
                                         <button class="btn btn-primary" v-on:click="editIngredient = value"  data-bs-toggle="modal" data-bs-target="#editIngredientModal">Update</button>
-                                        <button class="btn btn-primary" >Delete</button>
+                                        <button class="btn btn-primary" v-on:click="deleteIngredient = value" data-bs-toggle="modal" data-bs-target="#removeIngredientModal">Delete</button>
                                     </td>
                                 </tr>
                             </template>
@@ -133,6 +133,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="removeIngredientModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Remove</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" v-on:click='removeIngredient()' class="btn btn-primary" data-bs-dismiss="modal">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -142,6 +161,7 @@
         new Vue({
             el: "#admin_ingredient_page" ,
             data: {
+                deleteIngredient: {},
                 editIngredient: {},
                 newIngredientData: {},
                 list_ingredient: [],
@@ -185,7 +205,18 @@
                             }
                         });
                 },
-
+                removeIngredient() {
+                    axios
+                       .post('/admin/ingredient/removeIngredient', this.deleteIngredient)
+                       .then((res) => {
+                         if(res.data.deleteIngredientStatus) {
+                            toastr.success("Remove Ingredient successfully");
+                            this.loadIngredient();
+                         } else {
+                            toastr.error("Remove fail");
+                         }
+                       });
+                }
             },
         });
     </script>

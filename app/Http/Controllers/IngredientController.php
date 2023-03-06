@@ -31,8 +31,15 @@ class IngredientController extends Controller
         return response()->json([
             'updateIngredientData' => true,
         ]);
-
     }
+    public function removeIngredient(Request $request) {
+        $deleteIngredientData = Ingredient::where('id', $request->id)->first()->delete();
+        return response()->json([
+            'deleteIngredientStatus' => true,
+            'deleteMessage' => 'Delete Ingredient Successfully'
+        ]);
+    }
+
     public function switchIngredientStatus(Request $request) {
         $ingredientEdit = Ingredient::where('id', $request->id)->first();
         $ingredientEdit->status_ingredient =! $ingredientEdit->status_ingredient;
