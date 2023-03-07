@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Js;
@@ -24,6 +25,14 @@ class ProductController extends Controller
     return response()->json([
         'newData' => $product_data,
     ]);
+   }
+
+   public function receiveCategoryData()
+   {
+        $category_data = Category::where('is_open', 1)->get();
+        return response()->json([
+            'newData' => $category_data,
+        ]);
    }
    public function switchProductStatus(Request $request) {
         $productEdit = Product::where('id', $request->id)->first();
