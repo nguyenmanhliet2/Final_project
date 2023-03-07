@@ -18,16 +18,15 @@
                     <div class="mb-1">
                         <label>Status Of Product</label>
                         <select v-model="newProductData.status_product" class="form-control">
-                            <option value="0">Enable</option>
-                            <option value="1">Disable</option>
+                            <option value="1">Enable</option>
+                            <option value="0">Disable</option>
                         </select>
                     </div>
                     <div class="mb-1">
                         <label>Product's Category</label>
                         <select v-model="newProductData.id_product_catalog" class="form-control">
-                            <option value="0">Root</option>
-                            <template v-for="(v, k) in list_product">
-                                <option v-bind:value="v.id">@{{ v.name_product }}</option>
+                            <template v-for="(v, k) in list_category">
+                                <option v-bind:value="v.id">@{{ v.name_category }}</option>
                             </template>
                         </select>
                     </div>
@@ -129,10 +128,9 @@
                                 <div class="mb-1">
                                     <label>Product's Category</label>
                                     <select  class="form-control">
-                                        <option value="0">Root</option>
-                                        {{-- <template v-for="(v, k) in list_category_root">
+                                        <template v-for="(v, k) in list_category">
                                             <option v-bind:value="v.id">@{{ v.name_category }}</option>
-                                        </template> --}}
+                                        </template>
                                     </select>
                                 </div>
                                 <div class="mb-1">
@@ -193,6 +191,7 @@
                 deleteProduct: {},
                 newProductData: {},
                 list_product: [],
+                list_category: [],
             },
             created() {
                 this.loadProduct();
@@ -211,8 +210,18 @@
                         .get('/admin/product/receiveProductData')
                         .then((res) => {
                             this.list_product = res.data.newData;
+                            this.loadCategory();
                         });
                 },
+
+                loadCategory() {
+                    axios
+                        .get('/admin/product/receiveCategoryData')
+                        .then((res) => {
+                            this.list_category = res.data.newData;
+                        });
+                },
+
                 switchProductStatus(value){
                     axios
                        .post('/admin/product/switchProductStatus', value)

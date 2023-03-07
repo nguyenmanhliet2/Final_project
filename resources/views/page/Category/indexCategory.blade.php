@@ -19,8 +19,8 @@
                     <div class="mb-1">
                         <label>Status of category</label>
                         <select v-model="newData.is_open" class="form-control">
-                            <option value="0">Enable</option>
-                            <option value="1">Disable</option>
+                            <option value="1">Enable</option>
+                            <option value="0">Disable</option>
                         </select>
                     </div>
                     <div class="mb-1">
