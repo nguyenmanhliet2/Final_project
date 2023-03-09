@@ -49,11 +49,13 @@ Route::group(['prefix' => 'admin'], function() {
     });
     Route::group(['prefix' => 'warehouse-invoice'], function() {
         Route::get('/indexWarehouseInvoice',[WarehouseInvoicesController::class, 'indexWarehouseInvoice']);
-        Route::post('/indexWarehouseInvoiceStore',[WarehouseInvoicesController::class, 'indexWarehouseInvoiceStore']);
-        Route::get('/recieveWarehouseInvoice',[WarehouseInvoicesController::class, 'recieveWarehouseInvoice']);
-        Route::post('/updateWarehouseInvoice',[WarehouseInvoicesController::class, 'updateWarehouseInvoice']);
-        Route::post('/removeWarehouseInvoice',[WarehouseInvoicesController::class, 'removeWarehouseInvoice']);
-        // Route::post('/switchIngredientStatus',[IngredientController::class, 'switchIngredientStatus']);
+        Route::get('/dataWarehouseInvoice',[WarehouseInvoicesController::class, 'dataWarehouseInvoice']);
+        Route::get('/dataDetailWarehouseInvoice/{id}',[WarehouseInvoicesController::class, 'dataDetailWarehouseInvoice']);
+        Route::post('/switchInvoiceStatus',[WarehouseInvoicesController::class, 'switchInvoiceStatus']);
+        // Route::post('/indexWarehouseInvoiceStore',[WarehouseInvoicesController::class, 'indexWarehouseInvoiceStore']);
+        // Route::get('/recieveWarehouseInvoice',[WarehouseInvoicesController::class, 'recieveWarehouseInvoice']);
+        // Route::post('/updateWarehouseInvoice',[WarehouseInvoicesController::class, 'updateWarehouseInvoice']);
+        // Route::post('/removeWarehouseInvoice',[WarehouseInvoicesController::class, 'removeWarehouseInvoice']);
     });
     Route::group(['prefix' => 'warehouse-detail'], function() {
         Route::get('/indexWarehouseDetail',[WarehouseDetailsController::class, 'indexWarehouseDetail']);
@@ -61,10 +63,8 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/recieveDetail',[WarehouseDetailsController::class, 'recieveDetail']);
         Route::post('/createDetail',[WarehouseDetailsController::class, 'createDetail']);
         Route::post('/plusQuantity',[WarehouseDetailsController::class, 'plusQuantity']);
-        // Route::post('/indexWarehouseDetailStore',[WarehouseDetailsController::class, 'indexWarehouseDetailStore']);
-        // Route::get('/recieveWarehouseDetail',[WarehouseDetailsController::class, 'recieveWarehouseDetail']);
-        // Route::post('/updateWarehouseDetail',[WarehouseDetailsController::class, 'updateWarehouseDetail']);
-        // Route::post('/removeWarehouseDetail',[WarehouseDetailsController::class, 'removeWarehouseDetail']);
-        // Route::post('/switchIngredientStatus',[IngredientController::class, 'switchIngredientStatus']);
+        Route::post('/removeWarehouseDetail',[WarehouseDetailsController::class, 'removeWarehouseDetail']);
+        Route::post('/addProductDetail',[WarehouseDetailsController::class, 'addProductDetail']);
+
     });
 });

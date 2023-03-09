@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name_product');
             $table->integer('input_quantity');
             $table->double('input_price');
+            $table->double('into_price');
             $table->integer('id_warehouse_invoice')->nullable();
             $table->timestamps();
         });

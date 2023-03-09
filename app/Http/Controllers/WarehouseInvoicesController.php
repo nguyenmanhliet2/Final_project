@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WarehouseDetails;
 use App\Models\WarehouseInvoices;
 use Illuminate\Http\Request;
 
@@ -39,5 +40,29 @@ class WarehouseInvoicesController extends Controller
             'deleteInvoiceStatus' => true,
 
         ]);
+   }
+
+   public function dataWarehouseInvoice()
+   {
+    $WarehouseInvoices = WarehouseInvoices::where('status' , 1)->get();
+    return response()->json([
+        'dataWarehouseInvoices' => $WarehouseInvoices,
+    ]);
+
+   }
+
+   public function dataDetailWarehouseInvoice($id)
+   {
+        $WarehouseDetails = WarehouseDetails::where('id_warehouse_invoice', $id)->get();
+
+        return response()->json([
+            'dataDetailWarehouseDetails' => $WarehouseDetails,
+        ]);
+   }
+
+   public function switchInvoiceStatus(Request $request){
+    $InvoiceEdit = WarehouseInvoices::where('id', $request->id)->first();
+    $InvoiceEdit->payment = !$InvoiceEdit->payment;
+    $InvoiceEdit->save();
    }
 }

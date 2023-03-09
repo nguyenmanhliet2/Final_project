@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('order_code')->nullable();
             $table->double('total_money')->nullable();
             $table->integer('total_amount')->nullable();
+            $table->string('description')->nullable();
             $table->integer('status')->default(0); //tinh trang
             $table->integer('payment')->default(0); //hinh thuc thanh toan
             $table->timestamps();
