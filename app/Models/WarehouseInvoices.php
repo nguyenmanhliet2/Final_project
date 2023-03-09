@@ -17,5 +17,6 @@ class WarehouseInvoices extends Model
         'total_amount',
         'status',
         'payment',
+        'description',
     ];
 }

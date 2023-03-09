@@ -14,6 +14,7 @@ class WarehouseDetails extends Model
         'name_product',
         'input_quantity',
         'input_price',
+        'into_price',
         'id_warehouse_invoice',
     ];
 }
