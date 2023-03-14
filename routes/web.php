@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminRegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
@@ -19,9 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/indexAdminRegister',[AdminRegisterController::class, 'indexAdminRegister']);
+Route::post('/createAdminAccount',[AdminRegisterController::class, 'createAdminAccount']);
+Route::get('/loginAdmin',[AdminRegisterController::class, 'loginAdmin']);
+Route::post('/actionLogin',[AdminRegisterController::class, 'actionLogin']);
 
-
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function() {
     Route::group(['prefix' => 'category'], function() {
         Route::get('/index',[CategoryController::class, 'index']);
         Route::post('/index',[CategoryController::class, 'store']);
@@ -52,10 +56,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/dataWarehouseInvoice',[WarehouseInvoicesController::class, 'dataWarehouseInvoice']);
         Route::get('/dataDetailWarehouseInvoice/{id}',[WarehouseInvoicesController::class, 'dataDetailWarehouseInvoice']);
         Route::post('/switchInvoiceStatus',[WarehouseInvoicesController::class, 'switchInvoiceStatus']);
-        // Route::post('/indexWarehouseInvoiceStore',[WarehouseInvoicesController::class, 'indexWarehouseInvoiceStore']);
-        // Route::get('/recieveWarehouseInvoice',[WarehouseInvoicesController::class, 'recieveWarehouseInvoice']);
-        // Route::post('/updateWarehouseInvoice',[WarehouseInvoicesController::class, 'updateWarehouseInvoice']);
-        // Route::post('/removeWarehouseInvoice',[WarehouseInvoicesController::class, 'removeWarehouseInvoice']);
+
     });
     Route::group(['prefix' => 'warehouse-detail'], function() {
         Route::get('/indexWarehouseDetail',[WarehouseDetailsController::class, 'indexWarehouseDetail']);
@@ -65,6 +66,5 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/plusQuantity',[WarehouseDetailsController::class, 'plusQuantity']);
         Route::post('/removeWarehouseDetail',[WarehouseDetailsController::class, 'removeWarehouseDetail']);
         Route::post('/addProductDetail',[WarehouseDetailsController::class, 'addProductDetail']);
-
     });
 });
