@@ -9,7 +9,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Vuexy - Bootstrap HTML admin template</title>
+    <title>Login Page</title>
     <link rel="apple-touch-icon" href="/stack/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/stack/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -83,7 +83,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <h2 class="brand-text text-primary ms-1">Vuexy</h2>
+                                    <h2 class="brand-text text-primary ms-1">DrinkO</h2>
                                 </a>
 
                                 <h4 class="card-title mb-1">Welcome👋</h4>

@@ -35,4 +35,9 @@ class AdminRegisterController extends Controller
             'message' => "Register successfully"
         ]);
     }
+
+    public function indexHomePage()
+    {
+        return view('homepage.page.homepage');
+    }
 }

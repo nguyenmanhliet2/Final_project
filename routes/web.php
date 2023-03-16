@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminRegisterController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientRegisterController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarehouseDetailsController;
@@ -19,11 +20,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/indexHomePage',[AdminRegisterController::class, 'indexHomePage']);
 
 Route::get('/indexAdminRegister',[AdminRegisterController::class, 'indexAdminRegister']);
 Route::post('/createAdminAccount',[AdminRegisterController::class, 'createAdminAccount']);
 Route::get('/loginAdmin',[AdminRegisterController::class, 'loginAdmin']);
 Route::post('/actionLogin',[AdminRegisterController::class, 'actionLogin']);
+
+Route::get('/indexClientRegister',[ClientRegisterController::class, 'indexClientRegister']);
+Route::post('/createClientAccount',[ClientRegisterController::class, 'createClientAccount']);
+Route::get('/loginClient',[ClientRegisterController::class, 'loginClient']);
+Route::post('/actionClientLogin',[ClientRegisterController::class, 'actionClientLogin']);
+Route::get('/logoutClient',[ClientRegisterController::class, 'logoutClient']);
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function() {
     Route::group(['prefix' => 'category'], function() {
