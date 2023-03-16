@@ -24,9 +24,10 @@
                             <tr v-for="(value, key) in list_product">
                                 <th scope="row">@{{ key + 1 }}</th>
                                 <td>@{{ value.name_product }}</td>
-                                <td> <button v-on:click="createDetail(value)" class="btn btn-primary text-right"
-                                        style="padding: 10px 41px;">
-                                        Edit </button></td>
+                                <td>
+                                    <button v-on:click="createDetail(value)" class="btn btn-primary text-right"
+                                        style="padding: 10px 41px;">Edit</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

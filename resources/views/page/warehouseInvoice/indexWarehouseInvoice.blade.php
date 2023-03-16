@@ -34,8 +34,8 @@
                                 <td>@{{ value.total_amount}}</td>
                                 <td>@{{ value.description}}</td>
                                 <td>
-                                    <button v-on:click="switchInvoiceData(value)" v-if="value.payment == 0" type="button" class="btn btn-gradient-danger">Chưa Thanh Toán</button>
-                                    <button v-on:click="switchInvoiceData(value)" v-else type="button" class="btn btn-gradient-success">Đã Thanh Toán</button>
+                                    <button v-on:click="switchInvoiceData(value)" v-if="value.payment == 0" type="button" class="btn btn-gradient-danger">Has not been paid</button>
+                                    <button v-on:click="switchInvoiceData(value)" v-else type="button" class="btn btn-gradient-success">Has been paid</button>
                                 </td>
                                 <td>
                                     <div class="dropdown">
