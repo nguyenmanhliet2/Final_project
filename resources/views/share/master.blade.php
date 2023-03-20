@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html class="loading semi-dark-layout" lang="en" data-layout="semi-dark-layout" data-textdirection="ltr">
 <!-- BEGIN: Head-->
-@include('share.css')
+<head>
+    @include('share.css')
+</head>
 
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
+<body class="pace-done vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-open="click"
+    data-menu="vertical-menu-modern" data-col="">
 
     <!-- BEGIN: Header-->
-   @include('share.header')
+    @include('share.header')
     <!-- END: Header-->
 
 
@@ -27,7 +30,7 @@
             </div>
             <div class="content-body">
                 <!-- Dashboard Ecommerce Starts -->
-               @yield('content')
+                @yield('content')
                 <!-- Dashboard Ecommerce ends -->
 
             </div>
@@ -40,7 +43,10 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-        <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-end d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
+        <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a
+                    class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span
+                    class="d-none d-sm-inline-block">, All rights Reserved</span></span><span
+                class="float-md-end d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_category');
             $table->string('slug_category');
+            $table->string('image_category');
             $table->integer('id_category_root');
             $table->boolean('is_open');
             $table->timestamps();

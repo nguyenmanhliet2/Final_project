@@ -15,7 +15,10 @@
                         <label>Category's Slug</label>
                         <input v-model="newData.slug_category" type="text" class="form-control">
                     </div>
-
+                    <div class="mb-1">
+                        <label>Image</label>
+                        <input v-model="newData.image_category" type="text" class="form-control">
+                    </div>
                     <div class="mb-1">
                         <label>Status of category</label>
                         <select v-model="newData.is_open" class="form-control">
@@ -47,43 +50,46 @@
                     <h2>Table of Category</h2>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered ">
-                        <thead>
-                            <tr>
-                                <th class="text-center">stt</th>
-                                <th class="text-center">Category's name</th>
-                                <th class="text-center">Category's Slug</th>
-                                <th class="text-center">Status of category</th>
-                                <th class="text-center">Category root</th>
-                                <th class="text-center">Options</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(value, key) in list_category">
-                                <th class="text-center align-middle">@{{ (key + 1) }}</th>
-                                <td class="text-center align-middle">@{{ value.name_category }}</td>
-                                <td class="text-center align-middle">@{{ value.slug_category }}</td>
-                                <td class="text-center align-middle">
-                                    <button v-on:click="switchStatus(value)" v-if="value.is_open == 0" class="btn btn-primary">Enable</button>
-                                    <button v-on:click="switchStatus(value)" v-else class="btn btn-danger">Disable</button>
-                                </td>
-                                <td class="text-center align-middle">
-                                    <template v-if="value.name_category_root == null">
-                                        Root
-                                    </template>
-                                    <template v-else>
-                                        @{{ value.name_category_root }}
-                                    </template>
-                                </td>
-                                <td class="text-nowrap text-center align-middle">
-                                    <button class="btn btn-primary" v-on:click="edit = value" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">Update</button>
-                                    <button class="btn btn-danger" v-on:click="remove = value" data-bs-toggle="modal"
-                                        data-bs-target="#removeModal">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">stt</th>
+                                    <th class="text-center">Category's name</th>
+                                    <th class="text-center">Category's Slug</th>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Status of category</th>
+                                    <th class="text-center">Category root</th>
+                                    <th class="text-center">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(value, key) in list_category">
+                                    <th class="text-center align-middle">@{{ (key + 1) }}</th>
+                                    <td class="text-center align-middle">@{{ value.name_category }}</td>
+                                    <td class="text-center align-middle">@{{ value.slug_category }}</td>
+                                    <td class="text-center align-middle">
+                                        <button v-on:click="switchStatus(value)" v-if="value.is_open == 0" class="btn btn-primary">Enable</button>
+                                        <button v-on:click="switchStatus(value)" v-else class="btn btn-danger">Disable</button>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <template v-if="value.name_category_root == null">
+                                            Root
+                                        </template>
+                                        <template v-else>
+                                            @{{ value.name_category_root }}
+                                        </template>
+                                    </td>
+                                    <td class="text-nowrap text-center align-middle">
+                                        <button class="btn btn-primary" v-on:click="edit = value" data-bs-toggle="modal"
+                                            data-bs-target="#editModal">Update</button>
+                                        <button class="btn btn-danger" v-on:click="remove = value" data-bs-toggle="modal"
+                                            data-bs-target="#removeModal">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- Modal update -->
                 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -104,7 +110,10 @@
                                     <label>Category's Slug</label>
                                     <input v-model="edit.slug_category" type="text" class="form-control">
                                 </div>
-
+                                <div class="mb-1">
+                                    <label>Image</label>
+                                    <input v-model="edit.image_category" type="text" class="form-control">
+                                </div>
                                 <div class="mb-1">
                                     <label>Status</label>
                                     <select v-model="edit.is_open" class="form-control">

@@ -10,7 +10,8 @@ use Illuminate\Support\Js;
 class ProductController extends Controller
 {
    public function indexNewProduct(){
-    return view('page.Category.indexProduct');
+    // return view('page.Category.indexProduct');
+    return view('share.master');
    }
    public function productStore(Request $request){
     $newUserDataStore = $request->all();

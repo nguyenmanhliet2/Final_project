@@ -81,7 +81,7 @@
              <div class="row align-items-center">
                  <div class="col-lg-3 col-md-4 col-4">
                      <div class="header-logo">
-                         <a href="index.html" class="logo-main">
+                         <a href="/indexHomePage" class="logo-main">
                              <img src="assets/img/logo.png" loading="lazy" alt="bisum">
                          </a>
                      </div>
@@ -89,40 +89,9 @@
                  <div class="col-lg-6 d-lg-block d-none">
                      <nav class="site-navigation">
                          <ul class="main-menu list-unstyled justify-content-center">
-                             <li class="menu-list-item nav-item has-dropdown active">
-                                 <div class="mega-menu-header">
-                                     <a class="nav-link" href="index.html">
-                                         Home
-                                     </a>
-                                     <span class="open-submenu">
-                                         <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
-                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round">
-                                             <polyline points="6 9 12 15 18 9"></polyline>
-                                         </svg>
-                                     </span>
-                                 </div>
-                                 <div class="submenu-transform submenu-transform-desktop">
-                                     <ul class="submenu list-unstyled">
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="index.html">Home 1</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="index-shoe.html">Home
-                                                 2</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="index-bag.html">Home
-                                                 3</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="index-tools.html">Home
-                                                 4</a>
-                                         </li>
-                                     </ul>
-                                 </div>
-                             </li>
+                            <li class="menu-list-item nav-item">
+                                <a class="nav-link" href="/indexHomePage">Home Page</a>
+                            </li>
                              <li class="menu-list-item nav-item has-megamenu">
                                  <div class="mega-menu-header">
                                      <a class="nav-link" href="collection-left-sidebar.html">
@@ -144,35 +113,30 @@
                                                  <div class="mega-menu-header">
                                                      <a class="nav-link-sub nav-text-sub megamenu-heading"
                                                          href="collection-left-sidebar.html">
-                                                         CATEGORY PAGES
+                                                         CATEGORY
                                                      </a>
                                                  </div>
                                                  <div class="submenu-transform megamenu-transform">
                                                      <ul class="megamenu list-unstyled">
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-left-sidebar.html">With Left
-                                                                 Sidebar</a>
+                                                                 href="collection-left-sidebar.html">Coffea</a>
                                                          </li>
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-right-sidebar.html">With Right
-                                                                 Sidebar</a>
+                                                                 href="collection-right-sidebar.html">Milk Tea</a>
                                                          </li>
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-left-sidebar.html">3 Column
-                                                                 Layout</a>
+                                                                 href="collection-left-sidebar.html">Tea</a>
                                                          </li>
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-without-sidebar.html">4 Column
-                                                                 Layout</a>
+                                                                 href="collection-without-sidebar.html">Yogurt</a>
                                                          </li>
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-without-sidebar.html">Without
-                                                                 Sidebar</a>
+                                                                 href="collection-without-sidebar.html">fruit juice</a>
                                                          </li>
                                                      </ul>
                                                  </div>
@@ -182,30 +146,22 @@
                                                      class="mega-menu-header d-flex align-items-center justify-content-between">
                                                      <a class="nav-link-sub nav-text-sub megamenu-heading"
                                                          href="collection-right-sidebar.html">
-                                                         PRODUCT PAGES
+                                                         PRODUCT
                                                      </a>
                                                  </div>
                                                  <div class="submenu-transform megamenu-transform">
                                                      <ul class="megamenu list-unstyled">
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Simple Product</a>
+                                                                 href="product.html">Product Available</a>
                                                          </li>
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Variable Product</a>
+                                                                 href="product.html">Best Seller</a>
                                                          </li>
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Sale Product</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Featured & On Sale</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="product-2.html">Tab Inside</a>
+                                                                 href="product.html">Sale</a>
                                                          </li>
                                                      </ul>
                                                  </div>
@@ -215,30 +171,18 @@
                                                      class="mega-menu-header d-flex align-items-center justify-content-between">
                                                      <a class="nav-link-sub nav-text-sub megamenu-heading"
                                                          href="index.html">
-                                                         PRODUCT LAYOUTS
+                                                         Topping
                                                      </a>
                                                  </div>
                                                  <div class="submenu-transform megamenu-transform">
                                                      <ul class="megamenu list-unstyled">
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="product-2.html">Grid Images</a>
+                                                                 href="product-2.html">Black Pearl</a>
                                                          </li>
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Vertical Thumb</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Gallery Type</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Product Width Layout</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="product.html">Sticky Gallery</a>
+                                                                 href="product.html">Jelly</a>
                                                          </li>
                                                      </ul>
                                                  </div>
@@ -315,15 +259,6 @@
                                                  Us</a>
                                          </li>
                                          <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="contact.html">Contact</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="faq.html">FAQ</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="404.html">404 page</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
                                              <a class="nav-link-sub nav-text-sub" href="login.html">Login</a>
                                          </li>
                                          <li class="menu-list-item nav-item-sub">
@@ -333,7 +268,7 @@
                                              <a class="nav-link-sub nav-text-sub" href="wishlist.html">Wishlist</a>
                                          </li>
                                          <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="cart.html">Cart</a>
+                                             <a class="nav-link-sub nav-text-sub" href="/indexCart">Cart</a>
                                          </li>
                                          <li class="menu-list-item nav-item-sub">
                                              <a class="nav-link-sub nav-text-sub" href="checkout.html">Checkout</a>
