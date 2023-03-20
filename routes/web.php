@@ -21,11 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/indexHomePage',[AdminRegisterController::class, 'indexHomePage']);
+Route::get('/indexCart',[AdminRegisterController::class, 'indexCart']);
 
 Route::get('/indexAdminRegister',[AdminRegisterController::class, 'indexAdminRegister']);
 Route::post('/createAdminAccount',[AdminRegisterController::class, 'createAdminAccount']);
+Route::get('/recieveAdmin',[AdminRegisterController::class, 'recieveAdmin']);
+Route::post('/updateAdmin',[AdminRegisterController::class, 'updateAdmin']);
+Route::post('/removeAdmin',[AdminRegisterController::class, 'removeAdmin']);
 Route::get('/loginAdmin',[AdminRegisterController::class, 'loginAdmin']);
 Route::post('/actionLogin',[AdminRegisterController::class, 'actionLogin']);
+
+
 
 Route::get('/indexClientRegister',[ClientRegisterController::class, 'indexClientRegister']);
 Route::post('/createClientAccount',[ClientRegisterController::class, 'createClientAccount']);

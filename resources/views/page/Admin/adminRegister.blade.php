@@ -1,280 +1,262 @@
-<!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-<!-- BEGIN: Head-->
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description"
-        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
-    <title>Register Page</title>
-    <link rel="apple-touch-icon" href="/stack/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/stack/app-assets/images/ico/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
-        rel="stylesheet">
-
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/vendors/css/vendors.min.css">
-    <!-- END: Vendor CSS-->
-
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/colors.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/components.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/themes/dark-layout.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/themes/bordered-layout.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/themes/semi-dark-layout.css">
-
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/core/menu/menu-types/horizontal-menu.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/plugins/forms/form-validation.css">
-    <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/pages/authentication.css">
-    <!-- END: Page CSS-->
-
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="/stack/assets/css/style.css">
-    <!-- END: Custom CSS-->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js"
-        integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<!-- END: Head-->
-
-<!-- BEGIN: Body-->
-
-<body class="horizontal-layout horizontal-menu blank-page navbar-floating footer-static  " data-open="hover"
-    data-menu="horizontal-menu" data-col="blank-page">
-    <!-- BEGIN: Content-->
-    <div class="app-content content" id="adminRegisterPage">
-        <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <div class="auth-wrapper auth-basic px-2">
-                    <div class="auth-inner my-2">
-                        <!-- Register basic -->
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <a href="index.html" class="brand-logo">
-                                    <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
-                                        <defs>
-                                            <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%"
-                                                x2="50%" y2="89.4879456%">
-                                                <stop stop-color="#000000" offset="0%"></stop>
-                                                <stop stop-color="#FFFFFF" offset="100%"></stop>
-                                            </lineargradient>
-                                            <lineargradient id="linearGradient-2" x1="64.0437835%" y1="46.3276743%"
-                                                x2="37.373316%" y2="100%">
-                                                <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
-                                                <stop stop-color="#FFFFFF" offset="100%"></stop>
-                                            </lineargradient>
-                                        </defs>
-                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none"
-                                            fill-rule="evenodd">
-                                            <g id="Artboard" transform="translate(-400.000000, -178.000000)">
-                                                <g id="Group" transform="translate(400.000000, 178.000000)">
-                                                    <path class="text-primary" id="Path"
-                                                        d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z"
-                                                        style="fill: currentColor"></path>
-                                                    <path id="Path1"
-                                                        d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z"
-                                                        fill="url(#linearGradient-1)" opacity="0.2"></path>
-                                                    <polygon id="Path-2" fill="#000000" opacity="0.049999997"
-                                                        points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325">
-                                                    </polygon>
-                                                    <polygon id="Path-21" fill="#000000" opacity="0.099999994"
-                                                        points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338">
-                                                    </polygon>
-                                                    <polygon id="Path-3" fill="url(#linearGradient-2)"
-                                                        opacity="0.099999994"
-                                                        points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288">
-                                                    </polygon>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                    <h2 class="brand-text text-primary ms-1">DrinkO</h2>
-                                </a>
-
-                                <h4 class="card-title mb-1">Adventure starts here 🚀</h4>
-                                <p class="card-text mb-2">Make your app management easy and fun!</p>
-
-                                <form class="auth-register-form mt-2" action="index.html" method="POST">
-                                    <div class="mb-1">
-                                        <label class="form-label">First Name</label>
-                                        <input v-model="list_account.first_name" type="text" class="form-control"
-                                            id="register-username" name="register-username" placeholder="First Name"
-                                            aria-describedby="register-username" tabindex="1" autofocus />
-                                    </div>
-                                    <div class="mb-1">
-                                        <label class="form-label">Last Name</label>
-                                        <input v-model="list_account.last_name" type="text" class="form-control"
-                                            id="register-username" name="register-username" placeholder="Last Name"
-                                            aria-describedby="register-username" tabindex="1" autofocus />
-                                    </div>
-                                    <div class="mb-1">
-                                        <label class="form-label">Phone Number</label>
-                                        <input v-model="list_account.phone_number" type="number"
-                                            class="form-control" id="register-username" name="register-username"
-                                            placeholder="johndoe" aria-describedby="register-username" tabindex="1"
-                                            autofocus />
-                                    </div>
-                                    <div class="mb-1">
-                                        <label class="form-label">Address</label>
-                                        <input v-model="list_account.address" type="text" class="form-control"
-                                            id="register-username" name="register-username" placeholder="johndoe"
-                                            aria-describedby="register-username" tabindex="1" autofocus />
-                                    </div>
-                                    <div class="mb-1">
-                                        <label class="form-label">City</label>
-                                        <input v-model="list_account.city" type="text" class="form-control"
-                                            id="register-username" name="register-username" placeholder="johndoe"
-                                            aria-describedby="register-username" tabindex="1" autofocus />
-                                    </div>
-                                    <div class="mb-1">
-                                        <label class="form-label">Male</label>
-                                        <select v-model="list_account.male" class="form-control">
-                                            <option value="1">Male</option>
-                                            <option value="0">Female</option>
-                                            <option value="2">Orther</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-1">
-                                        <label class="form-label">Email</label>
-                                        <input v-model="list_account.email" type="email" class="form-control"
-                                            id="register-email" name="register-email" placeholder="john@example.com"
-                                            aria-describedby="register-email" tabindex="2" />
-                                    </div>
-                                    <div class="mb-1">
-                                        <label class="form-label">Password</label>
-                                        <div class="input-group input-group-merge form-password-toggle">
-                                            <input v-model="list_account.password" type="password"
-                                                class="form-control form-control-merge" id="register-password"
-                                                name="register-password"
-                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                                aria-describedby="register-password" tabindex="3" />
-                                            <span class="input-group-text cursor-pointer"><i
-                                                    data-feather="eye"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-1">
-                                        <label for="register-email" class="form-label">Confirm Password</label>
-                                        <div class="input-group input-group-merge form-password-toggle">
-                                            <input type="password" class="form-control" id="register-email"
-                                                name="register-email" aria-describedby="register-email"
-                                                tabindex="2"
-                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                            <span class="input-group-text cursor-pointer"><i
-                                                    data-feather="eye"></i></span>
-                                        </div>
-                                    </div>
-                                    <button v-on:click="createAdmin()" type="button" class="btn btn-primary w-100"
-                                        tabindex="5">Sign up</button>
-                                </form>
-
-                                <p class="text-center mt-2">
-                                    <span>Already have an account?</span>
-                                    <a href="auth-login-basic.html">
-                                        <span>Sign in instead</span>
-                                    </a>
-                                </p>
-
-                                <div class="divider my-2">
-                                    <div class="divider-text">or</div>
-                                </div>
-
-                                <div class="auth-footer-btn d-flex justify-content-center">
-                                    <a href="#" class="btn btn-facebook">
-                                        <i data-feather="facebook"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-twitter white">
-                                        <i data-feather="twitter"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-google">
-                                        <i data-feather="mail"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-github">
-                                        <i data-feather="github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Register basic -->
+@extends('share.master')
+@section('content')
+    <div class="row" id="admin_register_page">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Admin Create</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-1">
+                        <label>First Name</label>
+                        <input v-model="list_account.first_name" type="text" class="form-control" placeholder="First Name"
+                            required="">
+                    </div>
+                    <div class="mb-1">
+                        <label>Last Name</label>
+                        <input v-model="list_account.last_name" type="text" class="form-control" placeholder="Last Name"
+                            required="">
+                    </div>
+                    <div class="mb-1">
+                        <label>Phone Number</label>
+                        <input v-model="list_account.phone_number" type="number" class="form-control"
+                            placeholder="Phone Number" required="">
+                    </div>
+                    <div class="mb-1">
+                        <label>Address</label>
+                        <input v-model="list_account.address" type="text" class="form-control" placeholder="Address"
+                            required="">
+                    </div>
+                    <div class="mb-1">
+                        <label>City</label>
+                        <input v-model="list_account.city" type="text" class="form-control" placeholder="City"
+                            required="">
+                    </div>
+                    <div class="mb-1">
+                        <label>Male</label>
+                        <select v-model="list_account.male" class="form-control" required="">
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                            <option value="2">Orther</option>
+                        </select>
+                    </div>
+                    <div class="mb-1">
+                        <label>Email</label>
+                        <input v-model="list_account.email" type="email" class="form-control" placeholder="Email"
+                            required="">
+                    </div>
+                    <div class="mb-1">
+                        <label>Password</label>
+                        <input v-model="list_account.password" type="password" class="form-control" placeholder="Password"
+                            required="">
+                    </div>
+                    <div class="mb-1">
+                        <label>Confirm Password</label>
+                        <input v-model="list_account.confirm_password" type="password" class="form-control"
+                            placeholder="Confirm Password" required="">
                     </div>
                 </div>
-
+                <div class="card-footer">
+                    <div class="text-end ">
+                        <button v-on:click="createAdmin()" class="btn btn-primary text-right"
+                            style="padding: 10px 41px;" type="button">Create Admin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Table of Admin</h2>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">stt</th>
+                                <th class="text-center">First Name</th>
+                                <th class="text-center">Last Name</th>
+                                <th class="text-center">Phone Number</th>
+                                <th class="text-center">Address</th>
+                                <th class="text-center">City</th>
+                                <th class="text-center">Male</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Password</th>
+                                <th class="text-center">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template v-for="(value, key) in list_account_data">
+                                <tr>
+                                    <td>@{{ (key + 1) }}</td>
+                                    <td>@{{ value.first_name }}</td>
+                                    <td>@{{ value.last_name }}</td>
+                                    <td>@{{ value.phone_number }}</td>
+                                    <td>@{{ value.address }}</td>
+                                    <td>@{{ value.city }}</td>
+                                    <td>@{{ value.male }}</td>
+                                    <td>@{{ value.email }}</td>
+                                    <td>@{{ value.password }}</td>
+                                    <td class="text-nowrap text-center align-middle">
+                                        <button class="btn btn-primary" v-on:click="editAdmin = value"
+                                            data-bs-toggle="modal" data-bs-target="#editAdminModal">Update</button>
+                                        <button class="btn btn-danger" v-on:click="deleteAdmin = value"
+                                            data-bs-toggle="modal" data-bs-target="#removeAdminModal">Delete</button>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-1">
+                                    <label>First Name</label>
+                                    <input v-model="list_account.first_name" type="text" class="form-control" placeholder="First Name"
+                                        required="">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Last Name</label>
+                                    <input v-model="list_account.last_name" type="text" class="form-control" placeholder="Last Name"
+                                        required="">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Phone Number</label>
+                                    <input v-model="list_account.phone_number" type="number" class="form-control"
+                                        placeholder="Phone Number" required="">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Address</label>
+                                    <input v-model="list_account.address" type="text" class="form-control" placeholder="Address"
+                                        required="">
+                                </div>
+                                <div class="mb-1">
+                                    <label>City</label>
+                                    <input v-model="list_account.city" type="text" class="form-control" placeholder="City"
+                                        required="">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Male</label>
+                                    <select v-model="list_account.male" class="form-control" required="">
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                        <option value="2">Orther</option>
+                                    </select>
+                                </div>
+                                <div class="mb-1">
+                                    <label>Email</label>
+                                    <input v-model="list_account.email" type="email" class="form-control" placeholder="Email"
+                                        required="">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Password</label>
+                                    <input v-model="list_account.password" type="password" class="form-control" placeholder="Password"
+                                        required="">
+                                </div>
+                                <div class="mb-1">
+                                    <label>Confirm Password</label>
+                                    <input v-model="list_account.confirm_password" type="password" class="form-control"
+                                        placeholder="Confirm Password" required="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" v-on:click='editChangeAdmin()' class="btn btn-primary"
+                                    data-bs-dismiss="modal">Save
+                                    changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Remove -->
+                <div class="modal fade" id="removeAdminModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Remove</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" v-on:click='removeAdmin()' class="btn btn-primary"
+                                    data-bs-dismiss="modal">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- END: Content-->
-
-
-    <!-- BEGIN: Vendor JS-->
-    <script src="/stack/app-assets/vendors/js/vendors.min.js"></script>
-    <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="/stack/app-assets/vendors/js/ui/jquery.sticky.js"></script>
-    <script src="/stack/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="/stack/app-assets/js/core/app-menu.js"></script>
-    <script src="/stack/app-assets/js/core/app.js"></script>
-    <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="/stack/app-assets/js/scripts/pages/auth-register.js"></script>
-    <!-- END: Page JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+@endsection
+@section('js')
     <script>
-        $(window).on('load', function() {
-            if (feather) {
-                feather.replace({
-                    width: 14,
-                    height: 14
-                });
-            }
-        })
-    </script>
-</body>
-<!-- END: Body-->
-<script>
-    new Vue({
-        el: '#adminRegisterPage',
-        data: {
-            list_account: {},
-        },
-        created() {
-
-        },
-        methods: {
-            createAdmin() {
-                console.log(this.list_account);
-                axios
-                    .post("/createAdminAccount", this.list_account)
-                    .then((res) => {
-                        if (res.data.status) {
-                            toastr.success(res.data.message);
-                        }
-                    });
+        new Vue({
+            el: '#admin_register_page',
+            data: {
+                deleteAdmin: {},
+                editAdmin: {},
+                list_account: {},
+                list_account_data: [],
             },
-        },
-    });
-</script>
-
-</html>
+            created() {
+                this.loadAdmin();
+            },
+            methods: {
+                createAdmin() {
+                    console.log(this.list_account);
+                    axios
+                        .post("/createAdminAccount", this.list_account)
+                        .then((res) => {
+                            if (res.data.status) {
+                                toastr.success(res.data.message);
+                            }
+                        });
+                },
+                loadAdmin() {
+                    axios
+                       .get('/recieveAdmin')
+                       .then((res) => {
+                            this.list_account_data = res.data.newData;
+                        });
+                },
+                editChangeAdmin() {
+                    axios
+                       .post('/updateAdmin', this.editAdmin)
+                       .then((res) => {
+                        if(res.data.updateAdminData){
+                                toastr.success("Update Ingredient successfully");
+                                this.loadAdmin();
+                            } else {
+                                toastr.error("Update fail");
+                            }
+                        });
+                },
+                removeAdmin() {
+                    axios
+                       .post('/removeAdmin', this.deleteAdmin)
+                       .then((res) => {
+                         if(res.data.deleteAdminStatus) {
+                            toastr.success("Remove Ingredient successfully");
+                            this.loadAdmin();
+                         } else {
+                            toastr.error("Remove fail");
+                         }
+                       });
+                }
+            },
+        });
+    </script>
+@endsection
