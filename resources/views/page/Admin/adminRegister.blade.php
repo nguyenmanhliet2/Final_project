@@ -88,13 +88,15 @@
                         <tbody>
                             <template v-for="(value, key) in list_account_data">
                                 <tr>
-                                    <td>@{{ (key + 1) }}</td>
-                                    <td>@{{ value.first_name }}</td>
-                                    <td>@{{ value.last_name }}</td>
-                                    <td>@{{ value.phone_number }}</td>
-                                    <td>@{{ value.address }}</td>
-                                    <td>@{{ value.city }}</td>
-                                    <td>@{{ value.male }}</td>
+                                    <td class="text-center align-middle">@{{ (key + 1) }}</td>
+                                    <td class="text-center align-middle">@{{ value.first_name }}</td>
+                                    <td class="text-center align-middle">@{{ value.last_name }}</td>
+                                    <td class="text-center align-middle">@{{ value.phone_number }}</td>
+                                    <td class="text-center align-middle">@{{ value.address }}</td>
+                                    <td class="text-center align-middle">@{{ value.city }}</td>
+                                    <td class="text-center align-middle">
+                                        @{{ value.male === 1 ? 'Male' : value.male }}
+                                    </td>
                                     <td>@{{ value.email }}</td>
                                     <td>@{{ value.password }}</td>
                                     <td class="text-nowrap text-center align-middle">
@@ -216,12 +218,12 @@
             },
             methods: {
                 createAdmin() {
-                    console.log(this.list_account);
                     axios
                         .post("/createAdminAccount", this.list_account)
                         .then((res) => {
                             if (res.data.status) {
                                 toastr.success(res.data.message);
+                                this.loadAdmin();
                             }
                         });
                 },

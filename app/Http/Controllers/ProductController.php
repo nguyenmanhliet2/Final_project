@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
    public function indexNewProduct(){
     // return view('page.Category.indexProduct');
-    return view('share.master');
+    return view('page.Category.indexProduct');
    }
    public function productStore(Request $request){
     $newUserDataStore = $request->all();

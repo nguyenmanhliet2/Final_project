@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/indexHomePage',[AdminRegisterController::class, 'indexHomePage']);
-Route::get('/indexCart',[AdminRegisterController::class, 'indexCart']);
+Route::get('/indexHomePage',[ClientRegisterController::class, 'indexHomePage']);
+Route::get('/indexCart',[ClientRegisterController::class, 'indexCart']);
 
 Route::get('/indexAdminRegister',[AdminRegisterController::class, 'indexAdminRegister']);
 Route::post('/createAdminAccount',[AdminRegisterController::class, 'createAdminAccount']);

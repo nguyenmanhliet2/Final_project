@@ -68,10 +68,10 @@
                         <tbody>
                             <template v-for="(value, key) in list_ingredient">
                                 <tr>
-                                    <td> @{{ (key + 1) }}</td>
-                                    <td> @{{ value.code_ingredient }}</td>
-                                    <td> @{{ value.name_ingredient }}</td>
-                                    <td> @{{ value.slug_ingredient }}</td>
+                                    <td class="text-center align-middle"> @{{ (key + 1) }}</td>
+                                    <td class="text-center align-middle"> @{{ value.code_ingredient }}</td>
+                                    <td class="text-center align-middle"> @{{ value.name_ingredient }}</td>
+                                    <td class="text-center align-middle"> @{{ value.slug_ingredient }}</td>
                                     <td class="text-center align-middle">
                                         <button v-on:click="switchIngredientStatus(value)" v-if="value.status_ingredient == 0" class="btn btn-primary">Enable</button>
                                         <button v-on:click="switchIngredientStatus(value)" v-else class="btn btn-danger">Disable</button>

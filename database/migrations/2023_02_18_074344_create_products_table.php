@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name_product');
             $table->string('slug_product');
             $table->integer('id_product_catalog');
-            $table->string('description_product');
+            $table->longText('description_product');
             $table->integer('price_product');
             $table->boolean('status_product'); // is_open
             $table->string('image_product');

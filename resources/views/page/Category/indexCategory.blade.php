@@ -9,15 +9,19 @@
                 <div class="card-body">
                     <div class="mb-1">
                         <label>Category's name</label>
-                        <input v-model="newData.name_category" type="text" class="form-control">
+                        <input v-on:keyup="toSlug(newData.name_category)" v-model="newData.name_category" type="text" class="form-control">
                     </div>
                     <div class="mb-1">
                         <label>Category's Slug</label>
-                        <input v-model="newData.slug_category" type="text" class="form-control">
+                        <input v-model="slug_category" type="text" class="form-control">
                     </div>
-                    <div class="mb-1">
+                    <div class="mb-0">
                         <label>Image</label>
-                        <input v-model="newData.image_category" type="text" class="form-control">
+                        <div class="input-group">
+                            <input v-model="newData.image_category" type="text" class="form-control" id="thumbnail">
+                            <input type="button" data-input="thumbnail" data-preview="holder" id="lfm" value="Upload" class="btn btn-info">
+                        </div>
+                        <img id="holder" style="margin-top:15px;max-height:100px;">
                     </div>
                     <div class="mb-1">
                         <label>Status of category</label>
@@ -27,9 +31,9 @@
                         </select>
                     </div>
                     <div class="mb-1">
-                        <label>Category root</label>
+                        <label>Main Category</label>
                         <select v-model="newData.id_category_root" class="form-control">
-                            <option value="0">Root</option>
+                            <option value="0">Main</option>
                             <template v-for="(v, k) in list_category_root">
                                 <option v-bind:value="v.id">@{{ v.name_category }}</option>
                             </template>
@@ -56,10 +60,8 @@
                                 <tr>
                                     <th class="text-center">stt</th>
                                     <th class="text-center">Category's name</th>
-                                    <th class="text-center">Category's Slug</th>
-                                    <th class="text-center">Image</th>
                                     <th class="text-center">Status of category</th>
-                                    <th class="text-center">Category root</th>
+                                    <th class="text-center">Main Category</th>
                                     <th class="text-center">Options</th>
                                 </tr>
                             </thead>
@@ -67,18 +69,14 @@
                                 <tr v-for="(value, key) in list_category">
                                     <th class="text-center align-middle">@{{ (key + 1) }}</th>
                                     <td class="text-center align-middle">@{{ value.name_category }}</td>
-                                    <td class="text-center align-middle">@{{ value.slug_category }}</td>
                                     <td class="text-center align-middle">
-                                        <button v-on:click="switchStatus(value)" v-if="value.is_open == 0" class="btn btn-primary">Enable</button>
-                                        <button v-on:click="switchStatus(value)" v-else class="btn btn-danger">Disable</button>
+                                        <button v-on:click="switchStatus(value)" v-if="value.is_open == 0"
+                                            class="btn btn-danger">Disable</button>
+                                        <button v-on:click="switchStatus(value)" v-else
+                                            class="btn btn-primary">Enable</button>
                                     </td>
                                     <td class="text-center align-middle">
-                                        <template v-if="value.name_category_root == null">
-                                            Root
-                                        </template>
-                                        <template v-else>
-                                            @{{ value.name_category_root }}
-                                        </template>
+                                        @{{ value.name_category_root === null ? 'Main' : value.name_category_root}}
                                     </td>
                                     <td class="text-nowrap text-center align-middle">
                                         <button class="btn btn-primary" v-on:click="edit = value" data-bs-toggle="modal"
@@ -133,13 +131,14 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" v-on:click='editChangeCategory()' class="btn btn-primary" data-bs-dismiss="modal">Save
+                                <button type="button" v-on:click='editChangeCategory()' class="btn btn-primary"
+                                    data-bs-dismiss="modal">Save
                                     changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <!-- Modal Remove -->
+                <!-- Modal Remove -->
                 <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -154,7 +153,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" v-on:click='removeCategory()' class="btn btn-primary" data-bs-dismiss="modal">Save
+                                <button type="button" v-on:click='removeCategory()' class="btn btn-primary"
+                                    data-bs-dismiss="modal">Save
                                     changes</button>
                             </div>
                         </div>
@@ -174,13 +174,29 @@
                 remove: {},
                 list_category: [],
                 list_category_root: [],
-
+                slug_category : '',
             },
             created() {
                 this.loadCategory();
             },
             methods: {
+
+                toSlug(str) {
+                    console.log(str);
+                    str = str.toLowerCase();
+                    str = str
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '');
+                    str = str.replace(/[đĐ]/g, 'd');
+                    str = str.replace(/([^0-9a-z-\s])/g, '');
+                    str = str.replace(/(\s+)/g, '-');
+                    str = str.replace(/-+/g, '-');
+                    str = str.replace(/^-+|-+$/g, '');
+                    this.slug_category = str;
+                },
                 createCategory() {
+                    this.newData.slug_category = this.slug_category;
+                    this.newData.image_category = $('#thumbnail').val();
                     axios
                         .post("/admin/category/index", this.newData)
                         .then((res) => {
@@ -222,7 +238,7 @@
                 },
                 switchStatus(value) {
                     axios
-                        .post('/admin/category/switchStatus',value)
+                        .post('/admin/category/switchStatus', value)
                         .then((res) => {
                             toastr.success("Status has been changed");
                             this.loadCategory();
@@ -230,5 +246,10 @@
                 },
             },
         });
+    </script>
+    <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+    <script>
+        $('#lfm').filemanager('image');
     </script>
 @endsection

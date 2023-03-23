@@ -60,15 +60,4 @@ class AdminRegisterController extends Controller
         ]);
     }
 
-    public function indexHomePage()
-    {
-        return view('homepage.page.homepage');
-    }
-
-    public function indexCart()
-    {
-        return view('homepage.page.cart');
-    }
-
-
 }

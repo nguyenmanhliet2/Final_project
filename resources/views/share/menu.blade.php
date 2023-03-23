@@ -58,15 +58,11 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
                         data-feather="home"></i><span class="menu-title text-truncate"
                         data-i18n="Dashboards">Dashboards</span><span
-                        class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
+                        class="badge badge-light-warning rounded-pill ms-auto me-1">1</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="/indexAdminRegister"><i
                                 data-feather="circle"></i><span class="menu-item text-truncate"
                                 data-i18n="Analytics">Admin Register</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Analytics">Client Register</span></a>
                     </li>
                 </ul>
             </li>
@@ -93,13 +89,23 @@
                     </svg><span class="menu-title text-truncate" data-i18n="Create Product">Create Product</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/ingredient/indexIngredient"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-save">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg><span class="menu-title text-truncate" data-i18n="Create Ingredient">Create
+                        Ingredient</span></a>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/warehouse-detail/indexWarehouseDetail"><svg
                 xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="feather feather-save">
                 <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
                 <polyline points="17 21 17 13 7 13 7 21"></polyline>
                 <polyline points="7 3 7 8 15 8"></polyline>
-            </svg><span class="menu-title text-truncate" data-i18n="Create Ingredient">Create Ingredient</span></a>
+            </svg><span class="menu-title text-truncate" data-i18n="Warehouse Detail">Warehouse Detail</span></a>
     </li>
         </ul>
     </div>

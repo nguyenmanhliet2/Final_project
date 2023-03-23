@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<main id="MainContent" class="content-for-layout">
+<main id="cartPage" class="content-for-layout">
     <div class="cart-page mt-100">
         <div class="container">
             <div class="cart-page-wrapper">
@@ -172,5 +172,26 @@
 </main>
 @endsection
 @section('js')
+<script>
+    new Vue({
+        el: '#cartPage',
+        data: {
 
+        },
+        created() {
+
+        },
+        methods: {
+            createAdmin() {
+                    axios
+                        .post("/actionLogin", this.listLogin)
+                        .then((res) => {
+                            if(res.data.status){
+                                window.location.href = '/admin/category/index';
+                            }
+                        });
+                },
+        },
+    });
+</script>
 @endsection
