@@ -81,8 +81,9 @@ class WarehouseDetailsController extends Controller
    public function recieveDetail()
    {
     $data = WarehouseDetails::join('warehouse_invoices', 'warehouse_details.id_warehouse_invoice', 'warehouse_invoices.id')
+                            ->join('products', 'warehouse_details.id_product', 'products.id')
                             ->where('warehouse_invoices.status', 0)
-                            ->select('warehouse_details.*')
+                            ->select('warehouse_details.*', 'products.price_product')
                             ->get();
     $totalPrice = WarehouseDetails::join('warehouse_invoices', 'warehouse_details.id_warehouse_invoice', 'warehouse_invoices.id')
                             ->where('warehouse_invoices.status', 0)
@@ -103,8 +104,8 @@ class WarehouseDetailsController extends Controller
    {
         $WarehouseDetails = WarehouseDetails::find($request->id);
         $WarehouseDetails->input_quantity = $request->input_quantity;
-        $WarehouseDetails->input_price = $request->input_price;
-        $WarehouseDetails->into_price = $request->input_price * $request->input_quantity;
+        $WarehouseDetails->input_price = $request->price_product;
+        $WarehouseDetails->into_price = $request->price_product * $request->input_quantity;
         $WarehouseDetails->save();
         return response()->json([
             'status'  => 1,

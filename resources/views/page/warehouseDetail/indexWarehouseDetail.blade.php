@@ -63,7 +63,7 @@
                                     </td>
                                     <td>
                                         <input type="number" class="form-control" v-on:blur="increaseQuantity(value)"
-                                            v-model="value.input_price" v-bind:value="value.input_price">
+                                            v-model="value.input_price" v-bind:value="value.price_product">
                                     </td>
                                     <td>
                                         @{{ value.input_price * value.input_quantity }} đ
