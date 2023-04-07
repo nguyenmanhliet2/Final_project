@@ -55,4 +55,11 @@ class ProductController extends Controller
         'deleteMessage' => 'Delete Product Successfully'
     ]);
    }
+   public function searchProduct(Request $request)
+    {
+        $nameProduct = $request->nameProduct;
+        $data = Product::where('name_product', 'like', '%' . $request->nameProduct .'%')->get();
+
+        return response()->json(['dataProduct' => $data]);
+    }
 }

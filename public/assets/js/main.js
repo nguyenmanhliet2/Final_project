@@ -41,7 +41,7 @@
         infinite: false,
         speed: 500,
         cssEase: 'ease',
-        swipeToSlide: true,        
+        swipeToSlide: true,
         vertical: verticalSlide ? true : false,
         verticalSwiping: verticalSlide ? true : false,
         appendDots: selectorAppendDots,
@@ -120,7 +120,7 @@
     $(this).siblings().slideToggle();
   });
 
-  // toggle & accordion 
+  // toggle & accordion
   $('.accordion-btn').on('click', function () {
     $(this).siblings('.accordion-child').slideToggle();
     $(this).toggleClass('active');
@@ -170,9 +170,9 @@
   /* --------------------------------------------------------
     newsletter popup
   -------------------------------------------------------- */
-  $ (window).ready (function () {
+  $(window).ready(function () {
     setTimeout (function () {
-      $ ('#modal-subscribe').modal ("show")
+      $('#modal-subscribe').modal("show")
     }, 3000);
   })
 

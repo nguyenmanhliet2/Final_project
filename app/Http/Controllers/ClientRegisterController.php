@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientLoginRequest;
 use App\Models\ClientRegister;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -29,7 +30,7 @@ class ClientRegisterController extends Controller
         return view('page.Client.clientLogin');
     }
 
-    public function actionClientLogin(Request $request)
+    public function actionClientLogin(ClientLoginRequest $request)
     {
         $admin = Auth::guard('client')->attempt($request->all());
 
@@ -44,16 +45,6 @@ class ClientRegisterController extends Controller
         Auth::guard('client')->logout();
 
         return redirect('/indexHomePage');
-    }
-
-    public function indexHomePage()
-    {
-        return view('homepage.page.homepage');
-    }
-
-    public function indexCart()
-    {
-        return view('homepage.page.cart');
     }
 
 }

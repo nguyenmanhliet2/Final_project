@@ -83,7 +83,6 @@
 <!-- BEGIN: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="/stack/assets/css/style.css">
 <!-- END: Custom CSS-->
-@css
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/3.2.31/axios.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>

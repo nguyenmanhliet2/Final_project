@@ -11,7 +11,13 @@
                         <thead>
                             <tr>
                                 <td colspan="100%">
-                                    <input type="text" class="form-control" placeholder="Search the product">
+                                    <div class="input-group">
+                                        <button v-model="inputSearch" class="btn btn-outline-primary waves-effect" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                        </button>
+                                        <input v-model="inputSearch" v-on:keyup="search()" type="text" class="form-control" placeholder="Search the product" aria-label="Amount">
+                                        <button v-model="inputSearch" class="btn btn-outline-primary waves-effect" type="button">Search</button>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -138,6 +144,7 @@
                 totalPrice : 0,
                 totalQuantity : 0,
                 check : false,
+                inputSearch: '',
             },
             created() {
                 this.loadProduct();
@@ -221,7 +228,17 @@
                                 toast.error("Delete Fail!");
                             }
                         });
-                }
+                },
+                search(){
+                    var payload = {
+                        'nameProduct' : this.inputSearch,
+                    };
+                    axios
+                        .post('/admin/product/searchProduct', payload)
+                        .then((res) => {
+                           this.list_product = res.data.dataProduct;
+                        });
+                },
             },
         });
     </script>

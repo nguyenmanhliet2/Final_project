@@ -38,7 +38,7 @@
                              <div class="currency-wrapper">
                                  <button type="button" class="currency-btn btn-reset text-white"
                                      data-bs-toggle="dropdown" aria-expanded="false">
-                                     <img class="flag" src="assets/img/flag/usd.jpg" alt="img">
+                                     <img class="flag" src="/assets/img/flag/usd.jpg" alt="img">
                                      <span>{{ Auth::guard('client')->user()->first_name }}
                                          {{ Auth::guard('client')->user()->last_name }}</span>
                                      <span>
@@ -53,13 +53,13 @@
                                  <ul class="currency-list dropdown-menu dropdown-menu-end px-2">
                                      <li class="currency-list-item ">
                                          <a class="currency-list-option" href="#" data-value="USD">
-                                             <img class="flag" src="assets/img/flag/usd.jpg" alt="img">
+                                             <img class="flag" src="/assets/img/flag/usd.jpg" alt="img">
                                              <span>Imfomation</span>
                                          </a>
                                      </li>
                                      <li class="currency-list-item ">
                                          <a class="currency-list-option" href="/logoutClient" data-value="USD">
-                                             <img class="flag" src="assets/img/flag/usd.jpg" alt="img">
+                                             <img class="flag" src="/assets/img/flag/usd.jpg" alt="img">
                                              <span>Logout</span>
                                          </a>
                                      </li>
@@ -82,7 +82,7 @@
                  <div class="col-lg-3 col-md-4 col-4">
                      <div class="header-logo">
                          <a href="/indexHomePage" class="logo-main">
-                             <img src="assets/img/logo.png" loading="lazy" alt="bisum">
+                             <img src="/assets/img/logo.png" loading="lazy" alt="bisum">
                          </a>
                      </div>
                  </div>
@@ -118,26 +118,12 @@
                                                  </div>
                                                  <div class="submenu-transform megamenu-transform">
                                                      <ul class="megamenu list-unstyled">
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-left-sidebar.html">Coffea</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-right-sidebar.html">Milk Tea</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-left-sidebar.html">Tea</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-without-sidebar.html">Yogurt</a>
-                                                         </li>
-                                                         <li class="menu-list-item nav-item-sub">
-                                                             <a class="nav-link-sub nav-text-sub"
-                                                                 href="collection-without-sidebar.html">fruit juice</a>
-                                                         </li>
+                                                        @foreach ($menuMain as $value_main)
+                                                        <li class="menu-list-item nav-item-sub">
+                                                            <a class="nav-link-sub nav-text-sub"
+                                                                href="/category/{{ $value_main->id }}">{{ $value_main->name_category }}</a>
+                                                        </li>
+                                                        @endforeach
                                                      </ul>
                                                  </div>
                                              </li>
@@ -192,7 +178,7 @@
                                                      class="mega-menu-header d-flex align-items-center justify-content-between">
                                                      <a class="mega-menu-img nav-link-sub nav-text-sub"
                                                          href="collection-left-sidebar.html">
-                                                         <img class="menu-img" src="assets/img/menu/1.jpg"
+                                                         <img class="menu-img" src="/assets/img/menu/1.jpg"
                                                              alt="img">
                                                          <h2 class="img-menu-heading text_16 mt-2">Featured
                                                              Collection</h2>

@@ -3,10 +3,15 @@
 use App\Http\Controllers\AdminRegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientRegisterController;
+use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarehouseDetailsController;
 use App\Http\Controllers\WarehouseInvoicesController;
+use App\Models\Order;
 use App\Models\WarehouseInvoices;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +25,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/indexHomePage',[ClientRegisterController::class, 'indexHomePage']);
-Route::get('/indexCart',[ClientRegisterController::class, 'indexCart']);
+
+Route::get('/indexHomePage',[HomePageController::class, 'indexHomePage']);
+Route::get('/detailProduct/{id}',[HomePageController::class, 'viewDetailProduct']);
+Route::get('/category/{id}',[HomePageController::class, 'viewCategory']);
+Route::get('/indexCart',[OrderDetailController::class, 'indexCart']);
+Route::get('/cart/data',[OrderDetailController::class, 'dataCart']);
+
+Route::post('/add-to-cart',[OrderDetailController::class, 'addToCart']);
+Route::post('/add-to-cart-update',[OrderDetailController::class, 'addToCartUpdate']);
+Route::post('/remove-cart',[OrderDetailController::class, 'removeCart']);
+Route::get('/create-bill',[OrderController::class, 'store']);
+
 
 Route::get('/indexAdminRegister',[AdminRegisterController::class, 'indexAdminRegister']);
 Route::post('/createAdminAccount',[AdminRegisterController::class, 'createAdminAccount']);
@@ -57,6 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function(
         Route::post('/updateProductData',[ProductController::class, 'updateProductData']);
         Route::post('/removeProductData',[ProductController::class, 'removeProductData']);
         Route::post('/switchProductStatus',[ProductController::class, 'switchProductStatus']);
+        Route::post('/searchProduct',[ProductController::class, 'searchProduct']);
     });
     Route::group(['prefix' => 'ingredient'], function() {
         Route::get('/indexIngredient',[IngredientController::class, 'indexIngredient']);
@@ -81,5 +97,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function(
         Route::post('/plusQuantity',[WarehouseDetailsController::class, 'plusQuantity']);
         Route::post('/removeWarehouseDetail',[WarehouseDetailsController::class, 'removeWarehouseDetail']);
         Route::post('/addProductDetail',[WarehouseDetailsController::class, 'addProductDetail']);
+    });
+    Route::group(['prefix' => '/configuration'], function() {
+        Route::get('/',[ConfigController::class, 'index']);
+        Route::post('/',[ConfigController::class, 'update']);
     });
 });

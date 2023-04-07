@@ -20,7 +20,7 @@
                     </fieldset>
                 </div>
                 <div class="col-12 mt-3">
-                    <button type="button" class="btn-primary d-block mt-4 btn-signin" v-on:click="createAdmin()">SIGN IN</button>
+                    <button type="button" class="btn-primary d-block mt-4 btn-signin" v-on:click="createClient()">SIGN IN</button>
                     <a href="/indexClientRegister" class="btn-secondary mt-2 btn-signin">CREATE AN ACCOUNT</a>
                 </div>
             </div>
@@ -39,11 +39,12 @@
 
         },
         methods: {
-            createAdmin() {
+            createClient() {
                     axios
                         .post("actionClientLogin", this.listLogin)
                         .then((res) => {
                             if(res.data.status){
+                                toastr.success("Login successfully!");
                                 window.location.href = '/indexHomePage';
                             }
                         });
