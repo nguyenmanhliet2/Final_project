@@ -16,25 +16,25 @@
                 <div class="col-12">
                     <fieldset>
                         <label class="label">Last name</label>
-                        <input v-model="list_account.last_name" type="text">
+                        <input v-model="list_account.last_name" type="text" class="form-control">
                     </fieldset>
                 </div>
                 <div class="col-12">
                     <fieldset>
                         <label class="label">Phone Number</label>
-                        <input v-model="list_account.phone_number" type="text">
+                        <input v-model="list_account.phone_number" type="text" class="form-control">
                     </fieldset>
                 </div>
                 <div class="col-12">
                     <fieldset>
                         <label class="label">Address</label>
-                        <input v-model="list_account.address" type="text">
+                        <input v-model="list_account.address" type="text" class="form-control">
                     </fieldset>
                 </div>
                 <div class="col-12">
                     <fieldset>
                         <label class="label">City</label>
-                        <input v-model="list_account.city"  type="text">
+                        <input v-model="list_account.city"  type="text" class="form-control">
                     </fieldset>
                 </div>
                 <div class="col-12">

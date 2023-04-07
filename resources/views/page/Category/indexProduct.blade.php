@@ -49,6 +49,10 @@
                         <label>Product's Price</label>
                         <input  v-model="newProductData.price_product" type="number" class="form-control">
                     </div>
+                    <div class="mb-2">
+                        <label>Product's Sale Price</label>
+                        <input  v-model="newProductData.sales_price_product" type="number" class="form-control">
+                    </div>
                     <div class="mb-1">
                         <label>Product's Quantity</label>
                         <input  v-model="newProductData.quantity_product" type="number" class="form-control">
