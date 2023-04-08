@@ -156,6 +156,7 @@
                         .then((res) => {
                             if(res.data.status == 1){
                                 toastr.success("Tạo đơn hàng thành công!")
+                                this.loadCart();
                             }else if(res.data.status == 0) {
                                 toastr.error("Đã xảy ra lỗi")
                             }else {

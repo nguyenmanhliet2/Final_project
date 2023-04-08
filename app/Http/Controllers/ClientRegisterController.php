@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientLoginRequest;
+use App\Http\Requests\ClientRegisterRequest;
 use App\Models\ClientRegister;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -14,7 +15,7 @@ class ClientRegisterController extends Controller
 
         return view('page.Client.clientRegister');
     }
-    public function createClientAccount(Request $request)
+    public function createClientAccount(ClientRegisterRequest $request)
     {
 
         $newClient = $request->all();

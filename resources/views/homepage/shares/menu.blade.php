@@ -89,9 +89,9 @@
                  <div class="col-lg-6 d-lg-block d-none">
                      <nav class="site-navigation">
                          <ul class="main-menu list-unstyled justify-content-center">
-                            <li class="menu-list-item nav-item">
-                                <a class="nav-link" href="/indexHomePage">Home Page</a>
-                            </li>
+                             <li class="menu-list-item nav-item">
+                                 <a class="nav-link" href="/indexHomePage">Home Page</a>
+                             </li>
                              <li class="menu-list-item nav-item has-megamenu">
                                  <div class="mega-menu-header">
                                      <a class="nav-link" href="collection-left-sidebar.html">
@@ -118,12 +118,12 @@
                                                  </div>
                                                  <div class="submenu-transform megamenu-transform">
                                                      <ul class="megamenu list-unstyled">
-                                                        @foreach ($menuMain as $value_main)
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="/category/{{ $value_main->id }}">{{ $value_main->name_category }}</a>
-                                                        </li>
-                                                        @endforeach
+                                                         @foreach ($menuMain as $value_main)
+                                                             <li class="menu-list-item nav-item-sub">
+                                                                 <a class="nav-link-sub nav-text-sub"
+                                                                     href="/category/{{ $value_main->id }}">{{ $value_main->name_category }}</a>
+                                                             </li>
+                                                         @endforeach
                                                      </ul>
                                                  </div>
                                              </li>
@@ -336,4 +336,63 @@
          </div>
      </div>
  </header>
+ <div class="offcanvas offcanvas-end " tabindex="-1" id="drawer-cart" aria-modal="true" role="dialog" style="visibility: visible;" aria-hidden="true">
+    <div class="offcanvas-header border-btm-black">
+        <h5 class="cart-drawer-heading text_16">Your Cart </h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <div class="cart-content-area d-flex justify-content-between flex-column">
+            <div class="minicart-loop custom-scrollbar">
+                @foreach ($listBill as $key_bill => $value_bill)
+                <div class="minicart-item d-flex">
+                    <div class="mini-img-wrapper">
+                        <img class="mini-img" src="{{ $value_bill->image_product }}" alt="img">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title"><a href="#">{{ $value_bill->name_product }}</a></h2>
+                        <div class="misc d-flex align-items-end justify-content-between">
+                            <div class="quantity d-flex align-items-center justify-content-between">
+                                <button class="qty-btn dec-qty"><img src="assets/img/icon/minus.svg" alt="minus"></button>
+                                <input class="qty-input" type="number" name="qty" value="1" min="0">
+                                <button class="qty-btn inc-qty"><img src="assets/img/icon/plus.svg" alt="plus"></button>
+                            </div>
+                            <div class="product-remove-area d-flex flex-column align-items-end">
+                                <div class="product-price">{{  $value_bill->sales_price_product }}đ</div>
+                                <a href="#" class="product-remove">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <!-- minicart item -->
+
+            </div>
+            <div class="minicart-footer">
+                <div class="minicart-calc-area">
+                    <div class="minicart-calc d-flex align-items-center justify-content-between">
+                        <span class="cart-subtotal mb-0">Subtotal</span>
+                        <span class="cart-subprice">$1548.00</span>
+                    </div>
+                    <p class="cart-taxes text-center my-4">Taxes and shipping will be calculated at checkout.
+                    </p>
+                </div>
+                <div class="minicart-btn-area d-flex justify-content-center align-content-center">
+                    <a href="/indexCart" class="minicart-btn btn-secondary">View Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="cart-empty-area text-center py-5 d-none">
+            <div class="cart-empty-icon pb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                </svg>
+            </div>
+            <p class="cart-empty">You have no items in your cart</p>
+        </div>
+    </div>
+</div>
  <!-- header end -->
