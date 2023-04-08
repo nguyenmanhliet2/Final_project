@@ -17,10 +17,10 @@
                             <div class="mb-1">
                                 <label>Slide {{ $i }}</label>
                                 <div class="input-group">
-                                    <input name={{$name}} type="text" class="form-control" id="thumbnail_{{$name}}" value="{{ ( isset($config->$name) && Str::length($config->$name) > 0) ? $config->$name : ''}} ">
-                                    <input type="button" data-input="thumbnail_{{$name}}" data-preview="holder_{{$name}}" id="$name" value="Upload" class="btn btn-info">
+                                    <input name="{{$name}}" type="text" class="form-control" id="thumbnail_{{$name}}" value="{{ ( isset($config->$name) && Str::length($config->$name) > 0) ? $config->$name : ''}} ">
+                                    <input  type="button" data-input="thumbnail_{{$name}}" data-preview="holder_{{$name}}" value="Upload" class="btn btn-info lfm">
                                 </div>
-                                    <img id="holder_{{$name}}" style="margin-top:15px;max-height:100px;" src=" {{ (isset($config->$name) && Str::length($config->$name) > 0) ? $config->$name : ''}} ">
+                                    <img id="holder_{{$name}}" style="margin-top:15px;max-height:100px;" src="{{ (isset($config->$name) && Str::length($config->$name) > 0) ? $config->$name : ''}} ">
                             </div>
                         </div>
                         @endfor
@@ -39,6 +39,6 @@
     @section('js')
         <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
         <script>
-            $('#lfm').filemanager('image');
+            $('.lfm').filemanager('image');
         </script>
     @endsection

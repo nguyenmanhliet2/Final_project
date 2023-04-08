@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="product-card-action product-card-action-2 justify-content-center">
                                         <a href="/detailProduct/{{ $value_product->slug_product }}-post{{ $value_product->id }}"
-                                            class="action-card action-quickview" data-bs-toggle="modal">
+                                            class="action-card action-quickview">
                                             <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -44,7 +44,7 @@
                                             </svg>
                                         </a>
                                         @if (Auth::guard('client')->check())
-                                        <a class="action-card action-addtocart addToCart" data-id="{{ $value_product->id }}">
+                                        <a href="javascript:void(0)" class="action-card action-addtocart addToCart" data-id="{{ $value_product->id }}">
                                             <svg class="icon icon-cart"  width="24" height="26" viewBox="0 0 24 26"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -126,6 +126,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('js')
 @endsection
