@@ -55,4 +55,10 @@ class HomePageController extends Controller
             return view('homepage.page.product', compact('productDetail'));
         }
     }
+    public function searchHomePage(Request $request) {
+        $nameProduct = $request->nameProduct;
+        $product = Product::where('name_product', 'like', '%' . $request->nameProduct .'%')->get();
+
+        return view('homepage.page.homepage', compact('product'));
+    }
 }

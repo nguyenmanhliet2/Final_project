@@ -82,7 +82,7 @@
                  <div class="col-lg-3 col-md-4 col-4">
                      <div class="header-logo">
                          <a href="/indexHomePage" class="logo-main">
-                             <img src="/assets/img/logo.png" loading="lazy" alt="bisum">
+                             <img src="/assets/img/newlogo.png" loading="lazy" alt="bisum">
                          </a>
                      </div>
                  </div>
@@ -241,10 +241,6 @@
                                  <div class="submenu-transform submenu-transform-desktop">
                                      <ul class="submenu list-unstyled">
                                          <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="about-us.html">About
-                                                 Us</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
                                              <a class="nav-link-sub nav-text-sub" href="login.html">Login</a>
                                          </li>
                                          <li class="menu-list-item nav-item-sub">
@@ -255,9 +251,6 @@
                                          </li>
                                          <li class="menu-list-item nav-item-sub">
                                              <a class="nav-link-sub nav-text-sub" href="/indexCart">Cart</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="checkout.html">Checkout</a>
                                          </li>
                                      </ul>
                                  </div>
@@ -311,7 +304,7 @@
          </div>
          <div class="search-wrapper">
              <div class="container">
-                 <form action="#" class="search-form d-flex align-items-center">
+                 <form action="/search" class="search-form d-flex align-items-center">
                      <button type="submit" class="search-submit bg-transparent pl-0 text-start">
                          <svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
