@@ -22,7 +22,7 @@ class ClientRegisterRequest extends FormRequest
             'first_name'         =>  'required|min:4|max:50',
             'last_name'          =>  'required|min:4|max:50',
             'phone_number'       =>  'required|digits:10|unique:client_registers,phone_number',
-            'email'              =>  'required|email|unique:agents,email',
+            'email'              =>  'required|email|unique:client_registers,email',
             'password'           =>  'required|min:6|max:50',
             're_password'        =>  'required|same:password',
             'address'            =>  'required|min:6',

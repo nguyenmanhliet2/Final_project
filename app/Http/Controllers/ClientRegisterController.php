@@ -33,11 +33,10 @@ class ClientRegisterController extends Controller
 
     public function actionClientLogin(ClientLoginRequest $request)
     {
-        $admin = Auth::guard('client')->attempt($request->all());
+        $client = Auth::guard('client')->attempt($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Register successfully"
         ]);
     }
 

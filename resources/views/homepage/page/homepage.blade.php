@@ -53,7 +53,7 @@
                                             </svg>
                                         </a>
                                         @else
-                                        <a href="" class="action-card action-addtocart " data-bs-toggle="modal" data-bs-target="#cartModal">
+                                        <a href="javascript:void(0)" class="action-card action-addtocart " data-bs-toggle="modal" data-bs-target="#cartModal">
                                             <svg class="icon icon-cart" width="24" height="26" viewBox="0 0 24 26"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -119,7 +119,7 @@
                         <div class="newsletter-input-box d-flex align-items-center">
                             <input class="mt-2 px-3" type="password" placeholder="Password">
                         </div>
-                        <button type="button" class="btn-primary d-block mt-2 btn-signin">Login</button>
+                        <button type="button" id="login" class="btn-primary d-block mt-2 btn-signin">Login</button>
                         <p class="newsletter-modal-misc text_14 mt-4 text-center pb-4">If you do not have an account, register here!</p>
                     </form>
                 </div>
@@ -127,6 +127,8 @@
         </div>
     </div>
 
+    
 @endsection
 @section('js')
+
 @endsection

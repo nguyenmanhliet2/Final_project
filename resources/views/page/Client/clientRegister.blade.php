@@ -62,7 +62,7 @@
                 <div class="col-12">
                     <fieldset>
                         <label class="label">Confirm Password</label>
-                        <input v-model="list_account.first_name" type="password" placeholder="Email address">
+                        <input v-model="list_account.re_password" type="password" placeholder="retype password">
                     </fieldset>
                 </div>
                 <div class="col-12 mt-3">
@@ -85,14 +85,19 @@
         },
         methods: {
             createClient() {
-                console.log(this.list_account);
                     axios
                         .post("/createClientAccount", this.list_account)
                         .then((res) => {
                             if(res.data.status){
                                 toastr.success(res.data.message);
                             }
+                        })
+                        .catch((res) => {
+                        var error_list = res.response.data.errors;
+                        $.each(error_list, function(key, value) {
+                            toastr.error(value[0]);
                         });
+                    });
                 },
         },
     });

@@ -47,7 +47,13 @@
                                 toastr.success("Login successfully!");
                                 window.location.href = '/indexHomePage';
                             }
+                        })
+                        .catch((res) => {
+                        var error_list = res.response.data.errors;
+                        $.each(error_list, function(key, value) {
+                            toastr.error(value[0]);
                         });
+                    });
                 },
         },
     });
