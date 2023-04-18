@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/indexHomePage',[HomePageController::class, 'indexHomePage']);
 Route::get('/detailProduct/{id}',[HomePageController::class, 'viewDetailProduct']);
 Route::get('/category/{id}',[HomePageController::class, 'viewCategory']);
-Route::get('/search',[HomePageController::class, 'searchHomePage']);
+Route::post('/search',[HomePageController::class, 'searchHomePage']);
 
 Route::get('/indexCart',[OrderDetailController::class, 'indexCart']);
 Route::get('/cart/data',[OrderDetailController::class, 'dataCart']);

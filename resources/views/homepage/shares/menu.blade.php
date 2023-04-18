@@ -304,8 +304,9 @@
          </div>
          <div class="search-wrapper">
              <div class="container">
-                 <form action="/search" class="search-form d-flex align-items-center">
-                     <button type="submit" class="search-submit bg-transparent pl-0 text-start">
+                 <form action="/search" class="search-form d-flex align-items-center" method="POST">
+                     @csrf
+                     <button type="submit" class="search-submit bg-transparent pl-0 text-start"  >
                          <svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path
@@ -314,7 +315,7 @@
                          </svg>
                      </button>
                      <div class="search-input mr-4">
-                         <input type="text" placeholder="Search your products..." autocomplete="off">
+                         <input type="text" name="nameProduct" placeholder="Search your products..." autocomplete="off">
                      </div>
                      <div class="search-close">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
