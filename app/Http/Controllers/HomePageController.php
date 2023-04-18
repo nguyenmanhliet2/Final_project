@@ -56,9 +56,10 @@ class HomePageController extends Controller
         }
     }
     public function searchHomePage(Request $request) {
+        $config  = Config::latest()->first();
         $nameProduct = $request->nameProduct;
-        $product = Product::where('name_product', 'like', '%' . $request->nameProduct .'%')->get();
+        $search_product = Product::where('name_product', 'like', '%' . $request->nameProduct .'%')->get();
 
-        return view('homepage.page.homepage', compact('product'));
+        return view('homepage.page.searchproduct', compact('search_product','config'));
     }
 }

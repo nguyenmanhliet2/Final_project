@@ -73,25 +73,9 @@
                     });
             });
         });
-        $(document).ready(function() {
-            $("#login").click(function() {
-                var email = $(this).data('email');
-                var password = $(this).data('password');
-                var payload = {
-                    'email': email,
-                    'password': password,
-                };
-                axios
-                    .post('/actionClientLogin', payload)
-                    .then((res) => {
-                        if (res.data.status) {
-                            toastr.success("Bạn đã đăng nhập thành công");
-                        } else {
-                            toastr.error("Bạn cần đăng nhập trước!");
-                        }
-                    })
-            });
-        });
+    </script>
+    <script>
+        
     </script>
 </body>
 

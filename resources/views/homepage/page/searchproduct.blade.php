@@ -9,7 +9,7 @@
                     <h2 class="section-heading primary-color">Featured Products</h2>
                 </div>
                 <div class="row">
-                    @foreach ($allProduct as $key_product => $value_product)
+                    @foreach ($search_product as $key_product => $value_product)
                         <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-duration="700">
                             <div class="product-card">
                                 <div class="product-card-img">
@@ -126,8 +126,6 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 @section('js')
 
