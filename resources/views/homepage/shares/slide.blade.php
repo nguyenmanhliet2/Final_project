@@ -27,11 +27,11 @@
                         <div class="content-box slide-content slide-content-1 py-4">
                             <h2 class="slide-heading heading_72 animate__animated animate__fadeInUp"
                                 data-animation="animate__animated animate__fadeInUp">
-                                Discover The Best Furniture
+                                Discover The Best Product
                             </h2>
                             <p class="slide-subheading heading_24 animate__animated animate__fadeInUp"
                                 data-animation="animate__animated animate__fadeInUp">
-                                Look for your inspiration here
+                                Wish you have a pleasant experience
                             </p>
                             <a class="btn-primary slide-btn animate__animated animate__fadeInUp"
                                 href="collection-left-sidebar.html"

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminRegisterController;
+use App\Http\Controllers\BaivietController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientRegisterController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\IngredientController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarehouseDetailsController;
 use App\Http\Controllers\WarehouseInvoicesController;
+use App\Models\comments;
 use App\Models\Order;
 use App\Models\WarehouseInvoices;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +28,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/blogPage',[HomePageController::class, 'indexBlogPage']);
+Route::get('/blogDetailPage/{id}',[HomePageController::class, 'indexBlogDetailPage']);
+
 
 Route::get('/indexHomePage',[HomePageController::class, 'indexHomePage']);
 Route::get('/detailProduct/{id}',[HomePageController::class, 'viewDetailProduct']);
@@ -54,6 +61,11 @@ Route::post('/createClientAccount',[ClientRegisterController::class, 'createClie
 Route::get('/loginClient',[ClientRegisterController::class, 'loginClient']);
 Route::post('/actionClientLogin',[ClientRegisterController::class, 'actionClientLogin']);
 Route::get('/logoutClient',[ClientRegisterController::class, 'logoutClient']);
+Route::post('/createContact',[ClientRegisterController::class, 'createContact']);
+Route::get('/getContactPage',[ClientRegisterController::class, 'contactPage']);
+Route::get('/active/{hash}',[ClientRegisterController::class, 'active']);
+
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function() {
@@ -104,3 +116,29 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function(
         Route::post('/',[ConfigController::class, 'update']);
     });
 });
+
+Route::get('/adminBlog',[BaivietController::class, 'adminBlogIndex']);
+Route::post('/test/baiviet',[BaivietController::class, 'create']); //tạo baì viết
+Route::get('/test/showbaiviet/{id_bai_viet}',[BaivietController::class, 'indexBaiviet']);
+Route::get('/test/showallbaiviet',[BaivietController::class, 'indexShowallbaiViet']);
+Route::get('/test/deleteallbaiviet/{id}',[BaivietController::class, 'DeleteAllBaiViet']);
+
+
+
+// Route::get('/test/showcomment/{id_bai_viet}',[BaivietController::class, 'showbaiviet']);
+
+Route::post('/test/cmt/',[CommentsController::class, 'taocmt']); //tạo cmt
+Route::get('/deleteComment/{id}',[CommentsController::class, 'xoaCmt']); //xoa cmt
+Route::get('/latestPost',[BaivietController::class, 'latestPost']);
+
+
+
+
+
+// Route::get('/showcmt/{id_bai_viet}',[BaivietController::class, 'taocmt']); //tạo cmt
+
+
+
+
+
+

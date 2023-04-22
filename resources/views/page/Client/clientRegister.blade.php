@@ -2,7 +2,7 @@
 @section('content')
 <div class="login-page mt-100" id="clientRegisterPage">
     <div class="container">
-        <form action="#" class="login-form common-form mx-auto">
+        <form @submit.prevent="onSubmit" class="login-form common-form mx-auto">
             <div class="section-header mb-3">
                 <h2 class="section-heading text-center">Register</h2>
             </div>
@@ -88,7 +88,8 @@
                     axios
                         .post("/createClientAccount", this.list_account)
                         .then((res) => {
-                            if(res.data.status){
+                            if(res.data.status == 200 ){
+                                alert('vui lòng chờ 1 lát....')
                                 toastr.success(res.data.message);
                             }
                         })

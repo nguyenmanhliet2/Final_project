@@ -1,6 +1,5 @@
 @extends('homepage.master')
 @section('content')
-    @include('homepage.shares.slide')
     <!-- collection start -->
     <div class="featured-collection mt-100 overflow-hidden">
         <div class="collection-tab-inner">
