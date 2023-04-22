@@ -8,8 +8,8 @@
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="filter-sort-wrapper d-flex justify-content-between flex-wrap">
                         <div class="collection-title-wrap d-flex align-items-end">
-                            <h2 class="collection-title heading_24 mb-0">All products</h2>
-                            <p class="collection-counter text_16 mb-0 ms-2">(237 items)</p>
+                            <h2 class="collection-title heading_24 mb-0">{{$nameCa}}</h2>
+                            <p class="collection-counter text_16 mb-0 ms-2">{{$countProducts}} sản phẩm </p>
                         </div>
                         <div class="filter-sorting">
                             <div class="collection-sorting position-relative d-none d-lg-block">
@@ -55,7 +55,7 @@
                             <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-duration="700">
                                 <div class="product-card">
                                     <div class="product-card-img">
-                                        <a class="hover-switch" href="collection-left-sidebar.html">
+                                        <a class="hover-switch" href="/detailProduct/{{ $value->slug_product }}-post{{ $value->id }}">
                                             <img class="secondary-img" src="{{ $value->image_product}}"
                                                 alt="product-img">
                                             <img class="primary-img" src="{{ $value->image_product}}"
@@ -68,8 +68,7 @@
 
                                         <div
                                             class="product-card-action product-card-action-2 justify-content-center">
-                                            <a href="#quickview-modal" class="action-card action-quickview"
-                                                data-bs-toggle="modal">
+                                            <a href="/detailProduct/{{ $value->slug_product }}-post{{ $value->id }}" class="action-card action-quickview">
                                                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -88,7 +87,7 @@
                                                 </svg>
                                             </a>
 
-                                            <a href="#" class="action-card action-addtocart">
+                                            <a href="/detailProduct/{{ $value->slug_product }}-post{{ $value->id }}" class="action-card action-addtocart addToCart" data-id="{{ $value->id }}">
                                                 <svg class="icon icon-cart" width="24" height="26"
                                                     viewBox="0 0 24 26" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">

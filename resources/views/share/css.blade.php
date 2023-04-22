@@ -77,7 +77,6 @@
 <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/core/menu/menu-types/vertical-menu.css">
 <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/pages/dashboard-ecommerce.css">
 <link rel="stylesheet" type="text/css" href="/stack/app-assets/css/plugins/charts/chart-apex.css">
-<link rel="stylesheet" type="text/css" href="/stack/app-assets/css/plugins/extensions/ext-component-toastr.css">
 <!-- END: Page CSS-->
 
 <!-- BEGIN: Custom CSS-->
@@ -85,5 +84,21 @@
 <!-- END: Custom CSS-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/3.2.31/axios.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .dele-hover {
+        font-size: 34px;
+        color: rgb(99, 99, 216);
+        cursor: pointer;
+        transition-property: 0.1s transform;
 
+    }
+
+    .dele-hover:hover {
+        color: rgb(233, 58, 58);
+        transform: translateY(-5px);
+    }
+</style>

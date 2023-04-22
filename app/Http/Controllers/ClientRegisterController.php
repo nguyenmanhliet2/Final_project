@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientLoginRequest;
 use App\Http\Requests\ClientRegisterRequest;
+use App\Http\Requests\formMessage;
 use App\Mail\MailClientActive;
 use App\Models\ClientRegister;
 use App\Models\Contact;
@@ -15,8 +16,12 @@ use Illuminate\Support\Facades\Mail;
 class ClientRegisterController extends Controller
 {
     public function indexClientRegister(){
-
-        return view('page.Client.clientRegister');
+        $Login = Auth::guard('client')->user();
+        if($Login){
+            return redirect('/indexHomePage');
+        }else{
+            return view('page.Client.clientRegister');
+        }
     }
     public function createClientAccount(ClientRegisterRequest $request)
     {
@@ -24,6 +29,7 @@ class ClientRegisterController extends Controller
         $newClient = $request->all();
         $newClient['hash'] = Str::uuid();
         $newClient['password'] = bcrypt($newClient['password']);
+        $newClient['hash_email'] =
         ClientRegister::create($newClient);
         Mail::to($request->email)->send(new MailClientActive(
             $request->last_name,
@@ -36,7 +42,13 @@ class ClientRegisterController extends Controller
         ]);
     }
     public function loginClient(){
-        return view('page.Client.clientLogin');
+        $Login = Auth::guard('client')->user();
+        if($Login){
+            return redirect('/indexHomePage');
+        }else{
+            return view('page.Client.clientLogin');
+        }
+
     }
 
     public function actionClientLogin(ClientLoginRequest $request)
@@ -60,18 +72,27 @@ class ClientRegisterController extends Controller
         } else {
             return response()->json([
                 'status' => 0,
+                'alert' => 'dang nhap that bai,mat khau hoac email khong chinh xac',
+
             ]);
         }
     }
 
     public function logoutClient()
     {
-        Auth::guard('client')->logout();
+        $Login = Auth::guard('client')->user();
+        if($Login){
+            Auth::guard('client')->logout();
 
-        return redirect('/indexHomePage');
+            return redirect('/indexHomePage');
+        }else{
+            Toastr()->info('You must login ');
+            return redirect('/loginClient');
+        }
+
     }
 
-    public function createContact(Request $request)
+    public function createContact(formMessage $request)
     {
         $Login = Auth::guard('client')->user();
        if($Login){
@@ -92,6 +113,8 @@ class ClientRegisterController extends Controller
     {
         return view('homepage.page.contact');
     }
+
+
     public function active($hash){
         $activeCl = ClientRegister::where('hash', $hash)->first();
         if($activeCl->active) {

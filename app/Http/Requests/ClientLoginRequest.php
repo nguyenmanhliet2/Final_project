@@ -20,4 +20,11 @@ class ClientLoginRequest extends FormRequest
             'password'  =>  'required',
         ];
     }
+    public function messages()
+    {
+        return [
+            'email.required' => 'email không được để trống',
+            'password.required' => 'Password không được để trống',
+        ];
+    }
 }

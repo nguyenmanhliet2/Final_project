@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\cmts;
 use App\Models\comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,7 @@ use Yoeunes\Toastr\Facades\Toastr;
 class CommentsController extends Controller
 {
 
-    public function taocmt(Request $request)
+    public function taocmt(cmts $request)
     {
         $Login = Auth::guard('client')->user();
         if($Login){

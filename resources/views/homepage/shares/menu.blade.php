@@ -237,13 +237,6 @@
                                  <div class="submenu-transform submenu-transform-desktop">
                                      <ul class="submenu list-unstyled">
                                          <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="/loginClient">Login</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="/indexClientRegister">Register</a>
-                                         </li>
-
-                                         <li class="menu-list-item nav-item-sub">
                                              <a class="nav-link-sub nav-text-sub" href="/indexCart">Cart</a>
                                          </li>
                                      </ul>
