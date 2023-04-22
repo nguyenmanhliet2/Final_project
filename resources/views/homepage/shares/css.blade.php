@@ -58,6 +58,13 @@
             --section-subheading-font-size: 16px;
             --section-subheading-font-weight: 400;
         }
+        .hover-red{
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .hover-red:hover{
+            color: red
+        }
     </style>
 
     <link rel="stylesheet" href="/assets/css/vendor.css">

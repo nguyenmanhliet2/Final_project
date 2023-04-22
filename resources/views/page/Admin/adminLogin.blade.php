@@ -118,7 +118,7 @@
 
                                 <p class="text-center mt-2">
                                     <span>New on our platform?</span>
-                                    <a href="auth-register-basic.html">
+                                    <a href="/indexAdminRegister">
                                         <span>Create an account</span>
                                     </a>
                                 </p>

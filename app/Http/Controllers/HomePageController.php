@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\baiviet;
 use App\Models\Config;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class HomePageController extends Controller
 {
@@ -61,5 +63,20 @@ class HomePageController extends Controller
         $search_product = Product::where('name_product', 'like', '%' . $request->nameProduct .'%')->get();
 
         return view('homepage.page.searchproduct', compact('search_product','config'));
+    }
+    public function indexBlogPage()
+    {
+        return view('homepage.page.blogpage');
+    }
+    public function indexBlogDetailPage($id)
+    {
+        $id_post = baiviet::select('id')->where('id', $id)->first();
+        if($id_post){
+            return view('homepage.page.blogdetail', compact('id'));
+        }else{
+            Toastr()->info('Bài viết không tồn tại');
+            return redirect('/blogPage');
+        }
+
     }
 }

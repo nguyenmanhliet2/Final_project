@@ -11,7 +11,7 @@
              </div>
              <div class="col-lg-6 col-12">
                  <div class="announcement-text-wrapper d-flex align-items-center justify-content-center">
-                     <p class="announcement-text text-white">New year sale - 30% off</p>
+                     <p class="announcement-text text-white">Welcome to our website</p>
                  </div>
              </div>
              <div class="col-lg-3 d-lg-block d-none">
@@ -94,7 +94,7 @@
                              </li>
                              <li class="menu-list-item nav-item has-megamenu">
                                  <div class="mega-menu-header">
-                                     <a class="nav-link" href="collection-left-sidebar.html">
+                                     <a class="nav-link" href="javascript:void(0)">
                                          Shop
                                      </a>
                                      <span class="open-submenu">
@@ -112,7 +112,7 @@
                                              <li class="menu-list-item nav-item-sub">
                                                  <div class="mega-menu-header">
                                                      <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                         href="collection-left-sidebar.html">
+                                                         href="javascript:void(0)">
                                                          CATEGORY
                                                      </a>
                                                  </div>
@@ -202,7 +202,7 @@
                              </li>
                              <li class="menu-list-item nav-item has-dropdown">
                                  <div class="mega-menu-header">
-                                     <a class="nav-link" href="blog.html">Blog</a>
+                                     <a class="nav-link" href="javascript:void(0)">Blog</a>
                                      <span class="open-submenu">
                                          <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
                                              width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -215,11 +215,7 @@
                                  <div class="submenu-transform submenu-transform-desktop">
                                      <ul class="submenu list-unstyled">
                                          <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="blog.html">Blog</a>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="article.html">Blog
-                                                 Details</a>
+                                             <a class="nav-link-sub nav-text-sub" href="/blogPage">Blog</a>
                                          </li>
                                      </ul>
                                  </div>
@@ -241,14 +237,12 @@
                                  <div class="submenu-transform submenu-transform-desktop">
                                      <ul class="submenu list-unstyled">
                                          <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="login.html">Login</a>
+                                             <a class="nav-link-sub nav-text-sub" href="/loginClient">Login</a>
                                          </li>
                                          <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="register.html">Register</a>
+                                             <a class="nav-link-sub nav-text-sub" href="/indexClientRegister">Register</a>
                                          </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <a class="nav-link-sub nav-text-sub" href="wishlist.html">Wishlist</a>
-                                         </li>
+
                                          <li class="menu-list-item nav-item-sub">
                                              <a class="nav-link-sub nav-text-sub" href="/indexCart">Cart</a>
                                          </li>
@@ -256,7 +250,7 @@
                                  </div>
                              </li>
                              <li class="menu-list-item nav-item">
-                                 <a class="nav-link" href="contact.html">Contact</a>
+                                 <a class="nav-link" href="/getContactPage">Contact</a>
                              </li>
                          </ul>
                      </nav>
@@ -268,14 +262,6 @@
                                  fill="none" xmlns="http://www.w3.org/2000/svg">
                                  <path
                                      d="M7.75 0.250183C11.8838 0.250183 15.25 3.61639 15.25 7.75018C15.25 9.54608 14.6201 11.1926 13.5625 12.4846L19.5391 18.4611L18.4609 19.5392L12.4844 13.5627C11.1924 14.6203 9.5459 15.2502 7.75 15.2502C3.61621 15.2502 0.25 11.884 0.25 7.75018C0.25 3.61639 3.61621 0.250183 7.75 0.250183ZM7.75 1.75018C4.42773 1.75018 1.75 4.42792 1.75 7.75018C1.75 11.0724 4.42773 13.7502 7.75 13.7502C11.0723 13.7502 13.75 11.0724 13.75 7.75018C13.75 4.42792 11.0723 1.75018 7.75 1.75018Z"
-                                     fill="black" />
-                             </svg>
-                         </a>
-                         <a class="header-action-item header-wishlist ms-4 d-none d-lg-block" href="wishlist.html">
-                             <svg class="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
-                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                     d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
                                      fill="black" />
                              </svg>
                          </a>
@@ -347,9 +333,9 @@
                         <h2 class="product-title"><a href="#">{{ $value_bill->name_product }}</a></h2>
                         <div class="misc d-flex align-items-end justify-content-between">
                             <div class="quantity d-flex align-items-center justify-content-between">
-                                <button class="qty-btn dec-qty"><img src="assets/img/icon/minus.svg" alt="minus"></button>
+                                <button class="qty-btn dec-qty"><img src="/assets/img/icon/minus.svg" alt="minus"></button>
                                 <input class="qty-input" type="number" name="qty" value="1" min="0">
-                                <button class="qty-btn inc-qty"><img src="assets/img/icon/plus.svg" alt="plus"></button>
+                                <button class="qty-btn inc-qty"><img src="/assets/img/icon/plus.svg" alt="plus"></button>
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div class="product-price">{{  $value_bill->sales_price_product }}đ</div>
