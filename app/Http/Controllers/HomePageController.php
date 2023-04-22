@@ -37,6 +37,7 @@ class HomePageController extends Controller
     public function viewCategory($id)
     {
         $category = Category::find($id);
+        $nameCa =   $category->name_category;
         if($category) {
             // Nếu là danh mục con
             if($category->id_category_root > 0) {
@@ -52,9 +53,11 @@ class HomePageController extends Controller
                     $list = $list . ',' . $value->id;
                 }
                 $productDetail = Product::whereIn('id_product_catalog', explode(",", $list))->get();
+                $countProducts = count($productDetail);
+
             }
 
-            return view('homepage.page.product', compact('productDetail'));
+            return view('homepage.page.product', compact('productDetail' ,'countProducts' ,'nameCa'));
         }
     }
     public function searchHomePage(Request $request) {

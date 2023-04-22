@@ -115,7 +115,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function(
         Route::get('/',[ConfigController::class, 'index']);
         Route::post('/',[ConfigController::class, 'update']);
     });
+    Route::group(['prefix' => '/client'], function() {
+        Route::get('/userManagement',[AdminRegisterController::class, 'userManagement']); //User Management
+        Route::get('/userActive/{id}',[AdminRegisterController::class, 'userActive']);
+        Route::get('/userBlocked/{id}',[AdminRegisterController::class, 'userBlocked']);
+        Route::get('/userDelete/{id}',[AdminRegisterController::class, 'userDelete']);
+        Route::get('/loadUser',[AdminRegisterController::class, 'loadUser']);
+        Route::post('/searchEmail',[AdminRegisterController::class, 'searchEmail']);
+
+        Route::get('/contactManagement',[AdminRegisterController::class, 'contactManagement']);
+        Route::get('/loadContact',[AdminRegisterController::class, 'loadContact']);
+        Route::get('/contactDelete/{id}',[AdminRegisterController::class, 'contactDelete']);
+
+    });
 });
+
+
+
+
 
 Route::get('/adminBlog',[BaivietController::class, 'adminBlogIndex']);
 Route::post('/test/baiviet',[BaivietController::class, 'create']); //tạo baì viết

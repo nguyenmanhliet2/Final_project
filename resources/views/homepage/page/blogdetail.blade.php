@@ -58,7 +58,7 @@
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <span class="ms-2"> @{{count}} Comments</span>
+                                        <span class="ms-2"> @{{ count }} Comments</span>
                                     </a>
                                     <span class="article-separator mx-3 d-none d-sm-block">
                                         <svg width="2" height="12" viewBox="0 0 2 12" fill="none"
@@ -74,7 +74,7 @@
 
                             <div class="comments-section mt-100 home-section overflow-hidden">
                                 <div class="section-header">
-                                    <h2 class="section-heading">Comments - @{{count}}</h2>
+                                    <h2 class="section-heading">Comments - @{{ count }}</h2>
                                 </div>
                                 <template v-for="(v,k) in dataCmt">
                                     <div class="comments-area">
@@ -97,7 +97,8 @@
                                                         </div>
                                                         <p class="comments">@{{ v.noi_dung_cmt }}</p>
                                                         @if (Auth::guard('client')->check())
-                                                        <button v-if="v.id_user == {{Auth::guard('client')->id()}}" v-on:click="deleteCMT(v.id)" >delete comment</button>
+                                                            <button v-if="v.id_user == {{ Auth::guard('client')->id() }}"
+                                                                v-on:click="deleteCMT(v.id)">delete comment</button>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -141,12 +142,11 @@
                                     <template v-for="(v,k) in lastest">
                                         <div class="related-item related-item-article d-flex">
                                             <div class="related-img-wrapper">
-                                                <img class="related-img" v-bind:src="v.hinh_anh"
-                                                    alt="img">
+                                                <img class="related-img" v-bind:src="v.hinh_anh" alt="img">
                                             </div>
                                             <div class="related-product-info">
                                                 <h2 class="related-heading text_14">
-                                                    <a v-bind:href="'/blogDetailPage/'+v.id">@{{ v.title}}</a>
+                                                    <a v-bind:href="'/blogDetailPage/'+v.id">@{{ v.title }}</a>
                                                 </h2>
                                                 <p class="article-card-published text_12 d-flex align-items-center mt-2">
                                                     <span class="article-date d-flex align-items-center">
@@ -181,7 +181,7 @@
                 postId: {{ $id }},
                 dataPost: {},
                 dataCmt: [],
-                lastest :[],
+                lastest: [],
                 count: '',
                 dataComment: {
                     noi_dung_cmt: '',
@@ -205,12 +205,12 @@
                             }
                         });
                 },
-                getLastpost(){
+                getLastpost() {
                     axios
-                    .get('/latestPost')
-                    .then((res)=>{
-                        this.lastest = res.data.lastestPost;
-                    })
+                        .get('/latestPost')
+                        .then((res) => {
+                            this.lastest = res.data.lastestPost;
+                        })
                 },
                 createCmt() {
                     if (confirm('đăng cmt nha')) {
@@ -222,10 +222,17 @@
                                     this.dataComment.noi_dung_cmt = ''
                                     this.getPost();
                                 }
+                            })
+                        .catch((res) => {
+                            var danh_sach_loi = res.response.data.errors;
+                            $.each(danh_sach_loi, function(key, value) {
+                                toastr.error(value[0]);
                             });
+
+                        })
                     }
                 },
-                deleteCMT(id){
+                deleteCMT(id) {
                     if (confirm('xóa cmt này ?')) {
                         axios
                             .get('/deleteComment/' + id)
