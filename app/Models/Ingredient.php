@@ -16,6 +16,8 @@ class Ingredient extends Model
         'slug_ingredient',
         'quantity_ingredient',
         'price_ingredient',
+        'total_price_ingredient',
+
         'status_ingredient',
     ];
 }

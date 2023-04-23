@@ -10,6 +10,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarehouseDetailsController;
 use App\Http\Controllers\WarehouseInvoicesController;
@@ -44,6 +45,12 @@ Route::post('/add-to-cart',[OrderDetailController::class, 'addToCart']);
 Route::post('/add-to-cart-update',[OrderDetailController::class, 'addToCartUpdate']);
 Route::post('/remove-cart',[OrderDetailController::class, 'removeCart']);
 Route::get('/create-bill',[OrderController::class, 'store']);
+Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+Route::post('/add-quantity-cart',[OrderDetailController::class, 'addQuantityCart']);
+Route::post('/minus-quantity-cart',[OrderDetailController::class, 'minusQuantityCart']);
 
 
 Route::get('/indexAdminRegister',[AdminRegisterController::class, 'indexAdminRegister']);
@@ -52,6 +59,7 @@ Route::get('/recieveAdmin',[AdminRegisterController::class, 'recieveAdmin']);
 Route::post('/updateAdmin',[AdminRegisterController::class, 'updateAdmin']);
 Route::post('/removeAdmin',[AdminRegisterController::class, 'removeAdmin']);
 Route::get('/loginAdmin',[AdminRegisterController::class, 'loginAdmin']);
+Route::get('/logoutAdmin',[AdminRegisterController::class, 'logoutAdmin']);
 Route::post('/actionLogin',[AdminRegisterController::class, 'actionLogin']);
 
 

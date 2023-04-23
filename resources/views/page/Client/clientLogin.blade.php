@@ -30,17 +30,14 @@
     </div>
 @endsection
 @section('js')
-    <script>
-        new Vue({
-            el: '#clientLoginPage',
-            data: {
-                listLogin: {
-                    email: '',
-                    password: ''
 
-                },
-            },
-            created() {
+{{-- <script>
+     new Vue({
+        el: '#clientLoginPage',
+        data: {
+            listLogin: {},
+        },
+        created() {
 
             },
             methods: {
@@ -68,7 +65,8 @@
                             }
                         });
                 },
-            },
-        });
-    </script>
+
+        },
+    });
+</script> --}}
 @endsection

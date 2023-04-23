@@ -69,6 +69,18 @@ class AdminRegisterController extends Controller
         ]);
     }
 
+    public function logoutAdmin(){
+        $Login = Auth::guard('admin')->user();
+        if($Login){
+            Auth::guard('admin')->logout();
+
+            return redirect('/admin/category/index');
+        }else{
+            Toastr()->info('You must login ');
+            return redirect('/loginAdmin');
+        }
+    }
+
     public function userManagement()
     {
         return view('page.client.clientManagement');

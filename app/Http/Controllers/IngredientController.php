@@ -12,6 +12,7 @@ class IngredientController extends Controller
     }
     public function ingredientStore(Request $request) {
         $newIngredient= $request->all();
+        $newIngredient['total_price_ingredient'] = $request->price_ingredient * $request->quantity_ingredient;
         Ingredient::create($newIngredient);
         return response()->json([
             'status' => true,
@@ -27,6 +28,7 @@ class IngredientController extends Controller
     public function updateIngredient(Request $request) {
         $newUpdateIngredient = $request->all();
         $updateIngredient = Ingredient::where('id', $request->id)->first();
+        $newUpdateIngredient['total_price_ingredient'] = $request->price_ingredient * $request->quantity_ingredient;
         $updateIngredient->update($newUpdateIngredient);
         return response()->json([
             'updateIngredientData' => true,
