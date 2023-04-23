@@ -61,7 +61,8 @@
                                 <th class="text-center">Ingredient's slug</th>
                                 <th class="text-center">Ingredient's status</th>
                                 <th class="text-center">Ingredient's quantity</th>
-                                <th class="text-center">Ingredient's price</th>
+                                <th class="text-center">Ingredient's unit price</th>
+                                <th class="text-center">Ingredient's total price</th>
                                 <th class="text-center">Options</th>
                             </tr>
                         </thead>
@@ -78,6 +79,8 @@
                                     </td>
                                     <td> @{{ value.quantity_ingredient }}</td>
                                     <td> @{{ value.price_ingredient }}</td>
+                                    <td>  @{{value.total_price_ingredient}} </td>
+
                                     <td class="text-nowrap text-center align-middle">
                                         <button class="btn btn-primary" v-on:click="editIngredient = value"  data-bs-toggle="modal" data-bs-target="#editIngredientModal">Update</button>
                                         <button class="btn btn-primary" v-on:click="deleteIngredient = value" data-bs-toggle="modal" data-bs-target="#removeIngredientModal">Delete</button>

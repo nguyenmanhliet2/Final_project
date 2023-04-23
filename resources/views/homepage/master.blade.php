@@ -10,12 +10,14 @@
 
 <body>
     <div class="body-wrapper">
-        @include('homepage.shares.menu')
+        <div id="app_main">
+            @include('homepage.shares.menu')
 
-        <main id="MainContent" class="content-for-layout">
-            @yield('content')
-        </main>
-        <!-- footer start -->
+            <main id="MainContent" class="content-for-layout">
+                @yield('content')
+            </main>
+            <!-- footer start -->
+        </div>
         @include('homepage.shares.footer')
         <!-- footer end -->
 
@@ -26,6 +28,314 @@
                 <polyline points="18 15 12 9 6 15"></polyline>
             </svg>
         </button>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script>
+            new Vue({
+                el: '#app_main',
+                data: {
+                    //cart data
+                    listCart: [],
+                    //login data
+                    listLogin: {},
+                    dataLogin: {
+                        email: '',
+                        password: '',
+                    },
+
+                    //Blog ID
+                    listPost: [],
+                    list_account: {},
+                    //contact data
+                    contact: {
+                        message: '',
+                    },
+
+                    //Blog data
+                    postId: {{ $id }},
+                    dataPost: {},
+                    dataCmt: [],
+                    lastest: [],
+                    count: '',
+                    dataComment: {
+                        noi_dung_cmt: '',
+                        id_post: {{ $id }}
+                    }
+                },
+                created() {
+                    //cart
+                    this.loadCart();
+
+                    //Blog
+                    this.loadBlog();
+
+                    //Blog Detail
+                    this.getPost();
+                    this.getLastpost()
+                    this.count
+                },
+                methods: {
+                    //cart method
+                    addToCart(product_id) {
+                        var payload = {
+                            'product_id': product_id,
+                            'quantity_product': 1,
+                        };
+                        axios
+                            .post('/add-to-cart', payload)
+                            .then((res) => {
+                                if (res.data.status) {
+                                    this.loadCart();
+                                    toastr.success("Đã thêm vào giỏ hàng!");
+                                } else {
+                                    toastr.error("Bạn cần đăng nhập trước!");
+                                }
+                            })
+                            .catch((res) => {
+                                var error_list = res.response.data.errors;
+                                $.each(error_list, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
+                            });
+                    },
+                    loadCart() {
+                        axios
+                            .get('/cart/data')
+                            .then((res) => {
+                                this.listCart = res.data.data;
+                                // console.log(this.listCart);
+                            });
+                    },
+                    formatNumber(number) {
+                        return new Intl.NumberFormat('vi-VI', {
+                            style: 'currency',
+                            currency: 'VND'
+                        }).format(number);
+                    },
+                    addQuantity(row) {
+                        axios
+                            .post('/add-quantity-cart', row)
+                            .then((res) => {
+                                toastr.success("Đã cập nhật giỏ hàng!");
+                                this.loadCart();
+                            })
+                            .catch((res) => {
+                                var error_list = res.response.data.errors;
+                                $.each(error_list, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
+                            });
+                    },
+                    minusQuantity(row) {
+                        axios
+                            .post('/minus-quantity-cart', row)
+                            .then((res) => {
+                                toastr.success("Đã cập nhật giỏ hàng!");
+                                this.loadCart();
+                            })
+                            .catch((res) => {
+                                var error_list = res.response.data.errors;
+                                $.each(error_list, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
+                            });
+                    },
+                    deleteRow(row) {
+                        axios
+                            .post('/remove-cart', row)
+                            .then((res) => {
+                                toastr.success("Đã cập nhật giỏ hàng!");
+                                this.loadCart();
+                            })
+                            .catch((res) => {
+                                var error_list = res.response.data.errors;
+                                $.each(error_list, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
+                            });
+                    },
+                    total() {
+                        var total_money = 0;
+                        this.listCart.forEach((value, key) => {
+                            total_money += value.unit_price * value.quantity_product;
+                        });
+                        return total_money;
+                    },
+                    totalPriceOriginal() {
+                        var total_money = 0;
+                        this.listCart.forEach((value, key) => {
+                            total_money += value.price_product * value.quantity_product;
+                        });
+                        return total_money;
+                    },
+                    totalDiscount() {
+                        var total_money = this.totalPriceOriginal() - this.total();
+                        return total_money;
+                    },
+
+
+                    //Login method
+                    login() {
+                        axios.post("actionClientLogin", this.listLogin)
+                            .then((res) => {
+                                if (res.data.status == 2) {
+                                    toastr.success(res.data.alert);
+                                    setTimeout(function() {
+                                        window.location.href = '/indexHomePage';
+                                    }, 1000);
+                                } else if (res.data.status == 1) {
+                                    toastr.warning(res.data.alert);
+                                } else {
+                                    toastr.error(res.data.alert);
+                                }
+                            })
+                            .catch((error) => {
+                                let status = error.response && error.response.status ? error.response.status : 500;
+                                if (status == 422) {
+                                    var error_list = error.response.data.errors;
+                                    $.each(error_list, function(key, value) {
+                                        toastr.error(value[0]);
+                                    });
+                                }
+                            });
+                    },
+
+                    //payment method
+                    paymentPaypal() {
+                        total = this.total() / 23000
+                        axios
+                            .get('process-transaction', {
+                                params: {
+                                    price: total.toFixed(2)
+                                }
+                            })
+                            .then((res) => {
+                                if (res.data.status) {
+                                    window.location = res.data.link
+                                }
+                            });
+                    },
+
+                    //blog method
+                    loadBlog() {
+                        axios
+                            .get('/test/showallbaiviet')
+                            .then((res) => {
+                                if (res.data.st) {
+                                    this.listPost = res.data.data;
+                                }
+                            });
+                    },
+                    formatDate(datetime) {
+                        const input = datetime;
+                        const dateObj = new Date(input);
+                        const year = dateObj.getFullYear();
+                        const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+                        const date = dateObj.getDate().toString().padStart(2, '0');
+                        const result = `${date}/${month}/${year}`
+                        return result;
+                    },
+
+                    //register method
+                    createClient() {
+                        axios
+                            .post("/createClientAccount", this.list_account)
+                            .then((res) => {
+                                if (res.data.status == 200) {
+                                    alert('vui lòng chờ 1 lát....')
+                                    toastr.success(res.data.message);
+                                }
+                            })
+                            .catch((res) => {
+                                var error_list = res.response.data.errors;
+                                $.each(error_list, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
+                            });
+                    },
+
+                    //contact method
+                    postMess() {
+                        axios
+                            .post('/createContact', this.contact)
+                            .then((res) => {
+                                if (res.data.status) {
+                                    toastr.success('Feedback Successfully!');
+                                    this.contact.message = ""
+                                }
+                            })
+                            .catch((res) => {
+                                var danh_sach_loi = res.response.data.errors;
+                                $.each(danh_sach_loi, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
+                            });
+                    },
+
+                    //blogdetail method
+                    getPost() {
+                        axios
+                            .get('/test/showbaiviet/' + this.postId)
+                            .then((res) => {
+                                if (res.data.status) {
+                                    this.dataPost = res.data.data;
+                                    this.dataCmt = res.data.dataCMT;
+                                    this.count = res.data.countcmt;
+                                }
+                            });
+                    },
+                    getLastpost() {
+                        axios
+                            .get('/latestPost')
+                            .then((res) => {
+                                this.lastest = res.data.lastestPost;
+                            })
+                    },
+                    createCmt() {
+                        if (confirm('đăng cmt nha')) {
+                            axios
+                                .post('/test/cmt/', this.dataComment)
+                                .then((res) => {
+                                    if (res.data.status) {
+                                        toastr.success('Bạn đã comment');
+                                        this.dataComment.noi_dung_cmt = ''
+                                        this.getPost();
+                                    }
+                                })
+                                .catch((res) => {
+                                    var danh_sach_loi = res.response.data.errors;
+                                    $.each(danh_sach_loi, function(key, value) {
+                                        toastr.error(value[0]);
+                                    });
+
+                                })
+                        }
+                    },
+                    deleteCMT(id) {
+                        if (confirm('xóa cmt này ?')) {
+                            axios
+                                .get('/deleteComment/' + id)
+                                .then((res) => {
+                                    if (res.data.status) {
+                                        toastr.success('xóa  comment');
+                                        this.getPost();
+                                    }
+                                });
+                        }
+                    },
+                    formatDate(datetime) {
+                        const input = datetime;
+                        const dateObj = new Date(input);
+                        const year = dateObj.getFullYear();
+                        const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+                        const date = dateObj.getDate().toString().padStart(2, '0');
+                        const result = `${date}/${month}/${year}`
+                        return result;
+                    },
+
+                    //
+                },
+            });
+        </script>
         <!-- scrollup end -->
         <!--Start of Tawk.to Script-->
         <script type="text/javascript">
@@ -44,7 +354,6 @@
         <!--End of Tawk.to Script-->
         <!-- all js -->
         @include('homepage.shares.js')
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
         @yield('js')
     </div>
@@ -73,9 +382,6 @@
                     });
             });
         });
-    </script>
-    <script>
-
     </script>
 </body>
 

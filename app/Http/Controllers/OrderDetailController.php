@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddToCartRequest;
+use App\Http\Requests\MinusToCartRequest;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -95,9 +96,44 @@ class OrderDetailController extends Controller
             $data = OrderDetail::join('products', 'order_details.product_id', 'products.id')
                                   ->where('client_id', $client->id)
                                   ->where('cart_status', 1)
-                                  ->select('order_details.*', 'products.image_product')
+                                  ->select('order_details.*', 'products.image_product', 'products.price_product')
                                   ->get();
             return response()->json(['data' => $data]);
+        }
+    }
+
+    public function addQuantityCart(AddToCartRequest $request){
+        $client = Auth::guard('client')->user();
+        if($client) {
+            $orderDetail = OrderDetail::where('product_id', $request->product_id)
+                                            ->where('cart_status', 1)
+                                            ->where('client_id', $client->id)
+                                            ->first();
+            if($orderDetail) {
+                $orderDetail->quantity_product++;
+                $orderDetail->save();
+            }
+
+            return response()->json(['status' => true]);
+        } else {
+            return response()->json(['status' => false]);
+        }
+    }
+    public function minusQuantityCart(MinusToCartRequest $request){
+        $client = Auth::guard('client')->user();
+        if($client) {
+            $orderDetail = OrderDetail::where('product_id', $request->product_id)
+                                            ->where('cart_status', 1)
+                                            ->where('client_id', $client->id)
+                                            ->first();
+            if($orderDetail) {
+                $orderDetail->quantity_product--;
+                $orderDetail->save();
+            }
+
+            return response()->json(['status' => true]);
+        } else {
+            return response()->json(['status' => false]);
         }
     }
 }

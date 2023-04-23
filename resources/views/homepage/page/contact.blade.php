@@ -116,7 +116,7 @@
     </main>
 @endsection
 @section('js')
-    <script>
+    {{-- <script>
         new Vue({
             el: '#MainContent',
             data: {
@@ -143,5 +143,5 @@
                 },
             },
         });
-    </script>
+    </script> --}}
 @endsection

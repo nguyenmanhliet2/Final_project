@@ -56,7 +56,7 @@
                                         </span>
                                     </p>
                                     <h2 class="article-card-heading heading_18">
-                                        <a class="heading_18">
+                                        <a class="heading_18" v-bind:href="'/blogDetailPage/'+ value.id">
                                             @{{ value.title }}
                                         </a>
                                     </h2>
@@ -98,7 +98,7 @@
     </main>
 @endsection
 @section('js')
-    <script>
+    {{-- <script>
         new Vue({
             el: "#MainContent",
             data: {
@@ -128,5 +128,5 @@
                 },
             },
         });
-    </script>
+    </script> --}}
 @endsection

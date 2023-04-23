@@ -314,30 +314,34 @@
         <h5 class="cart-drawer-heading text_16">Your Cart </h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body p-0">
+    <div class="offcanvas-body p-0" id="cart_ord">
         <div class="cart-content-area d-flex justify-content-between flex-column">
             <div class="minicart-loop custom-scrollbar">
-                @foreach ($listBill as $key_bill => $value_bill)
+                {{-- @foreach ($listBill as $key_bill => $value_bill) --}}
+                <template v-for="(value, key) in listCart">
                 <div class="minicart-item d-flex">
                     <div class="mini-img-wrapper">
-                        <img class="mini-img" src="{{ $value_bill->image_product }}" alt="img">
+                        <img class="mini-img" v-bind:src="value.image_product" alt="img">
                     </div>
                     <div class="product-info">
-                        <h2 class="product-title"><a href="#">{{ $value_bill->name_product }}</a></h2>
+                        <h2 class="product-title"><a href="#">@{{ value.name_product }}</a></h2>
                         <div class="misc d-flex align-items-end justify-content-between">
                             <div class="quantity d-flex align-items-center justify-content-between">
-                                <button class="qty-btn dec-qty"><img src="/assets/img/icon/minus.svg" alt="minus"></button>
-                                <input class="qty-input" type="number" name="qty" value="1" min="0">
-                                <button class="qty-btn inc-qty"><img src="/assets/img/icon/plus.svg" alt="plus"></button>
+
+                                <button class="qty-btn dec-qty" v-on:click="minusQuantity(value)"><img src="assets/img/icon/minus.svg" alt="minus"></button>
+                                <input class="qty-input" type="number" name="qty" v-bind:value="value.quantity_product" min="0">
+                                <button class="qty-btn inc-qty" v-on:click="addQuantity(value)"><img src="assets/img/icon/plus.svg" alt="plus"></button>
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
-                                <div class="product-price">{{  $value_bill->sales_price_product }}đ</div>
-                                <a href="#" class="product-remove">Remove</a>
+                                <div class="product-price">@{{  formatNumber(value.unit_price * value.quantity_product)}}</div>
+                                <a href="#" class="product-remove" v-on:click="deleteRow(value)">Remove</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
+                </template>
+
+                {{-- @endforeach --}}
                 <!-- minicart item -->
 
             </div>
@@ -345,7 +349,7 @@
                 <div class="minicart-calc-area">
                     <div class="minicart-calc d-flex align-items-center justify-content-between">
                         <span class="cart-subtotal mb-0">Subtotal</span>
-                        <span class="cart-subprice">$1548.00</span>
+                        <span class="cart-subprice">@{{ formatNumber(total()) }}</span>
                     </div>
                     <p class="cart-taxes text-center my-4">Taxes and shipping will be calculated at checkout.
                     </p>
@@ -368,4 +372,4 @@
         </div>
     </div>
 </div>
- <!-- header end -->
+

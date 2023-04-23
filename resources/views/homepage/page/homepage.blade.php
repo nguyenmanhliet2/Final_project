@@ -37,7 +37,7 @@
                                         </a>
 
                                         @if (Auth::guard('client')->check())
-                                        <a href="javascript:void(0)" class="action-card action-addtocart addToCart" data-id="{{ $value_product->id }}">
+                                        <a href="javascript:void(0)" class="action-card action-addtocart" v-on:click="addToCart({{ $value_product->id }})" data-id="{{ $value_product->id }}">
                                             <svg class="icon icon-cart"  width="24" height="26" viewBox="0 0 24 26"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -124,42 +124,42 @@
 @endsection
 @section('js')
 <script>
-    new Vue({
-            el      :   '#cartModal',
-            data    :   {
-                   dataLogin : {
-                    email: '',
-                    password: '',
+    // new Vue({
+    //         el      :   '#cartModal',
+    //         data    :   {
+    //                dataLogin : {
+    //                 email: '',
+    //                 password: '',
 
-                   }
-            },
-            created() {
+    //                }
+    //         },
+    //         created() {
 
-            },
-            methods :   {
-                loginAction() {
-                    axios
-                        .post('/actionClientLogin' , this.dataLogin)
-                        .then((res) => {
-                           if(res.data.status == 2 ){
-                            toastr.success(res.data.alert)
-                            setTimeout(function() {
-                            $(location).attr('href', '/category/1');;
-                            }, 200);
-                           }else if(res.data.status == 1){
-                            toastr.info(res.data.alert)
-                           }else{
-                            toastr.error(res.data.alert)
-                           }
-                        })
-                        .catch((res) => {
-                            var error_list = res.response.data.errors;
-                            $.each(error_list, function(key, value) {
-                                toastr.error(value[0]);
-                            });
-                        })
-                },
-            },
-        });
+    //         },
+    //         methods :   {
+    //             loginAction() {
+    //                 axios
+    //                     .post('/actionClientLogin' , this.dataLogin)
+    //                     .then((res) => {
+    //                        if(res.data.status == 2 ){
+    //                         toastr.success(res.data.alert)
+    //                         setTimeout(function() {
+    //                         $(location).attr('href', '/category/1');;
+    //                         }, 200);
+    //                        }else if(res.data.status == 1){
+    //                         toastr.info(res.data.alert)
+    //                        }else{
+    //                         toastr.error(res.data.alert)
+    //                        }
+    //                     })
+    //                     .catch((res) => {
+    //                         var error_list = res.response.data.errors;
+    //                         $.each(error_list, function(key, value) {
+    //                             toastr.error(value[0]);
+    //                         });
+    //                     })
+    //             },
+    //         },
+    // });
 </script>
 @endsection

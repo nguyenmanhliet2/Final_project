@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('slug_ingredient');
             $table->integer('quantity_ingredient');
             $table->integer('price_ingredient');
+            $table->integer('total_price_ingredient');
+
             $table->boolean('status_ingredient');
             $table->timestamps();
 

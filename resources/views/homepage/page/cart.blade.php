@@ -43,8 +43,7 @@
                                         <tr class="cart-item">
                                             <td class="cart-item-media">
                                                 <div class="mini-img-wrapper">
-                                                    <img class="mini-img" v-bind:src="value.image_product"
-                                                        alt="img">
+                                                    <img class="mini-img" v-bind:src="value.image_product" alt="img">
                                                 </div>
                                             </td>
                                             <td class="cart-item-details">
@@ -52,14 +51,16 @@
                                             </td>
                                             <td class="cart-item-quantity">
                                                 <div class="quantity d-flex align-items-center justify-content-between">
-                                                    <button class="qty-btn dec-qty"><img src="assets/img/icon/minus.svg"
+                                                    <button class="qty-btn dec-qty" v-on:click="minusQuantity(value)"><img src="assets/img/icon/minus.svg"
                                                             alt="minus"></button>
-                                                    <input class="qty-input" type="number" name="qty" v-on:change="updateRow(value)" v-model="value.quantity_product"
-                                                    v-bind:min="0">
-                                                    <button class="qty-btn inc-qty"><img src="assets/img/icon/plus.svg"
+                                                    <input class="qty-input" type="number" name="qty"
+                                                        v-on:change="updateRow(value)" v-model="value.quantity_product"
+                                                        v-bind:min="0">
+                                                    <button class="qty-btn inc-qty" v-on:click="addQuantity(value)"><img src="assets/img/icon/plus.svg"
                                                             alt="plus"></button>
                                                 </div>
-                                                <a href="#" class="product-remove mt-2" v-on:click="deleteRow(value)">Remove</a>
+                                                <a href="#" class="product-remove mt-2"
+                                                    v-on:click="deleteRow(value)">Remove</a>
                                             </td>
                                             <td class="cart-item-price text-end">
                                                 <div class="product-price">@{{ formatNumber(value.unit_price) }}</div>
@@ -78,11 +79,11 @@
                                     <div class="cart-total-box mt-4">
                                         <div class="subtotal-item subtotal-box">
                                             <h4 class="subtotal-title">Subtotals:</h4>
-                                            <p class="subtotal-value"></p>
+                                            <p class="subtotal-value">@{{ formatNumber(totalPriceOriginal()) }}</p>
                                         </div>
                                         <div class="subtotal-item discount-box">
                                             <h4 class="subtotal-title">Discount:</h4>
-                                            <p class="subtotal-value"></p>
+                                            <p class="subtotal-value">@{{ formatNumber(totalDiscount()) }}</p>
                                         </div>
                                         <hr />
                                         <div class="subtotal-item discount-box">
@@ -90,8 +91,12 @@
                                             <p class="subtotal-value">@{{ formatNumber(total()) }}</p>
                                         </div>
                                         <p class="shipping_text">Check out the products and checkout!!</p>
-                                        <div class="d-flex justify-content-center mt-4" v-on:click="createBill()">
-                                            <button class="position-relative btn-primary text-uppercase">
+                                        <div class="d-flex  justify-content-center mt-4" id="paypal-button"
+                                            >
+                                            {{-- <button class="position-relative btn-primary text-uppercase" v-on:click="createBill()">
+                                                Procced to checkout
+                                            </button> --}}
+                                            <button class="position-relative btn-primary text-uppercase" v-on:click="paymentPaypal()">
                                                 Procced to checkout
                                             </button>
                                         </div>
@@ -105,16 +110,17 @@
     </main>
 @endsection
 @section('js')
-    <script>
+
+    {{-- <script>
         new Vue({
-            el      :   '#cart',
-            data    :   {
-                listCart    : [],
+            el: '#cart',
+            data: {
+                listCart: [],
             },
             created() {
                 this.loadCart();
             },
-            methods :   {
+            methods: {
                 loadCart() {
                     axios
                         .get('/cart/data')
@@ -123,16 +129,53 @@
                         });
                 },
                 formatNumber(number) {
-                    return new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(number);
+                    return new Intl.NumberFormat('vi-VI', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(number);
                 },
                 updateRow(row) {
                     axios
                         .post('/add-to-cart-update', row)
                         .then((res) => {
-                            if(res.status) {
+                            if (res.status) {
                                 toastr.success("Đã cập nhật giỏ hàng!");
                                 this.loadCart();
                             }
+                        })
+                        .catch((res) => {
+                            var error_list = res.response.data.errors;
+                            $.each(error_list, function(key, value) {
+                                toastr.error(value[0]);
+                            });
+                        });
+                },
+                addQuantity(row) {
+                    axios
+                        .post('/add-quantity-cart', row)
+                        .then((res) => {
+                            toastr.success("Đã cập nhật giỏ hàng!");
+                            this.loadCart();
+                        })
+                        .catch((res) => {
+                            var error_list = res.response.data.errors;
+                            $.each(error_list, function(key, value) {
+                                toastr.error(value[0]);
+                            });
+                        });
+                },
+                minusQuantity(row) {
+                    axios
+                        .post('/minus-quantity-cart', row)
+                        .then((res) => {
+                            toastr.success("Đã cập nhật giỏ hàng!");
+                            this.loadCart();
+                        })
+                        .catch((res) => {
+                            var error_list = res.response.data.errors;
+                            $.each(error_list, function(key, value) {
+                                toastr.error(value[0]);
+                            });
                         });
                 },
                 deleteRow(row) {
@@ -141,30 +184,46 @@
                         .then((res) => {
                             toastr.success("Đã cập nhật giỏ hàng!");
                             this.loadCart();
+                        })
+                        .catch((res) => {
+                            var error_list = res.response.data.errors;
+                            $.each(error_list, function(key, value) {
+                                toastr.error(value[0]);
+                            });
                         });
                 },
-                total(){
+                total() {
                     var total_money = 0;
                     this.listCart.forEach((value, key) => {
                         total_money += value.unit_price * value.quantity_product;
                     });
                     return total_money;
                 },
-                createBill(){
+
+                totalPriceOriginal() {
+                    var total_money = 0;
+                    this.listCart.forEach((value, key) => {
+                        total_money += value.price_product * value.quantity_product;
+                    });
+                    return total_money;
+                },
+
+                totalDiscount() {
+                    var total_money = this.totalPriceOriginal() - this.total();
+                    return total_money;
+                },
+
+                paymentPaypal() {
+                    total = this.total() /23000
                     axios
-                        .get('create-bill')
+                        .get('process-transaction', { params: { price: total.toFixed(2)} })
                         .then((res) => {
-                            if(res.data.status == 1){
-                                toastr.success("Tạo đơn hàng thành công!")
-                                this.loadCart();
-                            }else if(res.data.status == 0) {
-                                toastr.error("Đã xảy ra lỗi")
-                            }else {
-                                toastr.warning("Giỏ hàng trống!");
+                            if (res.data.status) {
+                                window.location = res.data.link
                             }
                         });
                 },
             },
         });
-    </script>
+    </script> --}}
 @endsection

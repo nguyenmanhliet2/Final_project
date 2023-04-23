@@ -74,7 +74,7 @@
 </div>
 @endsection
 @section('js')
-<script>
+{{-- <script>
     new Vue({
         el: '#clientRegisterPage',
         data: {
@@ -102,5 +102,5 @@
                 },
         },
     });
-</script>
+</script> --}}
 @endsection
