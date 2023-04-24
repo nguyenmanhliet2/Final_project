@@ -33,8 +33,8 @@
             new Vue({
                 el: '#app_main',
                 data: {
-                    //cart data
-                    listCart: [],
+                     //cart data
+                     listCart: [],
                     //login data
                     listLogin: {},
                     dataLogin: {
@@ -51,14 +51,14 @@
                     },
 
                     //Blog data
-                    postId: {{ $id }},
+                    postId: {{ isset($id) ? $id : 0 }}, //toán tử tam phân or cú pháp 3 bên(ternary operator)
                     dataPost: {},
                     dataCmt: [],
                     lastest: [],
                     count: '',
                     dataComment: {
                         noi_dung_cmt: '',
-                        id_post: {{ $id }}
+                        id_post: {{ isset($id) ? $id : 0 }},
                     }
                 },
                 created() {
@@ -332,7 +332,30 @@
                         return result;
                     },
 
-                    //
+                    //Update My Infor method
+                    updateMyInfor() {
+                        axios
+                            .post("/update-my-information", this.accountUpdate)
+                            .then((res) => {
+                                if(res.data.status ){
+                                    toastr.success("Cập nhật thông tin thành công");
+                                }
+                            })
+                            .catch((res) => {
+                            var error_list = res.response.data.errors;
+                            $.each(error_list, function(key, value) {
+                                toastr.error(value[0]);
+                            });
+                        });
+                    },
+                    getDataMyInfor() {
+                        axios
+                            .get('/my-information/data')
+                            .then((res) => {
+                                this.accountUpdate = res.data.data;
+                            });
+                    },
+
                 },
             });
         </script>

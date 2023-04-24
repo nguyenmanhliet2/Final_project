@@ -73,6 +73,12 @@ Route::post('/createContact',[ClientRegisterController::class, 'createContact'])
 Route::get('/getContactPage',[ClientRegisterController::class, 'contactPage']);
 Route::get('/active/{hash}',[ClientRegisterController::class, 'active']);
 
+Route::get('/my-information',[ClientRegisterController::class, 'viewInfor']);
+Route::get('/my-information/data',[ClientRegisterController::class, 'getDataInfor']);
+Route::post('/update-my-information',[ClientRegisterController::class, 'updateInfor']);
+Route::get('/update-password',[ClientRegisterController::class, 'viewUpdatePass']);
+Route::post('/update-password',[ClientRegisterController::class, 'updatePass']);
+Route::get('/history-transaction',[ClientRegisterController::class, 'viewTransaction']);
 
 
 

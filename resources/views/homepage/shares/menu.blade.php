@@ -52,11 +52,23 @@
                                  </button>
                                  <ul class="currency-list dropdown-menu dropdown-menu-end px-2">
                                      <li class="currency-list-item ">
-                                         <a class="currency-list-option" href="#" data-value="USD">
+                                         <a class="currency-list-option" href="/my-information" data-value="USD">
                                              <img class="flag" src="/assets/img/flag/usd.jpg" alt="img">
-                                             <span>Imfomation</span>
+                                             <span>Infomation</span>
                                          </a>
                                      </li>
+                                     <li class="currency-list-item ">
+                                        <a class="currency-list-option" href="/update-password" data-value="USD">
+                                            <img class="flag" src="/assets/img/flag/usd.jpg" alt="img">
+                                            <span>Update password</span>
+                                        </a>
+                                    </li>
+                                    <li class="currency-list-item ">
+                                        <a class="currency-list-option" href="/history-transaction" data-value="USD">
+                                            <img class="flag" src="/assets/img/flag/usd.jpg" alt="img">
+                                            <span>History Transaction</span>
+                                        </a>
+                                    </li>
                                      <li class="currency-list-item ">
                                          <a class="currency-list-option" href="/logoutClient" data-value="USD">
                                              <img class="flag" src="/assets/img/flag/usd.jpg" alt="img">
@@ -128,15 +140,15 @@
                                                  </div>
                                              </li>
                                              <li class="menu-list-item nav-item-sub">
-                                                 <div
+                                                 {{-- <div
                                                      class="mega-menu-header d-flex align-items-center justify-content-between">
                                                      <a class="nav-link-sub nav-text-sub megamenu-heading"
                                                          href="collection-right-sidebar.html">
                                                          PRODUCT
                                                      </a>
-                                                 </div>
+                                                 </div> --}}
                                                  <div class="submenu-transform megamenu-transform">
-                                                     <ul class="megamenu list-unstyled">
+                                                     {{-- <ul class="megamenu list-unstyled">
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
                                                                  href="product.html">Product Available</a>
@@ -149,19 +161,19 @@
                                                              <a class="nav-link-sub nav-text-sub"
                                                                  href="product.html">Sale</a>
                                                          </li>
-                                                     </ul>
+                                                     </ul> --}}
                                                  </div>
                                              </li>
                                              <li class="menu-list-item nav-item-sub">
-                                                 <div
+                                                 {{-- <div
                                                      class="mega-menu-header d-flex align-items-center justify-content-between">
                                                      <a class="nav-link-sub nav-text-sub megamenu-heading"
                                                          href="index.html">
                                                          Topping
                                                      </a>
-                                                 </div>
+                                                 </div> --}}
                                                  <div class="submenu-transform megamenu-transform">
-                                                     <ul class="megamenu list-unstyled">
+                                                     {{-- <ul class="megamenu list-unstyled">
                                                          <li class="menu-list-item nav-item-sub">
                                                              <a class="nav-link-sub nav-text-sub"
                                                                  href="product-2.html">Black Pearl</a>
@@ -170,7 +182,7 @@
                                                              <a class="nav-link-sub nav-text-sub"
                                                                  href="product.html">Jelly</a>
                                                          </li>
-                                                     </ul>
+                                                     </ul> --}}
                                                  </div>
                                              </li>
                                              <li class="menu-list-item nav-item-sub">
@@ -222,7 +234,7 @@
                              </li>
                              <li class="menu-list-item nav-item has-dropdown">
                                  <div class="mega-menu-header">
-                                     <a class="nav-link" href="about-us.html">
+                                     <a class="nav-link" href="javascript:void(0)">
                                          Pages
                                      </a>
                                      <span class="open-submenu">
@@ -328,9 +340,9 @@
                         <div class="misc d-flex align-items-end justify-content-between">
                             <div class="quantity d-flex align-items-center justify-content-between">
 
-                                <button class="qty-btn dec-qty" v-on:click="minusQuantity(value)"><img src="assets/img/icon/minus.svg" alt="minus"></button>
+                                <button class="qty-btn dec-qty" v-on:click="minusQuantity(value)"><img src="/assets/img/icon/minus.svg" alt="minus"></button>
                                 <input class="qty-input" type="number" name="qty" v-bind:value="value.quantity_product" min="0">
-                                <button class="qty-btn inc-qty" v-on:click="addQuantity(value)"><img src="assets/img/icon/plus.svg" alt="plus"></button>
+                                <button class="qty-btn inc-qty" v-on:click="addQuantity(value)"><img src="/assets/img/icon/plus.svg" alt="plus"></button>
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div class="product-price">@{{  formatNumber(value.unit_price * value.quantity_product)}}</div>

@@ -11,7 +11,7 @@
                             <h2 class="collection-title heading_24 mb-0">{{$nameCa}}</h2>
                             <p class="collection-counter text_16 mb-0 ms-2">{{$countProducts}} sản phẩm </p>
                         </div>
-                        <div class="filter-sorting">
+                        {{-- <div class="filter-sorting">
                             <div class="collection-sorting position-relative d-none d-lg-block">
                                 <div
                                     class="sorting-header text_16 d-flex align-items-center justify-content-end">
@@ -47,7 +47,7 @@
                                 </span>
                                 <span class="mobile-filter-heading">Sorting</span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="collection-product-container">
                         <div class="row">
@@ -91,13 +91,6 @@
                                     </div>
                                     <div class="product-card-details">
                                         <ul class="color-lists list-unstyled d-flex align-items-center">
-                                            <li><a href="javascript:void(0)"
-                                                    class="color-swatch swatch-black active"></a></li>
-                                            <li><a href="javascript:void(0)"
-                                                    class="color-swatch swatch-cyan"></a></li>
-                                            <li><a href="javascript:void(0)"
-                                                    class="color-swatch swatch-purple"></a>
-                                            </li>
                                         </ul>
                                         <h3 class="product-card-title">
                                             <a href="collection-left-sidebar.html">{{ $value->name_product }}</a>

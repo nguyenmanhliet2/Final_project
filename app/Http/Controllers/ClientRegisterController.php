@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ClientLoginRequest;
 use App\Http\Requests\ClientRegisterRequest;
 use App\Http\Requests\formMessage;
+use App\Http\Requests\UpdatePasswordRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Mail\MailClientActive;
 use App\Models\ClientRegister;
 use App\Models\Contact;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -125,5 +128,69 @@ class ClientRegisterController extends Controller
             toastr()->success('Tài khoản của bạn đã được kích hoạt!');
         }
         return redirect('/loginClient');
+    }
+
+    public function viewInfor(){
+        return view('homepage.page.my_infor');
+    }
+
+    public function getDataInfor(){
+        $user = Auth::guard('client')->user();
+        $data = ClientRegister::where("id", $user->id)
+                                ->select("first_name", "last_name", "phone_number", "email", "address", "city", "male", "id")
+                                ->first();
+        return response()->json([
+            'data' => $data
+        ]);
+    }
+
+    public function updateInfor(UpdateUserRequest $request) {
+        $user = Auth::guard('client')->user();
+
+        if($user){
+            $data = ClientRegister::find($user->id);
+            $data->first_name           = $request->first_name;
+            $data->last_name              = $request->last_name;
+            $data->phone_number    = $request->phone_number;
+            $data->email            = $request->email;
+            $data->address            = $request->address;
+            $data->city            = $request->city;
+            $data->male            = $request->male;
+            $data->save();
+            return response()->json(['status' => 1]);
+        }else{
+            return response()->json(['status' => 0]);
+        }
+    }
+
+    public function viewUpdatePass(){
+        return view('homepage.page.update_pass');
+    }
+    public function updatePass(UpdatePasswordRequest $request) {
+        $user = Auth::guard('client')->user();
+
+        if($user){
+            $check = Auth::guard('client')->attempt([
+                'email'         => $user->email,
+                'password'      => $request->old_password
+            ]);
+            if($check){
+                $data = ClientRegister::find($user->id);
+                $data->password = bcrypt($request->password);
+                $data->save();
+                return response()->json(['status' => 1]);
+            }else{
+                return response()->json(['status' => 2]);
+            }
+        }else{
+            return response()->json(['status' => 0]);
+        }
+    }
+    public function viewTransaction(){
+        $user = Auth::guard('client')->user();
+        $orders = Order::where("client_id", $user->id)->get();
+                    // ->where("order_details.cart_status" , 0)
+                    // ->join("order_details", "order_details.order_id", "orders.id");
+        return view('homepage.page.view_transaction', compact('orders'));
     }
 }
