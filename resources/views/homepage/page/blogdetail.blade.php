@@ -99,6 +99,12 @@
                                                         @if (Auth::guard('client')->check())
                                                             <button v-if="v.id_user == {{ Auth::guard('client')->id() }}"
                                                                 v-on:click="deleteCMT(v.id)">delete comment</button>
+                                                                <button v-if="v.id_user == {{ Auth::guard('client')->id()}} && !isCmt"   v-on:click="isCmt = !isCmt ; get(v.id)" >Edit comment</button>
+                                                                    <div v-show="isCmt" v-if="v.id_user == {{ Auth::guard('client')->id()}}  " >
+                                                                        <div  v-if=" id == v.id" >
+                                                                            <input type="text" v-model="getCmtdata.noi_dung_cmt"> <button class="btn btn-success" v-on:click="updateCMT(v.id) ; isCmt = !isCmt">submit</button>
+                                                                        </div>
+                                                                    </div>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -256,4 +262,5 @@
             }
         });
     </script> --}}
+
 @endsection
