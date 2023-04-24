@@ -29,19 +29,22 @@
             </svg>
         </button>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
         <script>
             new Vue({
                 el: '#app_main',
                 data: {
-                     //cart data
-                     listCart: [],
+                    isCmt:false,
+                    id:0,
+                    //cart data
+                    listCart: [],
                     //login data
                     listLogin: {},
                     dataLogin: {
                         email: '',
                         password: '',
                     },
-
+                    accountUpdate : {},
                     //Blog ID
                     listPost: [],
                     list_account: {},
@@ -59,6 +62,10 @@
                     dataComment: {
                         noi_dung_cmt: '',
                         id_post: {{ isset($id) ? $id : 0 }},
+                    },
+
+                    getCmtdata: {
+                        noi_dung_cmt: '',
                     }
                 },
                 created() {
@@ -72,6 +79,7 @@
                     this.getPost();
                     this.getLastpost()
                     this.count
+                    this.getDataMyInfor();
                 },
                 methods: {
                     //cart method
@@ -279,6 +287,7 @@
                                 if (res.data.status) {
                                     this.dataPost = res.data.data;
                                     this.dataCmt = res.data.dataCMT;
+                                    this.selectedId =res.data.dataCMT.id
                                     this.count = res.data.countcmt;
                                 }
                             });
@@ -322,6 +331,33 @@
                                 });
                         }
                     },
+                    get(id) {
+                            axios
+                                .get('/get/' + id)
+                                .then((res) => {
+                                    if (res.data.status) {
+                                        this.getCmtdata = res.data.status
+                                        this.id = res.data.status.id
+
+                                    }
+                                });
+                    },
+                    updateCMT(id) {
+                        axios
+                            .post('/testcmt/' + id, this.getCmtdata)
+                            .then((res) => {
+                                if (res.data.status) {
+                                    toastr.success(res.data.alert);
+                                    this.getPost();
+                                }
+                            })
+                            .catch((res) => {
+                                var error_list = res.response.data.errors;
+                                $.each(error_list, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
+                            });
+                    },
                     formatDate(datetime) {
                         const input = datetime;
                         const dateObj = new Date(input);
@@ -337,16 +373,16 @@
                         axios
                             .post("/update-my-information", this.accountUpdate)
                             .then((res) => {
-                                if(res.data.status ){
+                                if (res.data.status) {
                                     toastr.success("Cập nhật thông tin thành công");
                                 }
                             })
                             .catch((res) => {
-                            var error_list = res.response.data.errors;
-                            $.each(error_list, function(key, value) {
-                                toastr.error(value[0]);
+                                var error_list = res.response.data.errors;
+                                $.each(error_list, function(key, value) {
+                                    toastr.error(value[0]);
+                                });
                             });
-                        });
                     },
                     getDataMyInfor() {
                         axios

@@ -160,6 +160,9 @@ Route::get('/test/deleteallbaiviet/{id}',[BaivietController::class, 'DeleteAllBa
 
 Route::post('/test/cmt/',[CommentsController::class, 'taocmt']); //tạo cmt
 Route::get('/deleteComment/{id}',[CommentsController::class, 'xoaCmt']); //xoa cmt
+Route::post('/testcmt/{id}',[CommentsController::class, 'editCmt']);
+Route::get('/get/{id}',[CommentsController::class, 'getid']);
+
 Route::get('/latestPost',[BaivietController::class, 'latestPost']);
 
 

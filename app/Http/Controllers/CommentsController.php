@@ -42,7 +42,37 @@ class CommentsController extends Controller
                     'status' => false,
                  ]);
             }
-
+        }
+    }
+    public function getid($id){
+        $Login = Auth::guard('client')->user();
+        if($Login){
+            $id_user =  Auth::guard('client')->id();
+            $data =comments::where('id_user' ,  $id_user)->where('id' ,$id)->first();
+            return response()->json([
+                'status' => $data,
+                'alert'=> "200",
+             ]);
+        }
+    }
+    public function editCmt($id , Request $requets){
+        $Login = Auth::guard('client')->user();
+        if($Login){
+            $id_user =  Auth::guard('client')->id();
+            $data = comments::where('id_user' ,  $id_user)->where('id' ,$id)->first();
+            if($data){
+                $updatecmt = $requets->all();
+                $updatecmt['noi_dung_cmt'] =  $requets->noi_dung_cmt;
+                $data->update($updatecmt);
+                return response()->json([
+                    'status' => true,
+                    'alert'=> "200",
+                 ]);
+            }else{
+                return response()->json([
+                    'status' => false,
+                 ]);
+            }
         }
     }
 
