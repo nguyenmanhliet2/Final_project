@@ -18,8 +18,9 @@ class OrderController extends Controller
         if ($client) {
             $cart = OrderDetail::where('cart_status', 1)->where('client_id', $client->id)->get();
             if (count($cart) > 0) {
+
                 $order = Order::create([
-                    'order_code'             => Str::uuid(),
+                    'order_code'             => "HD" . Str::uuid(),
                     'total_price'            => 0,
                     'sales_price_product'    => 0,
                     'real_price'             => 0,
