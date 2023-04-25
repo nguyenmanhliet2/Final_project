@@ -132,7 +132,6 @@ class AdminRegisterController extends Controller
         $data = ClientRegister::find($id);
         if ($data) {
             $data->delete();
-            $data->save();
             return response()->json([
                 'alert' => true,
             ]);
@@ -148,6 +147,12 @@ class AdminRegisterController extends Controller
         $data = ClientRegister::where('email', 'like', '%' .   $request->email .'%')->get();
 
         return response()->json(['dataEmail' => $data]);
+    }
+
+    public function searchContact(Request $request)
+    {
+        $data = Contact::where('message', 'like', '%' . $request->message .'%')->get();
+        return response()->json(['message_list' => $data]);
     }
 
     public function contactManagement()
@@ -169,7 +174,6 @@ class AdminRegisterController extends Controller
         $data = Contact::find($id);
         if($data){
             $data->delete();
-            $data->save();
             return response()->json([
                 'alert'=> 'deleted!'
             ]);

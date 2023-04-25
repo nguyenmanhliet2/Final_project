@@ -130,8 +130,8 @@
                                 <div class="mb-1">
                                     <label>Status Of Product</label>
                                     <select v-model="editProduct.status_product" class="form-control">
-                                        <option value="0">Enable</option>
-                                        <option value="1">Disable</option>
+                                        <option value="1">Enable</option>
+                                        <option value="0">Disable</option>
                                     </select>
                                 </div>
                                 <div class="mb-1">

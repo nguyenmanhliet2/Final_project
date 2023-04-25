@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\successPay;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use PHPUnit\Util\Xml\SuccessfulSchemaDetectionResult;
 
 class OrderController extends Controller
 {
@@ -47,6 +50,13 @@ class OrderController extends Controller
                 $order->total_price = $total_price;
                 $order->sales_price_product  = $total_price - $real_price;
                 $order->save();
+                Mail::to($client->email)->send(new successPay(
+                    $client->last_name,
+                    $real_price,
+                    $order->order_code,
+                    $client->phone_number,
+
+                ));
                 return response()->json(['status' => true]);
             } else {
                 return response()->json(['status' => 2]);

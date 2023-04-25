@@ -107,13 +107,13 @@
                             <p class="newsletter-modal-misc text_14 mt-4 text-center"> You need to login first before starting buy product</p>
                         </div>
                         <div class="newsletter-input-box d-flex align-items-center">
-                            <input class="mt-2 px-3" v-model="dataLogin.email"  type="email" placeholder="Email address">
+                            <input class="mt-2 px-3" v-model="listLogin.email"  type="email" placeholder="Email address">
                         </div>
                         <div class="newsletter-input-box d-flex align-items-center">
-                            <input class="mt-2 px-3" v-model="dataLogin.password" type="password" placeholder="Password">
+                            <input class="mt-2 px-3" v-model="listLogin.password" type="password" placeholder="Password">
                         </div>
-                        <button type="button" id="login" class="btn-primary d-block mt-2 btn-signin" v-on:click="loginAction()">Login</button>
-                        <p class="newsletter-modal-misc text_14 mt-4 text-center pb-4">If you do not have an account, register here!</p>
+                        <button type="button" id="login" class="btn-primary d-block mt-2 btn-signin" v-on:click="login()">Login</button>
+                        <p class="newsletter-modal-misc text_14 mt-4 text-center pb-4">If you do not have an account, <a href="/indexClientRegister" class="register-btn">Register Here!</a></p>
                     </div>
                 </div>
             </div>

@@ -33,14 +33,14 @@ class ClientRegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'required'      =>  ':attribute không được để trống',
-            'max'           =>  ':attribute quá dài',
-            'min'           =>  ':attribute quá ngắn',
-            'exists'        =>  ':attribute không tồn tại',
-            'boolean'       =>  ':attribute chỉ được chọn True/False',
-            'unique'        =>  ':attribute đã tồn tại',
-            'same'          =>  ':attribute và mật khẩu không giống',
-            'digits'        =>  ':attribute phải là 10 sô',
+            'required'      =>  ':attribute must not be empty!',
+            'max'           =>  ':attribute is too long',
+            'min'           =>  ':attribute is too short',
+            'exists'        =>  ':attribute is not exists',
+            'boolean'       =>  ':attribute must choose True/False',
+            'unique'        =>  ':attribute is exists',
+            'same'          =>  ':attribute and password must be the same',
+            'digits'        =>  ':attribute must be 10 numbers',
         ];
     }
 

@@ -136,7 +136,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminMiddleWare'], function(
         Route::get('/userDelete/{id}',[AdminRegisterController::class, 'userDelete']);
         Route::get('/loadUser',[AdminRegisterController::class, 'loadUser']);
         Route::post('/searchEmail',[AdminRegisterController::class, 'searchEmail']);
-
+        Route::post('/searchContact',[AdminRegisterController::class, 'searchContact']);
         Route::get('/contactManagement',[AdminRegisterController::class, 'contactManagement']);
         Route::get('/loadContact',[AdminRegisterController::class, 'loadContact']);
         Route::get('/contactDelete/{id}',[AdminRegisterController::class, 'contactDelete']);

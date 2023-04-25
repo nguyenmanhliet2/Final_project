@@ -9,7 +9,8 @@
                 <div class="card-body">
                     <div class="mb-1">
                         <label>Category's name</label>
-                        <input v-on:keyup="toSlug(newData.name_category)" v-model="newData.name_category" type="text" class="form-control">
+                        <input v-on:keyup="toSlug(newData.name_category)" v-model="newData.name_category" type="text"
+                            class="form-control">
                     </div>
                     <div class="mb-1">
                         <label>Category's Slug</label>
@@ -19,7 +20,8 @@
                         <label>Image</label>
                         <div class="input-group">
                             <input v-model="newData.image_category" type="text" class="form-control" id="thumbnail">
-                            <input type="button" data-input="thumbnail" data-preview="holder" id="lfm" value="Upload" class="btn btn-info">
+                            <input type="button" data-input="thumbnail" data-preview="holder" id="lfm" value="Upload"
+                                class="btn btn-info">
                         </div>
                         <img id="holder" style="margin-top:15px;max-height:100px;">
                     </div>
@@ -76,7 +78,7 @@
                                             class="btn btn-primary">Enable</button>
                                     </td>
                                     <td class="text-center align-middle">
-                                        @{{ value.name_category_root === null ? 'Main' : value.name_category_root}}
+                                        @{{ value.name_category_root === null ? 'Main' : value.name_category_root }}
                                     </td>
                                     <td class="text-nowrap text-center align-middle">
                                         <button class="btn btn-primary" v-on:click="edit = value" data-bs-toggle="modal"
@@ -115,8 +117,8 @@
                                 <div class="mb-1">
                                     <label>Status</label>
                                     <select v-model="edit.is_open" class="form-control">
-                                        <option value="0">Enable</option>
-                                        <option value="1">Disable</option>
+                                        <option value="1">Enable</option>
+                                        <option value="0">Disable</option>
                                     </select>
                                 </div>
                                 <div class="mb-1">
@@ -174,7 +176,7 @@
                 remove: {},
                 list_category: [],
                 list_category_root: [],
-                slug_category : '',
+                slug_category: '',
             },
             created() {
                 this.loadCategory();
@@ -185,8 +187,8 @@
                     console.log(str);
                     str = str.toLowerCase();
                     str = str
-                    .normalize('NFD')
-                    .replace(/[\u0300-\u036f]/g, '');
+                        .normalize('NFD')
+                        .replace(/[\u0300-\u036f]/g, '');
                     str = str.replace(/[đĐ]/g, 'd');
                     str = str.replace(/([^0-9a-z-\s])/g, '');
                     str = str.replace(/(\s+)/g, '-');
@@ -202,6 +204,12 @@
                         .then((res) => {
                             toastr.success(res.data.message);
                             this.loadCategory();
+                        })
+                        .catch((res) => {
+                            var error_list = res.response.data.errors;
+                            $.each(error_list, function(key, value) {
+                                toastr.error(value[0]);
+                            });
                         });
                 },
                 loadCategory() {
