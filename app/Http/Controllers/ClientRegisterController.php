@@ -75,7 +75,7 @@ class ClientRegisterController extends Controller
         } else {
             return response()->json([
                 'status' => 0,
-                'alert' => 'dang nhap that bai,mat khau hoac email khong chinh xac',
+                'alert' => 'Login fail,your email or your password is not correct',
 
             ]);
         }

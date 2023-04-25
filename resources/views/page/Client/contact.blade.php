@@ -12,7 +12,7 @@
                             <tr>
                                 <td colspan="100%">
                                     <div class="input-group">
-                                        <button v-model="inputSearch" class="btn btn-outline-primary waves-effect"
+                                        <button  class="btn btn-outline-primary waves-effect"
                                             type="button">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -22,9 +22,9 @@
                                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                             </svg>
                                         </button>
-                                        <input v-model="inputSearch" v-on:keyup="search()" type="text"
+                                        <input v-model="inputSearch.message" v-on:keyup="search()" type="text"
                                             class="form-control" placeholder="Search the product" aria-label="Amount">
-                                        <button v-model="inputSearch" class="btn btn-outline-primary waves-effect"
+                                        <button  v-on:click="search()" class="btn btn-outline-primary waves-effect"
                                             type="button">Search</button>
                                     </div>
                                 </td>
@@ -62,7 +62,14 @@
             new Vue({
                 el: "#comment_management",
                 data: {
-                    dataContact: [],
+                    dataContact: {},
+                    inputSearch: {
+                        message: ''
+
+
+                    },
+
+
                 },
                 created() {
                     this.loadCT()
@@ -81,16 +88,15 @@
                             .get('/admin/client/contactDelete/' + id)
                             .then((res) => {
                                 toastr.success(res.data.alert)
+                                this.loadCT()
+
                             });
                     },
                     search() {
-                        var payload = {
-                            'nameProduct': this.inputSearch,
-                        };
                         axios
-                            .post('/admin/product/searchProduct', payload)
+                            .post('/admin/client/searchContact', this.inputSearch)
                             .then((res) => {
-                                this.list_product = res.data.dataProduct;
+                                this.dataContact = res.data.message_list;
                             });
                     },
                 },

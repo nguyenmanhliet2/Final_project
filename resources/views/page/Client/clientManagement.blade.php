@@ -12,7 +12,7 @@
                             <tr>
                                 <td colspan="100%">
                                     <div class="input-group">
-                                        <button v-model="inputSearch.email" class="btn btn-outline-primary waves-effect"
+                                        <button class="btn btn-outline-primary waves-effect"
                                             type="button">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -24,8 +24,8 @@
                                         </button>
                                         <input v-model="inputSearch.email" v-on:keyup="search()" type="text"
                                             class="form-control" placeholder="Search the product" aria-label="Amount">
-                                        <button v-on:click="search()" v-model="inputSearch.email" class="btn btn-outline-primary waves-effect"
-                                            type="button">Search</button>
+                                        <button v-on:click="search()"
+                                            class="btn btn-outline-primary waves-effect" type="button">Search</button>
                                     </div>
                                 </td>
                             </tr>
@@ -49,20 +49,20 @@
 
                                 <td style="gap : 20px;display:flex;align-items: center;justify-content: center  ">
                                     {{-- block --}}
-                                    <button class="btn btn-danger text-right" v-if="value.block == 1" v-on:click="userBl(value.id)" style="padding: 10px ;font-size:17px"><i
-                                            class="fas fa-lock"
-                                            ></i></button>
-                                    <button class="btn btn-info text-right" v-else  v-on:click="userBl(value.id)" style="padding: 10px ;font-size:17px"><i
-                                            class="fas fa-unlock" ></i></button>
+                                    <button class="btn btn-danger text-right" v-if="value.block == 1"
+                                        v-on:click="userBl(value.id)" style="padding: 10px ;font-size:17px"><i
+                                            class="fas fa-lock"></i></button>
+                                    <button class="btn btn-info text-right" v-else v-on:click="userBl(value.id)"
+                                        style="padding: 10px ;font-size:17px"><i class="fas fa-unlock"></i></button>
 
 
-                                     {{-- //active --}}
-                                    <button class="btn btn-warning text-right" v-on:click="userAT(value.id)" v-if="value.active == 0" style="padding: 10px ;font-size:17px"><i
+                                    {{-- //active --}}
+                                    <button class="btn btn-warning text-right" v-on:click="userAT(value.id)"
+                                        v-if="value.active == 0" style="padding: 10px ;font-size:17px"><i
                                             class="fas fa-xmark"></i></button>
-                                    <button class="btn btn-success text-right" v-on:click="userAT(value.id)" v-else style="padding: 10px ;font-size:17px"><i
-                                        class="fas fa-check"></i></button>
-
-                                    <i class="fas fa-trash dele-hover"  v-on:click="userDl(value.id)"></i>
+                                    <button class="btn btn-success text-right" v-on:click="userAT(value.id)" v-else
+                                        style="padding: 10px ;font-size:17px"><i class="fas fa-check"></i></button>
+                                    <i class="fas fa-trash dele-hover" v-on:click="userDl(value.id)"></i>
 
                                 </td>
                             </tr>
@@ -81,7 +81,7 @@
             el: "#client_management",
             data: {
                 inputSearch: {
-                    email:''
+                    email: ''
                 },
                 user: [],
             },
@@ -107,31 +107,29 @@
                             }
                         });
                 },
-                userAT(id)
-                {
+                userAT(id) {
                     axios
                         .get('/admin/client/userActive/' + id)
                         .then((res) => {
-                            res.data.Actived ? toastr.warning('unActive') : toastr.success('Active')
+                            res.data.Actived ?  toastr.success('Active')  : toastr.warning('unActive')
                             this.loadUser()
                         });
                 },
-                userDl(id)
-                {
-                     if(confirm('are you sure about that')){
+                userDl(id) {
+                    if (confirm('are you sure about that')) {
                         axios
-                            .get('/admin/client/userDelete/' + $id)
+                            .get('/admin/client/userDelete/' + id)
                             .then((res) => {
-                                if(res.data.alert){
-                                    this.loadUser()
+                                if (res.data.alert) {
+                                        toastr.success('Delete Successfully!')
+                                        his.loadUser()
                                 }
                             });
-                }
+                    }
 
                 },
 
                 search() {
-
                     axios
                         .post('/admin/client/searchEmail', this.inputSearch)
                         .then((res) => {

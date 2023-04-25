@@ -346,7 +346,7 @@
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div class="product-price">@{{  formatNumber(value.unit_price * value.quantity_product)}}</div>
-                                <a href="#" class="product-remove" v-on:click="deleteRow(value)">Remove</a>
+                                <a href="javascript:void(0)" class="product-remove" v-on:click="deleteRow(value)">Remove</a>
                             </div>
                         </div>
                     </div>

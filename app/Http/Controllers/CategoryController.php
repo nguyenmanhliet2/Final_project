@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCategoryProductRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +14,7 @@ class CategoryController extends Controller
         return view('page.Category.indexCategory');
     }
 
-    public function store(Request $request){
+    public function store(CreateCategoryProductRequest $request){
         $newData = $request->all();
         Category::create($newData);
 

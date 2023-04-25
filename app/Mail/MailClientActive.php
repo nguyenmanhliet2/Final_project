@@ -18,18 +18,19 @@ class MailClientActive extends Mailable
     public $title;
 
 
+
     public function __construct($full_name, $hash, $title)
     {
         $this->full_name       = $full_name;
-        $this->hash         = $hash;
-        $this->title      = $title;
+        $this->hash            = $hash;
+        $this->title           = $title;
     }
 
     public function build()
     {
         return $this->subject($this->title)->view('mail.mail_client_active', [
             'full_name' => $this->full_name,
-            'hash'   => $this->hash,
+            'hash'      => $this->hash,
         ]);
     }
 

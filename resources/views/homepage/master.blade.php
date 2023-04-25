@@ -183,7 +183,7 @@
 
                     //Login method
                     login() {
-                        axios.post("actionClientLogin", this.listLogin)
+                        axios.post("/actionClientLogin", this.listLogin)
                             .then((res) => {
                                 if (res.data.status == 2) {
                                     toastr.success(res.data.alert);
@@ -374,7 +374,7 @@
                             .post("/update-my-information", this.accountUpdate)
                             .then((res) => {
                                 if (res.data.status) {
-                                    toastr.success("Cập nhật thông tin thành công");
+                                    toastr.success("Update Information Successfully!");
                                 }
                             })
                             .catch((res) => {

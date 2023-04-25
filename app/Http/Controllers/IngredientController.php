@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class IngredientController extends Controller
 {
     public function indexIngredient() {
-        return view('page.Category.indexIngredient');
+        return view('page.Ingredient.indexIngredient');
     }
     public function ingredientStore(Request $request) {
         $newIngredient= $request->all();

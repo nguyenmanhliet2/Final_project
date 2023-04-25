@@ -66,7 +66,7 @@ class CommentsController extends Controller
                 $data->update($updatecmt);
                 return response()->json([
                     'status' => true,
-                    'alert'=> "200",
+                    'alert'=> "Edit Comment Successfully!",
                  ]);
             }else{
                 return response()->json([
