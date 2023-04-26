@@ -64,4 +64,25 @@ class OrderController extends Controller
         }
         return response()->json(['status' => false]);
     }
+
+    public function allOrderdata(){
+            $data = Order::join('client_registers' ,  'orders.client_id' , 'client_registers.id')->select('orders.*','client_registers.last_name','client_registers.email')->get();
+            return response()->json([
+                'dataOrder'=>$data,
+            ]);
+    }
+    public function orderDetailLoad($id){
+          $data = OrderDetail::where('order_id' ,$id)->get();
+          return response()->json([
+               'dataDetail'=>$data
+          ]);
+    }
+    public function orderDetailDelete($id){
+        $data = Order::find($id);
+        $data->delete();
+
+        return response()->json([
+             'alert'=>'Delete Successfully!',
+        ]);
+  }
 }

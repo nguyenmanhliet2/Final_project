@@ -19,17 +19,17 @@
                     .get('create-bill')
                     .then((res) => {
                         if (res.data.status == 1) {
-                            toastr.success("Tạo đơn hàng thành công!")
+                            toastr.success("Successful order creation!")
                             window.setTimeout(() => {
                                 window.location = '/indexHomePage';
                             }, 500);
                         } else if (res.data.status == 0) {
-                            toastr.error("Đã xảy ra lỗi");
+                            toastr.error("Error! An error occurred. Please try again later");
                             window.setTimeout(() => {
                                 window.location = '/indexCart';
                             }, 500);
                         } else {
-                            toastr.warning("Giỏ hàng trống!");
+                            toastr.warning("Empty cart!");
                             window.setTimeout(() => {
                                 window.location = '/indexCart';
                             }, 500);

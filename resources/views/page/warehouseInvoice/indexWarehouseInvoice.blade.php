@@ -5,37 +5,34 @@
             <div class="card">
                 <div class="card-header">
                     <h2>
-                        Warehouse Invoice
+                        Quản lý đơn hàng
                     </h2>
                 </div>
                 <div class="card-body">
-                    <div class="input-group">
-                        <button class="btn btn-outline-primary waves-effect" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                        <input type="text" class="form-control" placeholder="Search Invoice" aria-label="Amount">
-                        <button class="btn btn-outline-primary waves-effect" type="button">Search !</button>
-                    </div>
                     <table class="table table-bordered mt-1">
                         <thead>
-                            <tr>
+                            <tr> <th>#</th>
                                 <th>Order Code</th>
+                                <th>Real Money</th>
                                 <th>Total Money</th>
-                                <th>Total Amount</th>
-                                <th>Description</th>
+                                <th>sale Money</th>
+                                <th>Người mua hàng </th>
+
                                 <th>Payment Status</th>
                                 <th>Options</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(value, key) in list_invoice">
+                            <tr v-for="(value, key) in list_order">
                                 <td><span class="fw-bold">@{{ key + 1 }}</span></td>
-                                <td>@{{ value.total_money}}</td>
-                                <td>@{{ value.total_amount}}</td>
-                                <td>@{{ value.description}}</td>
+                                <td>@{{ value.order_code}}</td>
+                                <td>@{{ value.real_price}}</td>
+                                <td>@{{ value.total_price}}</td>
+                                <td>@{{ value.sales_price_product}}</td>
+                                <td>@{{ value.last_name}}</td>
                                 <td>
-                                    <button v-on:click="switchInvoiceData(value)" v-if="value.payment == 0" type="button" class="btn btn-gradient-danger">Has not been paid</button>
-                                    <button v-on:click="switchInvoiceData(value)" v-else type="button" class="btn btn-gradient-success">Has been paid</button>
+                                    <button  v-if="value.payment == 0" type="button" class="btn btn-gradient-danger">Has not been paid</button>
+                                    <button  v-else type="button" class="btn btn-gradient-success">Has been paid</button>
                                 </td>
                                 <td>
                                     <div class="dropdown">
@@ -60,7 +57,7 @@
                                                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
                                                     </path>
                                                 </svg>
-                                                <span data-bs-toggle="modal" data-bs-target="#exampleModal" v-on:click="getDetail(value.id)">Info</span>
+                                                <span data-bs-toggle="modal" data-bs-target="#exampleModal" v-on:click="getDetail(value.id)">xem chi tiết</span>
                                             </a>
                                             <a class="dropdown-item" href="#">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -72,7 +69,7 @@
                                                         d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
                                                     </path>
                                                 </svg>
-                                                <span>Delete</span>
+                                                <span v-on:click="deleDetail(value.id)">Delete</span>
                                             </a>
                                         </div>
                                     </div>
@@ -84,28 +81,30 @@
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn hàng : </h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <table class="table table-bordered mt-1">
                                     <thead>
                                         <tr>
-                                            <th>Order Code</th>
+                                            <th>#</th>
+
                                             <th>Product's Name</th>
                                             <th>Quantity</th>
                                             <th>Price</th>
-                                            <th>Into price</th>
+                                            <th>ngày mua hàng </th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(value, key) in list_Detail">
+                                        <tr v-for="(value, key) in list_detail">
                                             <td><span class="fw-bold">@{{ key + 1 }}</span></td>
                                             <td>@{{ value.name_product}}</td>
-                                            <td>@{{ value.input_quantity}}</td>
-                                            <td>@{{ value.input_price}}</td>
-                                            <td>@{{ value.into_price}}</td>
+                                            <td>@{{ value.quantity_product}}</td>
+                                            <td>@{{ value.unit_price}}</td>
+                                            <td>@{{ formatDate(value.created_at) }}</td>
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -125,35 +124,52 @@
             new Vue({
                 el: "#admin_invoice_page",
                 data: {
-                    list_invoice: [],
-                    list_Detail: [],
+                    list_order: [],
+                    list_detail: [],
                 },
                 created() {
-                    this.loadInvoice();
+                    this.dataOrder()
                 },
                 methods: {
-                    loadInvoice() {
+                    dataOrder() {
                         axios
-                            .get('/admin/warehouse-invoice/dataWarehouseInvoice')
+                            .get('/allOrderdata')
                             .then((res) => {
-                                this.list_invoice = res.data.dataWarehouseInvoices;
+                                this.list_order = res.data.dataOrder;
                             });
                     },
 
                     getDetail(id){
                         axios
-                            .get('/admin/warehouse-invoice/dataDetailWarehouseInvoice/' + id)
+                            .get('/orderDetailLoad/' + id)
                             .then((res) => {
-                                this.list_Detail = res.data.dataDetailWarehouseDetails;
+                                this.list_detail = res.data.dataDetail;
                             });
                     },
-                    switchInvoiceData(value) {
-                    axios
-                       .post('/admin/warehouse-invoice/switchInvoiceStatus', value)
-                       .then((res) => {
-                            toastr.success("Status of Ingredient has been changed");
-                            this.loadInvoice();
-                       });
+                    formatDate(datetime) {
+                        const input = datetime;
+                        const dateObj = new Date(input);
+                        const year = dateObj.getFullYear();
+                        const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+                        const date = dateObj.getDate().toString().padStart(2, '0');
+                        const hours = dateObj.getHours().toString().padStart(2, '0');
+                        const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+                        const seconds = dateObj.getSeconds().toString().padStart(2, '0');
+                        const result = `${date}/${month}/${year} - ${hours}:${minutes}:${seconds}`;
+                        return result;
+                    },
+
+                    deleDetail(id) {
+                        if(confirm('Are you sure you want to delete this?')){
+                            axios
+                            .get('/orderDetailDelete/'+ id)
+                            .then((res) => {
+                                    toastr.success(res.data.alert) ;
+                                    this.dataOrder()
+
+                            });
+                        }
+
                 },
                 },
             });

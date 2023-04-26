@@ -93,9 +93,9 @@
                             .then((res) => {
                                 if (res.data.status) {
                                     this.loadCart();
-                                    toastr.success("Đã thêm vào giỏ hàng!");
+                                    toastr.success("Add Product to cart Successfully!");
                                 } else {
-                                    toastr.error("Bạn cần đăng nhập trước!");
+                                    toastr.error("You need to login first!");
                                 }
                             })
                             .catch((res) => {
