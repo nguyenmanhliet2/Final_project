@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('your_email');
             $table->string('your_phone_number');
             $table->longText('message');
-
             $table->timestamps();
         });
     }

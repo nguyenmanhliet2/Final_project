@@ -44,11 +44,17 @@ Route::get('/cart/data',[OrderDetailController::class, 'dataCart']);
 Route::post('/add-to-cart',[OrderDetailController::class, 'addToCart']);
 Route::post('/add-to-cart-update',[OrderDetailController::class, 'addToCartUpdate']);
 Route::post('/remove-cart',[OrderDetailController::class, 'removeCart']);
+
 Route::get('/create-bill',[OrderController::class, 'store']);
+Route::get('/allOrderdata',[OrderController::class, 'allOrderdata']);
+Route::get('/orderDetailLoad/{id}',[OrderController::class, 'orderDetailLoad']);
+Route::get('/orderDetailDelete/{id}',[OrderController::class, 'orderDetailDelete']);
+
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
 Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
 Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
 Route::post('/add-quantity-cart',[OrderDetailController::class, 'addQuantityCart']);
 Route::post('/minus-quantity-cart',[OrderDetailController::class, 'minusQuantityCart']);
 

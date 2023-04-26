@@ -32,7 +32,7 @@
 
                         <div class="form-actions right">
                             <button type="submit" class="btn btn-primary">
-                                Cập Nhật Cấu Hình
+                                Update Config
                             </button>
                         </div>
                     </form>
