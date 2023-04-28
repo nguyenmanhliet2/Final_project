@@ -1,6 +1,24 @@
 @extends('homepage.master')
 @section('content')
 <main id="MainContent" class="content-for-layout">
+    <div class="breadcrumb">
+        <div class="container">
+            <ul class="list-unstyled d-flex align-items-center m-0">
+                <li><a href="/indexHomePage">Home</a></li>
+                <li>
+                    <svg class="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.4">
+                            <path
+                                d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z"
+                                fill="#000" />
+                        </g>
+                    </svg>
+                </li>
+                <li>Product Detail</li>
+            </ul>
+        </div>
+    </div>
     <div class="product-page mt-100">
         <div class="container">
             <div class="row">
@@ -123,14 +141,14 @@
                             <div class="product-form-buttons d-flex align-items-center justify-content-between mt-4">
                                 <button type="button" class="position-relative btn-atc btn-add-to-cart loader " v-on:click="addToCart({{ $productDetail->id }})" data-id="{{ $productDetail->id }}">ADD TO CART</button>
                             </div>
+                            <div class="buy-it-now-btn mt-2">
+                                <button onclick="window.location.href='/indexCart'" type="button" class="position-relative btn-atc btn-add-to-cart loader">Check Your Cart</button>
+                            </div>
                             @else
                             <div class="product-form-buttons d-flex align-items-center justify-content-between mt-4">
                                 <button type="button" class="position-relative btn-atc btn-add-to-cart loader " data-bs-toggle="modal" data-bs-target="#cartModal">ADD TO CART</button>
                             </div>
                             @endif
-                            <div class="buy-it-now-btn mt-2">
-                                <button type="button" class="position-relative btn-atc btn-add-to-cart loader">Check Your Cart</button>
-                            </div>
                         </form>
 
                     </div>

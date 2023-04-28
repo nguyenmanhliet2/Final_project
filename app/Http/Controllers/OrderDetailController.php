@@ -98,7 +98,19 @@ class OrderDetailController extends Controller
                                   ->where('cart_status', 1)
                                   ->select('order_details.*', 'products.image_product', 'products.price_product')
                                   ->get();
-            return response()->json(['data' => $data]);
+            $counData =count($data);
+            if($counData <= 0 ){
+                return response()->json([
+                    'data' => $data,
+                    'countCart' => 0
+                ]);
+            }else{
+                return response()->json([
+                    'data' => $data,
+                    'countCart' => $counData
+                ]);
+            }
+
         }
     }
 

@@ -114,7 +114,14 @@ class ClientRegisterController extends Controller
     }
     public function contactPage()
     {
+    $Login = Auth::guard('client')->user();
+    if($Login){
+
         return view('homepage.page.contact');
+    }else{
+        Toastr()->info('You must login ');
+        return redirect('/loginClient');
+    }
     }
 
 

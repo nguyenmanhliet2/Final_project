@@ -88,7 +88,7 @@
                         <polyline points="7 3 7 8 15 8"></polyline>
                     </svg><span class="menu-title text-truncate" data-i18n="Create Product">Create Product</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/ingredient/indexIngredient"><svg
+            {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/ingredient/indexIngredient"><svg
                         xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="feather feather-save">
@@ -97,8 +97,8 @@
                         <polyline points="7 3 7 8 15 8"></polyline>
                     </svg><span class="menu-title text-truncate" data-i18n="Create Ingredient">Create
                         Ingredient</span></a>
-            </li>
-            <li class=" nav-item"><a class="d-flex align-items-center"
+            </li> --}}
+            {{-- <li class=" nav-item"><a class="d-flex align-items-center"
                     href="/admin/warehouse-detail/indexWarehouseDetail"><svg xmlns="http://www.w3.org/2000/svg"
                         width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -108,7 +108,7 @@
                         <polyline points="7 3 7 8 15 8"></polyline>
                     </svg><span class="menu-title text-truncate" data-i18n="Warehouse Detail">Warehouse
                         Detail</span></a>
-            </li>
+            </li> --}}
             <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/configuration"><svg
                         xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -145,6 +145,16 @@
                         <polyline points="17 21 17 13 7 13 7 21"></polyline>
                         <polyline points="7 3 7 8 15 8"></polyline>
                     </svg><span class="menu-title text-truncate" data-i18n="Warehouse Detail">Contact
+                        Management /indexWarehouseInvoice</span></a>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/admin/warehouse-invoice/indexWarehouseInvoice"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                        height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-save">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg><span class="menu-title text-truncate" data-i18n="Warehouse Detail">Order
                         Management</span></a>
             </li>
         </ul>

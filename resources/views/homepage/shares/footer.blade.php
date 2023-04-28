@@ -17,10 +17,6 @@
                             </h4>
                             <ul class="footer-menu list-unstyled mb-0 d-md-block">
                                 <li class="footer-menu-item"><a href="about-us.html">About us</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Press center</a></li>
-                                <li class="footer-menu-item"><a href="blog.html">Our magazine</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Our group</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Work with us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -37,11 +33,7 @@
                                 </span>
                             </h4>
                             <ul class="footer-menu list-unstyled mb-0 d-md-block">
-                                <li class="footer-menu-item"><a href="about-us.html">Brand catalog</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Discount codes</a></li>
                                 <li class="footer-menu-item"><a href="collection-left-sidebar.html">Furniture</a></li>
-                                <li class="footer-menu-item"><a href="collection-left-sidebar.html">Sofa</a></li>
-                                <li class="footer-menu-item"><a href="collection-left-sidebar.html">Chair</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,9 +50,6 @@
                                 </span>
                             </h4>
                             <ul class="footer-menu list-unstyled mb-0 d-md-block">
-                                <li class="footer-menu-item"><a href="faq.html">FAQ</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Privacy policy</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Support</a></li>
                                 <li class="footer-menu-item"><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>

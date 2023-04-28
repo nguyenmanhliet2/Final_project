@@ -24,14 +24,13 @@ class formMessage extends FormRequest
     {
             return [
                 'message'         => 'required|max:200',
-
             ];
     }
     public function messages()
     {
         return[
-            'message.required'=>'không được để trống ô messages',
-            'message.max'=>'tối đa 200 kí tự',
+            'message.required'=>'messages must not be empty',
+            'message.max'=>'Maximum 200 words',
 
         ];
     }
