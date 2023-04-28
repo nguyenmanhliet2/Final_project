@@ -82,6 +82,27 @@
         background-color: #0062cc;
         color: #fff;
     }
+
+    .cart-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .cart-count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+        position: absolute;
+        top: -0.3rem;
+        right: -0.3rem;
+    }
 </style>
 
 <link rel="stylesheet" href="/assets/css/vendor.css">

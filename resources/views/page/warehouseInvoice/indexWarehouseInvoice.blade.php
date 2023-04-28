@@ -16,7 +16,7 @@
                                 <th>Real Money</th>
                                 <th>Total Money</th>
                                 <th>sale Money</th>
-                                <th>Người mua hàng </th>
+                                <th>buyer </th>
 
                                 <th>Payment Status</th>
                                 <th>Options</th>
@@ -57,7 +57,7 @@
                                                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
                                                     </path>
                                                 </svg>
-                                                <span data-bs-toggle="modal" data-bs-target="#exampleModal" v-on:click="getDetail(value.id)">xem chi tiết</span>
+                                                <span data-bs-toggle="modal" data-bs-target="#exampleModal" v-on:click="getDetail(value.id)">See detail</span>
                                             </a>
                                             <a class="dropdown-item" href="#">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -81,7 +81,7 @@
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn hàng : </h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Order Detail : </h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -93,7 +93,7 @@
                                             <th>Product's Name</th>
                                             <th>Quantity</th>
                                             <th>Price</th>
-                                            <th>ngày mua hàng </th>
+                                            <th>Date </th>
 
                                         </tr>
                                     </thead>

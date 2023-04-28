@@ -84,13 +84,15 @@
                     },
 
                     deletedCt(id) {
-                        axios
+                        if(confirm('Are you sure you want to delete this?')){
+                            axios
                             .get('/admin/client/contactDelete/' + id)
                             .then((res) => {
                                 toastr.success(res.data.alert)
                                 this.loadCT()
-
                             });
+                        }
+
                     },
                     search() {
                         axios

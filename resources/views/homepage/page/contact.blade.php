@@ -4,7 +4,7 @@
     <div class="breadcrumb">
         <div class="container">
             <ul class="list-unstyled d-flex align-items-center m-0">
-                <li><a href="/">Home</a></li>
+                <li><a href="/indexHomePage">Home</a></li>
                 <li>
                     <svg class="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +103,8 @@
                                         </fieldset>
                                         <button type="submit" v-on:click="postMess()"
                                             class="position-relative review-submit-btn contact-submit-btn">SEND
-                                            MESSAGE</button>
+                                            MESSAGE
+                                        </button>
                                     </div>
                                 </div>
                             </div>

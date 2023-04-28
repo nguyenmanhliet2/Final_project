@@ -38,6 +38,7 @@
                     id:0,
                     //cart data
                     listCart: [],
+                    countCart :0 ,
                     //login data
                     listLogin: {},
                     dataLogin: {
@@ -71,6 +72,7 @@
                 created() {
                     //cart
                     this.loadCart();
+                    this.countCart;
 
                     //Blog
                     this.loadBlog();
@@ -106,11 +108,13 @@
                             });
                     },
                     loadCart() {
+
                         axios
                             .get('/cart/data')
                             .then((res) => {
                                 this.listCart = res.data.data;
                                 // console.log(this.listCart);
+                                this.countCart = res.data.countCart
                             });
                     },
                     formatNumber(number) {

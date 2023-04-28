@@ -21,7 +21,12 @@
                     </div>
                     <div class="mb-1">
                         <label>Blog Image</label>
-                        <input v-model="newData.hinh_anh" type="text" class="form-control">
+                        <div class="input-group">
+                            <input v-model="newData.hinh_anh" type="text" class="form-control" id="thumbnail">
+                            <input type="button" data-input="thumbnail" data-preview="holder" id="lfm" value="Upload" class="btn btn-info">
+                        </div>
+                            <img id="holder" style="margin-top:15px;max-height:100px;">
+
                     </div>
                     {{-- <div class="mb-0">
                         <label>Blog Image</label>
